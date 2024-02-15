@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-piona {
+  background-image: url('/image/job/piona.jpg');
+  background-size: cover;
+  background-position: 70%;
+  background-repeat: no-repeat;
+}
