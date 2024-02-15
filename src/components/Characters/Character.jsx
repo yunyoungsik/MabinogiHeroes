@@ -36,9 +36,9 @@ const Character = ({ name }) => {
   }, [])
 
   return (
-    <div className='w-full h-full flex justify-center items-center'>
+    <div className='w-full h-full flex justify-center items-center relative'>
 
-      <div className='overlay'>
+      <div className='overlay absolute w-[316px] h-[440px] '>
         <div className='card w-[316px] h-[440px] transition-all rounded-xl bg-piona'>
           <div className='w-full h-full bg-black/60 rounded-xl p-2'>
             <div className='flex items-center justify-between'>
