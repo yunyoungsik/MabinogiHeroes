@@ -1,33 +1,16 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
+import Nav from './Nav'
+import Search from './Search'
 
 const Header = () => {
-  const [name, setName] = useState('');
-  const router = useRouter();
-
-  const handleSearch = () => {
-    router.push(`/characters/${encodeURIComponent(name)}`);
-  }
 
   return (
-    <header>
-      <label htmlFor="search" className='hidden'>검색</label>
-      <input
-        type="text"
-        placeholder='검색'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        onKeyDown={
-          (e) => {
-            if(e.key === 'Enter') {
-              handleSearch();
-            }
-          }
-        }
-      />
-      <button type='button' onClick={handleSearch}>검색</button>
+    <header className='flex items-center justify-between w-full h-[66px] px-2'>
+      <h1>
+        Logo
+      </h1>
+      <Nav />
+      <Search />
     </header>
   )
 }

@@ -1,61 +1,106 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 const Character = ({ name }) => {
-  const [data, setData] = useState('')
+  const [data, setData] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/characterData?name=${encodeURIComponent(name)}`);
+        const res = await fetch(
+          `/api/characterData?name=${encodeURIComponent(name)}`
+        );
         const data = await res.json();
-        // console.log(data)
+        console.log(data);
         setData(data);
       } catch (error) {
-        console.error("API 요청 중 에러가 발생했습니다: ", error);
+        console.error('API 요청 중 에러가 발생했습니다: ', error);
       }
     };
 
     fetchData();
-  }, [])
+  }, [name]);
 
   useEffect(() => {
-    let card = document.querySelector('.card')
+    let card = document.querySelector('.card');
 
     card.addEventListener('mousemove', function (e) {
       let x = e.offsetX;
       let y = e.offsetY;
       // console.log(x, y);
 
-      let rotateY = -1 / 10 * x + 20;
-      let rotateX = 4 / 60 * y - 20;
+      let rotateY = (-1 / 10) * x + 20;
+      let rotateX = (4 / 60) * y - 20;
 
-      card.style.transform = `perspective(440px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`
-    })
-  }, [])
+      card.style.transform = `perspective(440px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    });
+
+    card.addEventListener('mouseleave', function (e) {
+      let x = e.offsetX;
+      let y = e.offsetY;
+      // console.log(x, y);
+
+      let rotateY = (-1 / 10) * x + 20;
+      let rotateX = (4 / 60) * y - 20;
+
+      card.style.transform = `perspective(440px) rotateY(0deg) rotateX(0deg)`;
+    });
+  }, []);
 
   return (
-    <div className='w-full h-full flex justify-center items-center relative'>
-
-      <div className='overlay absolute w-[316px] h-[440px] '>
-        <div className='card w-[316px] h-[440px] transition-all rounded-xl bg-piona'>
-          <div className='w-full h-full bg-black/60 rounded-xl p-2'>
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center text-[1.1rem] text-white font-bold'>
-                <span className='text-[0.7rem] bg-gray-400 rounded-2xl py-1 px-2 mr-1'>{data.basic?.character_class_name}</span>{data.basic?.character_name}
+    <div className="w-full h-full flex justify-center items-center relative">
+      <div className="overlay absolute w-[316px] h-[440px] ">
+        <div className="card group w-[316px] h-[440px] transition-all rounded-xl bg-piona">
+          <div className="group-hover:hidden w-full h-full bg-black/60 rounded-xl p-2 relative">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center text-[1.1rem] text-white font-bold">
+                <span className="text-[0.7rem] bg-gray-400 rounded-2xl py-1 px-2 mr-1">
+                  {data.basic?.character_class_name}
+                </span>
+                {data.basic?.character_name}
               </div>
-              <div className='text-[1.1rem] text-white font-bold'>
-                <span className='text-[0.7rem]'>Lv</span>{data.basic?.character_level}
+              <div className="text-[1.1rem] text-white font-bold">
+                <span className="text-[0.7rem]">Lv</span>
+                {data.basic?.character_level}
               </div>
             </div>
+          </div>
 
+          <div className="group-hover:block hidden p-3 w-full h-full rounded-xl bg-black/60">
+            <ul>
+              <li className="text-basicGrey text-[0.7rem] mb-2">
+                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
+                  레벨
+                </span>
+                {data.basic?.character_level}
+              </li>
+              <li className="text-basicGrey text-[0.7rem] mb-2">
+                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
+                  이름
+                </span>
+                {data.basic?.character_name}
+              </li>
+              <li className="text-basicGrey text-[0.7rem]">
+                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
+                  길드
+                </span>
+                {data.guild?.guild_name}
+              </li>
+            </ul>
+            <ul>
+              {data.itemEquipment?.item_equipment.map((el, index) => (
+                <li key={index} className="text-basicGrey text-[0.7rem]">
+                  <span className="">{el.item_equipment_slot_name}</span>
+                  {el.item_name}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Character
+export default Character;
