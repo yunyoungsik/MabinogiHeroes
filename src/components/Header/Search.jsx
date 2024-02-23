@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Search = () => {
   const [name, setName] = useState('');
@@ -15,9 +16,9 @@ const Search = () => {
         검색
       </label>
       <input
-        className="py-1 px-2 border-2 border-basicGrey/20 rounded-xl focus:outline-none"
+        className="py-1 px-2 text-basicBlack border-2 border-basicGrey/20 rounded-xl focus:outline-none"
         type="text"
-        placeholder="검색"
+        placeholder="캐릭명을 입력하세요."
         value={name}
         onChange={(e) => setName(e.target.value)}
         onKeyDown={(e) => {
@@ -31,21 +32,7 @@ const Search = () => {
         type="button"
         onClick={handleSearch}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          aria-hidden="true"
-          class="w-6 h-6 m-1"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          ></path>
-        </svg>
+       <Image src="/image/svg/search.svg" width={20} height={20} alt='돋보기' />
       </button>
     </div>
   );

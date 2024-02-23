@@ -9,11 +9,8 @@
   background-color: rgba(0, 0, 0, 0.10);
 }
 
-.bg-piona {
-  background-image: url('/image/job/piona.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.min-h-main {
+  min-height: calc(100vh - 217px);
 }
 
 .text-label {
@@ -23,4 +20,54 @@
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 1);
   margin-right: 0.25rem;
+}
+
+/* 로딩 */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+
+/* 캐릭터 */
+.bg-fiona {
+  background-image: url('/image/character/fiona.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-achel {
+  background-image: url('/image/character/achel.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-arisha {
+  background-image: url('/image/character/arisha.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-hurk {
+  background-image: url('/image/character/hurk.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
 }

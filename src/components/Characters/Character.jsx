@@ -22,29 +22,46 @@ const Character = ({ name }) => {
     fetchData();
   }, [name]);
 
+  const bgCharacter = (characterClassName) => {
+    const classMappings = {
+      허크: 'bg-hurk',
+      피오나: 'bg-fiona',
+    };
+
+    return classMappings[characterClassName?.toLowerCase()] || '';
+  };
+
+  if(!data || data.length === 0){
+    return <div className='flex items-center justify-center w-full min-h-main mt-[66px]'><span className='loader'></span></div>
+  }
+
   return (
-    <main className="w-full h-full mt-[66px]">
+    <div className="w-full h-full mt-[66px]">
       <div className="flex justify-between max-w-[1280px] h-full m-auto">
         <div className="w-[300px]">
-          <section className="w-full h-[300px] bg-piona relative">
+          <section
+            className={`w-full h-[300px] ${bgCharacter(
+              data.basic?.character_class_name
+            )} relative`}
+          >
             <div className="w-full h-full p-2 bg-black/50">
-              {data.title?.title.map((title, index) => (
+              {data.titleEquipment?.title_equipment.slice().reverse().map((title, index) => (
                 <span
-                  className="font-bold text-[0.9rem] text-white"
+                  className="font-bold text-[0.9rem] text-white mr-1"
                   key={index}
                 >
                   {title.title_name}
                 </span>
               ))}
-              <h2 className="font-bold text-[1.2rem] text-white">
+              <h2 className="font-bold text-[1.5rem] text-white">
                 {data.basic?.character_name}
               </h2>
               <div className="absolute bottom-2">
-                <p className="text-[0.9rem] text-white font-bold mb-2">
+                <p className="text-[0.9rem] text-white font-bold mb-4">
                   <span className="text-label">레벨</span>
                   {data.basic?.character_level}
                 </p>
-                <p className="text-[0.9rem] text-white font-bold mb-2">
+                <p className="text-[0.9rem] text-white font-bold mb-4">
                   <span className="text-label">캐릭터</span>
                   {data.basic?.character_class_name}
                 </p>
@@ -55,9 +72,9 @@ const Character = ({ name }) => {
               </div>
             </div>
           </section>
-          <section className="w-full bg-white">
-            <h2 className="hidden">스텟</h2>
-            <ul className="text-[0.9rem] p-2">
+          <section className="w-full p-5 bg-white">
+            <h2 className="font-bold text-[1.2rem]">능력치</h2>
+            <ul className="text-[0.9rem]">
               {data.stat?.stat.map((stat, index) => (
                 <li key={index} className="flex items-center justify-between">
                   <p>
@@ -118,9 +135,24 @@ const Character = ({ name }) => {
             </ul>
           </section>
         </div>
-        <div className='min-w-[970px] h-full bg-black'></div>
+        <div className="min-w-[970px] ">
+          <section className='p-5 bg-white mb-2'>
+            <h2 className='font-bold text-[1.2rem]'>장비</h2>
+            <ul>
+              {data.itemEquipment?.item_equipment.map((item, index) => (
+                <li key={index}>
+                  <span>{item.item_equipment_slot_name}</span>
+                  {item.item_name}
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className='p-5 bg-white'>
+            <h2 className='font-bold text-[1.2rem]'>타이틀</h2>
+          </section>
+        </div>
       </div>
-    </main>
+    </div>
   );
 };
 
