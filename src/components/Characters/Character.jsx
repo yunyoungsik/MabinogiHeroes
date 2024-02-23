@@ -22,84 +22,105 @@ const Character = ({ name }) => {
     fetchData();
   }, [name]);
 
-  useEffect(() => {
-    let card = document.querySelector('.card');
-
-    card.addEventListener('mousemove', function (e) {
-      let x = e.offsetX;
-      let y = e.offsetY;
-      // console.log(x, y);
-
-      let rotateY = (-1 / 10) * x + 20;
-      let rotateX = (4 / 60) * y - 20;
-
-      card.style.transform = `perspective(440px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-    });
-
-    card.addEventListener('mouseleave', function (e) {
-      let x = e.offsetX;
-      let y = e.offsetY;
-      // console.log(x, y);
-
-      let rotateY = (-1 / 10) * x + 20;
-      let rotateX = (4 / 60) * y - 20;
-
-      card.style.transform = `perspective(440px) rotateY(0deg) rotateX(0deg)`;
-    });
-  }, []);
-
   return (
-    <div className="w-full h-full flex justify-center items-center relative">
-      <div className="overlay absolute w-[316px] h-[440px] ">
-        <div className="card group w-[316px] h-[440px] transition-all rounded-xl bg-piona">
-          <div className="group-hover:hidden w-full h-full bg-black/60 rounded-xl p-2 relative">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center text-[1.1rem] text-white font-bold">
-                <span className="text-[0.7rem] bg-gray-400 rounded-2xl py-1 px-2 mr-1">
-                  {data.basic?.character_class_name}
+    <main className="w-full h-full mt-[66px]">
+      <div className="flex justify-between max-w-[1280px] h-full m-auto">
+        <div className="w-[300px]">
+          <section className="w-full h-[300px] bg-piona relative">
+            <div className="w-full h-full p-2 bg-black/50">
+              {data.title?.title.map((title, index) => (
+                <span
+                  className="font-bold text-[0.9rem] text-white"
+                  key={index}
+                >
+                  {title.title_name}
                 </span>
+              ))}
+              <h2 className="font-bold text-[1.2rem] text-white">
                 {data.basic?.character_name}
-              </div>
-              <div className="text-[1.1rem] text-white font-bold">
-                <span className="text-[0.7rem]">Lv</span>
-                {data.basic?.character_level}
+              </h2>
+              <div className="absolute bottom-2">
+                <p className="text-[0.9rem] text-white font-bold mb-2">
+                  <span className="text-label">레벨</span>
+                  {data.basic?.character_level}
+                </p>
+                <p className="text-[0.9rem] text-white font-bold mb-2">
+                  <span className="text-label">캐릭터</span>
+                  {data.basic?.character_class_name}
+                </p>
+                <p className="text-[0.9rem] text-white font-bold">
+                  <span className="text-label">길드</span>
+                  {data.guild?.guild_name}
+                </p>
               </div>
             </div>
-          </div>
-
-          <div className="group-hover:block hidden p-3 w-full h-full rounded-xl bg-black/60">
-            <ul>
-              <li className="text-basicGrey text-[0.7rem] mb-2">
-                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
-                  레벨
-                </span>
-                {data.basic?.character_level}
-              </li>
-              <li className="text-basicGrey text-[0.7rem] mb-2">
-                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
-                  이름
-                </span>
-                {data.basic?.character_name}
-              </li>
-              <li className="text-basicGrey text-[0.7rem]">
-                <span className="px-2 py-0.5 mr-2 border border-solid border-basicGrey/30 bg-black/60">
-                  길드
-                </span>
-                {data.guild?.guild_name}
-              </li>
-            </ul>
-            <ul>
-              {data.itemEquipment?.item_equipment.map((el, index) => (
-                <li key={index} className="text-basicGrey text-[0.7rem]">
-                  <span className="">{el.item_equipment_slot_name}</span>
-                  {el.item_name}
+          </section>
+          <section className="w-full bg-white">
+            <h2 className="hidden">스텟</h2>
+            <ul className="text-[0.9rem] p-2">
+              {data.stat?.stat.map((stat, index) => (
+                <li key={index} className="flex items-center justify-between">
+                  <p>
+                    {(() => {
+                      switch (stat.stat_id) {
+                        case 'ATK':
+                          return '공격력';
+                        case 'MATK':
+                          return '최소 공격력';
+                        case 'DEF':
+                          return '방어력';
+                        case 'STR':
+                          return '힘';
+                        case 'DEX':
+                          return '민첩';
+                        case 'INT':
+                          return '지능';
+                        case 'WILL':
+                          return '의지';
+                        case 'LUCK':
+                          return '행운';
+                        case 'HP':
+                          return '생명력';
+                        case 'STAMINA':
+                          return '스태미나';
+                        case 'HEAVY_LOAD':
+                          return 'HEAVY_LOAD';
+                        case 'MEDIUM_LOAD':
+                          return 'MEDIUM_LOAD';
+                        case 'ATK_Speed':
+                          return '공격속도';
+                        case 'ATK_Absolute':
+                          return 'ATK_Absolute';
+                        case 'Critical':
+                          return '크리티컬';
+                        case 'CritFactor':
+                          return 'CritFactor';
+                        case 'Res_Critical':
+                          return 'Res_Critical';
+                        case 'Balance':
+                          return '밸런스';
+                        case 'TOWN_SPEED':
+                          return 'TOWN_SPEED';
+                        case 'SKILL_RANK_SUM':
+                          return 'SKILL_RANK_SUM';
+                        case 'ATK_LimitOver':
+                          return '공격력 제한 해제';
+                        case 'Immunity':
+                          return '대항력';
+                        default:
+                          return stat.stat_id;
+                      }
+                    })()}
+                  </p>
+                  <p>{stat.stat_value}</p>
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         </div>
+        <div className='min-w-[970px] h-full bg-black'></div>
       </div>
-    </div>
+    </main>
   );
 };
 
