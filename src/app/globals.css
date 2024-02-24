@@ -44,8 +44,8 @@
   } 
 
 /* 캐릭터 */
-.bg-fiona {
-  background-image: url('/image/character/fiona.png');
+.bg-sou {
+  background-image: url('/image/character/sou.png');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
@@ -58,8 +58,64 @@
   background-repeat: no-repeat;
 }
 
-.bg-arisha {
-  background-image: url('/image/character/arisha.png');
+.bg-czern {
+  background-image: url('/image/character/czern.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-latiya {
+  background-image: url('/image/character/latiya.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-letty {
+  background-image: url('/image/character/letty.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-lethor {
+  background-image: url('/image/character/lethor.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-danah {
+  background-image: url('/image/character/danah.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-tessa {
+  background-image: url('/image/character/tessa.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-kael {
+  background-image: url('/image/character/kael.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-lethor {
+  background-image: url('/image/character/lethor.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-bel {
+  background-image: url('/image/character/bel.png');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
@@ -67,6 +123,96 @@
 
 .bg-hurk {
   background-image: url('/image/character/hurk.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+.bg-miul {
+  background-image: url('/image/character/miul.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-grimden {
+  background-image: url('/image/character/grimden.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-miri {
+  background-image: url('/image/character/miri.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-delia {
+  background-image: url('/image/character/delia.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-hagie {
+  background-image: url('/image/character/hagie.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-arisha {
+  background-image: url('/image/character/arisha.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-lynn {
+  background-image: url('/image/character/lynn.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-vella {
+  background-image: url('/image/character/vella.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-kay {
+  background-image: url('/image/character/kay.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-kalok {
+  background-image: url('/image/character/kalok.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-evy {
+  background-image: url('/image/character/evy.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-fiona {
+  background-image: url('/image/character/fiona.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-lethita {
+  background-image: url('/image/character/lethita.png');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;

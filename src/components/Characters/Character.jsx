@@ -24,8 +24,30 @@ const Character = ({ name }) => {
 
   const bgCharacter = (characterClassName) => {
     const classMappings = {
+      소우: 'bg-sou',
+      아켈: 'bg-achel',
+      체른: 'bg-czern',
+      라티야: 'bg-latiya',
+      레티: 'bg-letty',
+      단아: 'bg-danah',
+      테사: 'bg-tessa',
+      카엘: 'bg-kael',
+      레서: 'bg-lethor',
+      벨: 'bg-bel',
+      미울: 'bg-miul',
+      그림덴: 'bg-grimden',
+      미리: 'bg-miri',
+      델리아: 'bg-delia',
+      헤기: 'bg-hagie',
+      아리샤: 'bg-arisha',
+      린: 'bg-lynn',
       허크: 'bg-hurk',
+      벨라: 'bg-vella',
+      카이: 'bg-kay',
+      카록: 'bg-kalok',
+      이비: 'bg-evy',
       피오나: 'bg-fiona',
+      리시타: 'bg-lethita',
     };
 
     return classMappings[characterClassName?.toLowerCase()] || '';
@@ -83,7 +105,7 @@ const Character = ({ name }) => {
                         case 'ATK':
                           return '공격력';
                         case 'MATK':
-                          return '최소 공격력';
+                          return '마법 공격력';
                         case 'DEF':
                           return '방어력';
                         case 'STR':
@@ -117,7 +139,7 @@ const Character = ({ name }) => {
                         case 'Balance':
                           return '밸런스';
                         case 'TOWN_SPEED':
-                          return 'TOWN_SPEED';
+                          return '이동속도(마을)';
                         case 'SKILL_RANK_SUM':
                           return 'SKILL_RANK_SUM';
                         case 'ATK_LimitOver':
@@ -140,9 +162,77 @@ const Character = ({ name }) => {
             <h2 className='font-bold text-[1.2rem]'>장비</h2>
             <ul>
               {data.itemEquipment?.item_equipment.map((item, index) => (
-                <li key={index}>
-                  <span>{item.item_equipment_slot_name}</span>
-                  {item.item_name}
+                <li key={index} className='flex items-center justify-between'>
+                  <p>
+                    {(() => {
+                      switch (item.item_equipment_slot_name) {
+                        case 'Right Hand':
+                          return '무기';
+                        case 'Left Hand':
+                          return '보조 무기';
+                        case 'Head':
+                          return '머리';
+                        case 'Upper':
+                          return '가슴';
+                        case 'Lower':
+                          return '다리';
+                        case 'Hand':
+                          return '손';
+                        case 'Leg':
+                          return '발';
+                        case 'Right Finger':
+                          return '오른손 반지';
+                        case 'Left Finger':
+                          return '왼손 반지';
+
+                        case 'Earring':
+                          return '귀걸이';
+                        case 'Belt':
+                          return '허리띠';
+                        case 'Charm':
+                          return '장신구';
+                        case 'Artifact':
+                          return '아티팩트';
+                        case 'Right Wrist':
+                          return '오른손 팔찌';
+                        case 'Left Wrist':
+                          return '왼손 팔찌';
+                        case 'Hair':
+                          return '헤어 아바타';
+                        case 'Avatar_Helm':
+                          return '머리 아바타';
+                        case 'Avatar_Tunic':
+                          return '상의 아바타';
+                        case 'Avatar_Pants':
+                          return '하의 아바타';
+                        case 'Avatar_Gloves':
+                          return '손 아바타';
+                        case 'Avatar_Boots':
+                          return '발 아바타';
+                        case 'Avatar_Rear':
+                          return '등 아바타';
+                        case 'Avatar_Tail':
+                          return '꼬리 아바타';
+                        case 'Avatar_Pants':
+                          return '하의 아바타';
+                        case 'Avatar_Weapon':
+                          return '무기 아바타';
+                        case 'MakeUp':
+                          return '메이크업';
+                        case 'FacePainting':
+                          return '페이스페인팅';
+                        case 'BodyPainting':
+                          return '바디페인팅';
+                        case 'Inner Armor':
+                          return '이너아머';
+                        case 'Body Shape':
+                          return '체형';
+                        case 'SubWeapon':
+                          return '보조 무기';
+                      }
+                    })()}
+                  </p>
+                  <p>{item.item_name}</p>
                 </li>
               ))}
             </ul>
