@@ -51,6 +51,7 @@ export default function page() {
               <label className='hidden' htmlFor="title">제목</label>
               <input className='w-full text-[2rem] py-4 px-6 border-t border-solid border-black focus:border-1' type="text" name="title" id="title" placeholder="제목을 입력해주세요." onChange={(e) => setTitle(e.target.value)} />
             </div>
+            {typeof document !== 'undefined' && (
             <ReactQuill
                 theme='snow'
                 modules={modules}
@@ -58,6 +59,7 @@ export default function page() {
                 onChange={setContent}
                 placeholder='내용'
               />
+              )}
             <div className=''>
               <Link href="/notice" className='btn-2'><span className='btn-inner'>취소</span></Link>
               <button className='btn-1' type='button' onClick={handleSubmit}><span className='btn-inner'>등록</span></button>
