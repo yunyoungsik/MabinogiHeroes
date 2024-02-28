@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       colors: {
         basicBlack: '#333',
-        basicRed: '#AC6463',
         basicYellow: '#a99e84',
         basicGrey: '#808080',
         basicBrown: '#50463c',

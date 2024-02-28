@@ -329,3 +329,9 @@
   background-position: 100%;
   background-repeat: no-repeat;
 }
+
+/* 기타 */
+.ql-editor {
+  min-height: 50vh;
+  background-color: #f3f3f3;
+}
