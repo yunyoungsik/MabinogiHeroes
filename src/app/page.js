@@ -1,5 +1,5 @@
-import Notice from '@/components/Board/Notice'
-import Rank from '@/components/Rank/Rank'
+import Notice from '@/components/Main/Notice'
+import Rank from '@/components/Main/Rank'
 import MainSlider from '@/components/Slider/MainSlider'
 import React from 'react'
 

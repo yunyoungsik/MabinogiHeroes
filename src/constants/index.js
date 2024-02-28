@@ -1,7 +1,7 @@
 export const nav = [
     {
-        name: "",
-        href: "/",
+        name: "공지사항",
+        href: "/notice",
     },
 ]
 

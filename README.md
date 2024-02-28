@@ -4,4 +4,5 @@
 ```
 npm install axios
 npm install swiper
+npm install react-quill
 ```
