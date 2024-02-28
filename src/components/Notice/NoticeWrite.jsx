@@ -26,8 +26,6 @@ const NoticeWrite = () => {
       })
     })
   }
-  
-  
 
   return (
     <div className="w-full h-full mt-[66px]">
