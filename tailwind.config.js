@@ -12,7 +12,10 @@ module.exports = {
         basicYellow: '#a99e84',
         basicGrey: '#808080',
         basicBrown: '#50463c',
-        darkBlue: '#050b0b'
+        darkBlue: '#050b0b',
+        rankGold: '#FFB93C',
+        rankSilver: '#DDE9F3',
+        rankBronze: '#CA9372'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

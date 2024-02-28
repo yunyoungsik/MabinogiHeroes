@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 const MainSlider = () => {
   return (
-    <section className='hidden sm:hidden md:block w-fll h-[280px]'>
+    <section className='hidden sm:hidden md:block w-fll h-[280px] pt-4'>
       <h2 className='hidden'>슬라이드</h2>
       <Swiper
         pagination={true}
