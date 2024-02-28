@@ -13,7 +13,9 @@ const MainSlider = () => {
     <section className='hidden sm:hidden md:block w-fll h-[280px] pt-4'>
       <h2 className='hidden'>슬라이드</h2>
       <Swiper
-        pagination={true}
+        pagination={{
+          clickable: true,
+        }}
         modules={[Pagination, Autoplay, Navigation]}
         slidesPerView={'auto'}
         navigation={true}
