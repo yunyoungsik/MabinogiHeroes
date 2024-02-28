@@ -1,6 +1,18 @@
 export const nav = [
     {
-        name: "테스트",
-        href: "/"
-    }
+        name: "",
+        href: "/",
+    },
+]
+
+export const mainSlider = [
+    {
+        src: "",
+    },
+    {
+        src: "",
+    },
+    {
+        src: "",
+    },
 ]
