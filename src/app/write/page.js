@@ -17,7 +17,7 @@ export default function Page() {
   const [content, setContent] = useState('');
 
   const handleSubmit = async () => {
-    const res = await fetch('/pages/api/write', {
+    const res = await fetch('/api/write', {
       method: 'POST',
       body: JSON.stringify({
         cate: cate,
@@ -53,12 +53,12 @@ export default function Page() {
             <div>
               <label htmlFor='content' className='hidden'>내용</label>
               <textarea
-                className='w-full min-h-[50vh] py-4 px-6 focus:outline-none bg-[#f3f3f3] border-y border-solid border-[#c2c2c2]'
+                className='w-full min-h-[50vh] py-4 px-6 focus:outline-none bg-[#f3f3f3] border-y border-solid border-[#c2c2c2] resize-none'
                 name='content'
                 id='content'
-                value={content}
                 placeholder='내용'
-                onChange={setContent}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
               />
             </div>
             {/* {typeof window !== 'undefined' && (

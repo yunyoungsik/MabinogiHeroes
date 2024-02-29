@@ -13,6 +13,9 @@ const Header = () => {
       </Link>
       <Nav />
       <Search />
+      <Link href="/login">
+        <p className='font-bold'>로그인</p>
+      </Link>
     </header>
   );
 };
