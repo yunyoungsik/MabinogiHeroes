@@ -7,7 +7,7 @@ const Notice = () => {
       <h2 className="font-bold text-[1.5rem]">공지사항</h2>
       <ul className="bg-white px-5 py-4 border-2 border-solid border-basicGrey/30">
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-notice">공지</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
@@ -15,7 +15,7 @@ const Notice = () => {
           </Link>
         </li>
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-event">이벤트</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
@@ -23,7 +23,7 @@ const Notice = () => {
           </Link>
         </li>
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-shop">샵</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
@@ -31,7 +31,7 @@ const Notice = () => {
           </Link>
         </li>
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-check">점검</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
@@ -39,7 +39,7 @@ const Notice = () => {
           </Link>
         </li>
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-nexon">넥슨</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
@@ -47,7 +47,7 @@ const Notice = () => {
           </Link>
         </li>
         <li className="w-full h-[2rem] flex items-center justify-start">
-          <div className="flex items-center justify-center mr-2">
+          <div className="flex items-center justify-center">
             <div className="cate-nexon">넥슨</div>
           </div>
           <Link href={`/`} className="inline-block hover:underline line-1">
