@@ -3,7 +3,7 @@ import Rank from '@/components/Main/Rank'
 import MainSlider from '@/components/Slider/MainSlider'
 import React from 'react'
 
-export default function page() {
+export default function Home() {
   return (
     <main className='w-full min-h-main'>
       <div className="max-w-[1280px] h-full m-auto">

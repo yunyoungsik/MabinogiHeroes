@@ -1,13 +1,13 @@
 'use client'
 
-import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
 
 export default function Login() {
   const {data, status} = useSession();
-  console.log(data, status);
+  // console.log(data, status);
 
   const router = useRouter();
 

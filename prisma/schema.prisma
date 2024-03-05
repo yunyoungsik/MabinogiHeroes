@@ -42,7 +42,7 @@ model User {
   name          String
   email         String     @unique
   emailVerified DateTime?
-  rating        String
+  level         String?
   image         String?
   accounts      Account[]
   sessions      Session[]

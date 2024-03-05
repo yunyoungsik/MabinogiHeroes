@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from './Nav';
 import Search from './Search';
 import Link from 'next/link';
+import Login from './Login';
 
 const Header = () => {
   return (
@@ -13,9 +14,7 @@ const Header = () => {
       </Link>
       <Nav />
       <Search />
-      <Link href="/login">
-        <p className='font-bold'>로그인</p>
-      </Link>
+      <Login />
     </header>
   );
 };

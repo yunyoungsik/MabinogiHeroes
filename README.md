@@ -9,6 +9,7 @@ npm install next-auth
 npm install prisma
 npm install @prisma/client
 npm install @auth/prisma-adapter
+npm install @next-auth/prisma-adapter
 ```
 ```
 npx prisma init --datasource-provider mongodb   //prisma 파일 생성
