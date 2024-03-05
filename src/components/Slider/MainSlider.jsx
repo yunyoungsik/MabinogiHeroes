@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 import Image from 'next/image';
+import { mainSlider } from '@/constants';
 
 const MainSlider = () => {
   return (
@@ -28,30 +29,20 @@ const MainSlider = () => {
         }}
         className="mySwiper w-fll h-full bg-white"
       >
-        <SwiperSlide>
-          <Link href="https://heroes.nexon.com/guide/updateinfo">
-            <div className='w-full h-full relative'>
-              <h3 className='absolute top-[75%] right-[5%] translate-y-[-50%] z-50 text-[3rem] text-right text-white'>
-                <span className='block text-[1.5rem] text-[#e2021a] leading-3'>에피소드8</span>
-                잠들지 못하는 밤
-              </h3>
-              <div className='w-full h-full bg-black/50 absolute top-0 left-0'></div>
-              <Image src="/image/slider/bg_slider_01.jpg" width={1280} height={264} alt="에피소드8 잠들지 못하는 밤" className="w-full h-full object-cover" />
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="https://heroes.nexon.com/guide/updateinfo">
-            <div className='w-full h-full relative'>
-              <h3 className='absolute top-[75%] right-[5%] translate-y-[-50%] z-50 text-[3rem] text-right text-white'>
-                <span className='block text-[1.5rem] text-[#e2021a] leading-3'>에피소드8</span>
-                잠들지 못하는 밤
-              </h3>
-              <div className='w-full h-full bg-black/50 absolute top-0 left-0'></div>
-              <Image src="/image/slider/bg_slider_01.jpg" width={1280} height={264} alt="에피소드8 잠들지 못하는 밤" className="w-full h-full object-cover" />
-            </div>
-          </Link>
-        </SwiperSlide>
+        {mainSlider.map((slider, index) => (
+          <SwiperSlide key={index}>
+            <Link href={slider.link}>
+              <div className="w-full h-full relative">
+                <h3 className="absolute top-[75%] right-[5%] translate-y-[-50%] z-50 text-[3rem] text-right text-white">
+                  <span className="block text-[1.5rem] text-[#e2021a] leading-3">{slider.desc[0]}</span>
+                  {slider.desc[1]}
+                </h3>
+                <div className="w-full h-full bg-black/50 absolute top-0 left-0"></div>
+                <Image src={slider.src} width={1280} height={264} alt={slider.desc.join(" ")} className="w-full h-full object-cover" />
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
