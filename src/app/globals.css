@@ -27,6 +27,18 @@
   grid-template-columns: 50px minmax(40px, 1fr) 50px 50px;
 }
 
+/* swiper */
+.swiper-pagination-bullet {
+  border-radius: 2px !important;
+  transition: all 0.3s ease-in-out;
+  transform-origin: right center;
+}
+.swiper-pagination-bullet-active {
+  border-radius: 2px !important;
+  background-color: #fff !important;
+  width: 30px !important;
+}
+
 /* 한줄효과 */
 .line-1{
   width:500px;
@@ -346,6 +358,30 @@
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
+}
+
+/* 게시글 */
+.info-line > li {
+  position: relative;
+  padding-left: 0.7rem;
+  margin-left: 0.7rem;
+}
+.info-line > li::after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 14px;
+  border-left: 1px solid #999;
+}
+.info-line > li:first-child {
+  padding-left: 0;
+  margin-left: 0;
+}
+.info-line > li:first-child::after {
+  display: none;
 }
 
 /* 기타 */
