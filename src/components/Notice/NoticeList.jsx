@@ -2,49 +2,39 @@ import Link from 'next/link';
 import React from 'react';
 import PageNation from './PageNation';
 import Image from 'next/image';
+import Category from './Category';
 
-const getData = async (page, cate) => {
-  const res = await fetch(`http://localhost:3000/`);
-  if (!res.ok) {
-    throw new Error('error');
-  }
-  return res.json();
-};
+// const getData = async (page) => {
+//   const res = await fetch(`http://localhost:3000/api/notice?page=${page}`, {
+//     cache: "no-store"
+//   })
+//   if (!res.ok) {
+//     throw new Error("error")
+//   }
+//   return res.json()
+// }
 
-const NoticeList = () => {
-  // const {posts, count} = getData(page, cate)
+export default async function NoticeList({page}) {
+  // const {posts, count} = await getData(page)
   // const postView = 10;
-  // console.log(posts);
+  // console.log(posts, count);
 
   return (
     <div className="max-w-[980px] m-auto">
       <h2 className="font-bold text-[2rem] pt-[50px] pb-[30px]">공지사항</h2>
       <div className="min-h-[600px] bg-white">
-        <ul className="flex">
-          <li className="on flex flex-1 w-full h-full font-bold text-basicGrey bg-black">
-            <span className="block w-full">
-              <Link href="/notice" className="flex w-full h-[50px] items-center justify-center">
-                전체
-              </Link>
-            </span>
-          </li>
-          {/* 테스트 */}
-          <li className="flex flex-1 w-full h-full font-bold text-basicGrey bg-black hover:text-white">
-            <span className="block w-full">
-              <Link href="/notice" className="flex w-full h-[50px] items-center justify-center">
-                전체
-              </Link>
-            </span>
-          </li>
-        </ul>
+        
+        <Category />
 
         <div className="mt-[30px] mx-[50px]">
           <div className="w-full flex justify-end">
-            <div className='bg-[#F3F3F3]'>
-              <label htmlFor="search" className='hidden'>검색</label>
-              <input type="text" name='search' id='search' placeholder='검색어를 입력하세요.' className='w-[200px] h-full px-[10px] bg-transparent' />
-              <button type='submit' className='w-[44px] h-[44px] ml-[10px]'>
-                <Image src="/image/svg/search.svg" width={22} height={22} alt="돋보기" className='flex' />
+            <div className="bg-[#F3F3F3]">
+              <label htmlFor="search" className="hidden">
+                검색
+              </label>
+              <input type="text" name="search" id="search" placeholder="검색어를 입력하세요." className="w-[200px] h-full px-[10px] bg-transparent" />
+              <button type="submit" className="w-[44px] h-[44px] ml-[10px]">
+                <Image src="/image/svg/search.svg" width={22} height={22} alt="돋보기" className="flex" />
               </button>
             </div>
             <Link href="/write" className="btn-1">
@@ -81,10 +71,8 @@ const NoticeList = () => {
             </tbody>
           </table>
         </div>
-        {/* <PageNation /> */}
+        <PageNation />
       </div>
     </div>
   );
-};
-
-export default NoticeList;
+}

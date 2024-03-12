@@ -42,10 +42,12 @@ model User {
   name          String
   email         String     @unique
   emailVerified DateTime?
-  level         String?
+  rank          String     @default("user")
   image         String?
   accounts      Account[]
   sessions      Session[]
+  posts         Post[]
+  comments      Comment[]
 }
 
 model VerificationToken {
@@ -54,4 +56,40 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Category {
+  id    String     @id @default(cuid()) @map("_id")
+  cate  String     @unique
+  posts Post[]
+}
+
+model Counter {
+  id         String   @id @default(cuid()) @map("_id")
+  postCount  Int
+}
+
+model Post {
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  postNum   Int       @unique
+  title     String
+  content   String
+  img       String?
+  views     Int       @default(0)
+  cate      String
+  cates     Category  @relation(fields: [cate], references: [cate])
+  userEmail String
+  user      User      @relation(fields: [userEmail], references: [email])
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  content   String
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email])
+  postNum   Int
+  posts     Post     @relation(fields: [postNum], references: [postNum])
 }

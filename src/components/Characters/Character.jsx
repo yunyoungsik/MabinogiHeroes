@@ -13,8 +13,9 @@ const Character = ({ name }) => {
       try {
         const res = await fetch(`/api/characterData?name=${encodeURIComponent(name)}`);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         setData(data);
+        
       } catch (error) {
         console.error('API 요청 중 에러가 발생했습니다: ', error);
       }
