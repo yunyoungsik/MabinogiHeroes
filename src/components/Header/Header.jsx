@@ -6,15 +6,15 @@ import Login from './Login';
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-[66px] px-6 border-b-2 border-solid border-b-basicGrey/30 bg-white uppercase">
-      <Link href="/">
-        <h1 className='font-bold'>
-          LOGO
-        </h1>
-      </Link>
-      <Nav />
-      <Search />
-      <Login />
+    <header className="fixed top-0 left-0 z-50 w-full h-[66px] px-6 border-b-2 border-solid border-b-borderColor bg-[#202124] uppercase">
+      <div className='max-w-[1280px] h-full m-auto flex items-center justify-between'>
+        <Link href="/">
+          <h1 className="font-bold text-white uppercase">mangjeun</h1>
+        </Link>
+        {/* <Nav /> */}
+        <Search />
+        {/* <Login /> */}
+      </div>
     </header>
   );
 };

@@ -8,10 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        borderColor: '#3C4043',
         basicBlack: '#333',
         basicYellow: '#a99e84',
         basicGrey: '#808080',
         basicBrown: '#50463c',
+        basicBlue: '#0170FA',
         darkBlue: '#050b0b',
         rankGold: '#FFB93C',
         rankSilver: '#DDE9F3',
