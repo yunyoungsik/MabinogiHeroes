@@ -31,7 +31,7 @@ const MainSlider = () => {
       >
         {mainSlider.map((slider, index) => (
           <SwiperSlide key={index}>
-            <Link href={slider.link}>
+            <Link href={slider.link} target='_blank'>
               <div className="w-full h-full relative">
                 <h3 className="absolute top-[75%] right-[5%] translate-y-[-50%] z-50 text-[3rem] text-right text-white">
                   <span className="block text-[1.5rem] text-[#e2021a] leading-3">{slider.desc[0]}</span>
