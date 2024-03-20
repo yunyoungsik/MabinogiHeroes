@@ -11,7 +11,7 @@ const Character = ({ name }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/characters/${name}`);
+        const res = await fetch(`/api/characterData?name=${encodeURIComponent(name)}`);
         const data = await res.json();
         // console.log(data);
         setData(data);
