@@ -2,7 +2,6 @@ import React from 'react';
 import Nav from './Nav';
 import Search from './Search';
 import Link from 'next/link';
-import Login from './Login';
 
 const Header = () => {
   return (
@@ -13,7 +12,6 @@ const Header = () => {
         </Link>
         {/* <Nav /> */}
         <Search />
-        {/* <Login /> */}
       </div>
     </header>
   );
