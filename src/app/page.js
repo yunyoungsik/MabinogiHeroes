@@ -11,7 +11,6 @@ export default function Home() {
         <MainSlider />
         {/* <div className='w-full h-full mt-4 sm:block md:flex items-start justify-between'>
           <Rank />
-          <Notice />
         </div> */}
       </div>
     </main>
