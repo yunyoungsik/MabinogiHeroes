@@ -6,7 +6,7 @@ Next.js와 Nexon Open API를 사용하여 만든 마비노기영웅전 검색 �
 ## 설치
 <details>
 <summary>Install</summary>
-npm install axios    
+npm install axios<br/>
 npm install swiper    
 </details>
 
