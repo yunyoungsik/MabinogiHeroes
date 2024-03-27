@@ -13,7 +13,7 @@ import { mainSlider } from '@/constants';
 
 const MainSlider = () => {
   return (
-    <section className="hidden sm:hidden md:block w-fll h-[280px]">
+    <section className="w-fll h-[280px]">
       <h2 className="hidden">슬라이드</h2>
       <Swiper
         pagination={{

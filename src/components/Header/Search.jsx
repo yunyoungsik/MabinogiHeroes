@@ -11,12 +11,12 @@ const Search = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="w-full h-full relative">
       <label htmlFor="search" className="hidden">
         검색
       </label>
       <input
-        className="py-1 px-2 text-white border-2 border-borderColor rounded-xl focus:outline-none bg-[#303134]"
+        className="w-full h-full py-1 px-2 text-white focus:outline-none bg-transparent"
         type="text"
         placeholder="캐릭명을 입력하세요."
         value={name}
