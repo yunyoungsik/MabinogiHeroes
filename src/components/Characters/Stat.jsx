@@ -1,84 +1,41 @@
-import React from 'react';
-
 const Stat = ({ data }) => {
-  const statMappings = {
-    ATK: '공격력',
-    MATK: 'MATK',
-    DEF: '방어력',
-    STR: '힘',
-    DEX: '민첩',
-    INT: '지능',
-    WILL: '의지',
-    LUCK: '행운',
-    HP: '생명력',
-    STAMINA: '스태미나',
-    HEAVY_LOAD: 'HEAVY_LOAD',
-    MEDIUM_LOAD: 'MEDIUM_LOAD',
-    ATK_Speed: '공격속도',
-    ATK_Absolute: 'ATK_Absolute',
-    Critical: '크리티컬 피해량',
-    CritFactor: '크리티컬',
-    Res_Critical: '크리티컬 저항',
-    Balance: '밸런스',
-    TOWN_SPEED: '이동속도(마을)',
-    SKILL_RANK_SUM: '스킬 랭크(합계)',
-    ATK_LimitOver: '공격력 제한 해제',
-    Immunity: '대항력',
-  };
-
-  const renderStat = (statId, label, defaultValue = '-') => {
-    const foundStat = data.stat?.stat.find((stat) => stat.stat_id === statId);
+  if (!data) {
     return (
-      <li className="h-[2rem] flex items-center justify-between px-5" key={statId}>
-        <p className="text-basicGrey">{statMappings[statId]}</p>
-        <p className={`font-bold text-basicBlack/60 ${foundStat ? '' : 'italic'}`}>
-          {foundStat ? foundStat.stat_value : defaultValue}
-        </p>
-      </li>
+      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+        <span className="loader"></span>
+      </div>
     );
-  };
+  }
 
   return (
     <section className="w-full pt-[20px] bg-white">
       <h2 className="font-bold px-5 text-[1.2rem]">능력치</h2>
-      <ul className="text-[0.9rem]">
-        <li className="ATK border-y border-solid border-basicGrey/20 bg-white">
-          <ul>
-            {renderStat('ATK')}
-            {renderStat('ATK_LimitOver')}
-            {renderStat('Balance')}
-          </ul>
-        </li>
-        <li className="STAT border-b border-solid border-basicGrey/20 bg-basicGrey/10">
-          <ul>
-            {renderStat('HP')}
-            {renderStat('STR')}
-            {renderStat('DEX')}
-            {renderStat('INT')}
-            {renderStat('WILL')}
-            {renderStat('LUCK')}
-            {renderStat('STAMINA')}
-          </ul>
-        </li>
-        <li className="CRITICAL border-b border-solid border-basicGrey/20 bg-basicGrey/10">
-          <ul>
-            {renderStat('CritFactor')}
-            {renderStat('Critical')}
-            {renderStat('Res_Critical')}
-          </ul>
-        </li>
-        <li className="SPEED border-b border-solid border-basicGrey/20 bg-basicGrey/10">
-          <ul>
-            {renderStat('ATK_Speed')}
-            {renderStat('TOWN_SPEED')}
-          </ul>
-        </li>
-        <li className="OUTHER border-b border-solid border-basicGrey/20 bg-basicGrey/10">
-          <ul>
-            {renderStat('SKILL_RANK_SUM')}
-            {renderStat('Immunity')}
-          </ul>
-        </li>
+      <ul className="text-[0.75rem]">
+        {[
+          [0, 3],
+          [3, 8],
+          [8, 10],
+          [12, 15],
+          [10, 12],
+          [15, 18],
+        ].map(([start, end], index) => (
+          <li
+            key={index}
+            className={`border-solid border-basicGrey/20 ${index === 0 ? 'bg-white border-y' : 'border-b bg-basicGrey/10'}`}
+          >
+            <ul>
+              {data.slice(start, end).map((stat, idx) => (
+                <li
+                  className="h-[2rem] flex items-center justify-between px-5"
+                  key={idx}
+                >
+                  <p className="text-basicGrey">{stat.stat_name || '-'}</p>
+                  <p className="font-bold text-basicBlack/60">{stat.stat_value || 0}</p>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
       </ul>
     </section>
   );

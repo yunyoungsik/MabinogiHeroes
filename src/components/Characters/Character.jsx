@@ -1,29 +1,29 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+// components
 import Stat from './Stat';
-import Title from './Title';
 import Item from './Item';
+import Avatar from './Avatar';
+import Skill from './Skill';
+// utils
+import convertTime from '@/utils/convertTime';
+import timeAgo from '@/utils/timeAgo';
+// store
+import { useUserStore } from '@/store/useUserStore';
 
 const Character = ({ name }) => {
-  const [data, setData] = useState('');
+  const { loading, basic, guild, itemEquipment, stat, title, titleEquipment, fetchUser } =
+    useUserStore();
+  const [activeTab, setActiveTab] = useState('item');
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`/api/characterData?name=${encodeURIComponent(name)}`);
-        const data = await res.json();
-        // console.log(data);
-        setData(data);
-        
-      } catch (error) {
-        console.error('API 요청 중 에러가 발생했습니다: ', error);
-      }
-    };
-
-    fetchData();
+    if (name) {
+      fetchUser(name);
+    }
   }, [name]);
 
+  // 캐릭터 백그라운드 이미지
   const bgCharacter = (characterClassName) => {
     const classMappings = {
       소우: 'bg-sou',
@@ -55,7 +55,11 @@ const Character = ({ name }) => {
     return classMappings[characterClassName?.toLowerCase()] || '';
   };
 
-  if (!data || data.length === 0) {
+  // 타이틀
+  const leftTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '좌측');
+  const fixedTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '고정');
+
+  if (loading) {
     return (
       <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
         <span className="loader"></span>
@@ -64,41 +68,99 @@ const Character = ({ name }) => {
   }
 
   return (
-    <div className="w-full h-full mt-[66px]">
+    <div className="w-full h-full pt-[66px] bg-mainColor">
       <div className="sm:block md:flex justify-between max-w-[1280px] h-full m-auto">
         <div className="min-w-[300px]">
-          <section className={`w-full h-[300px] ${bgCharacter(data.basic?.character_class_name)} relative`}>
+          <section
+            className={`w-full h-[300px] ${bgCharacter(basic?.character_class_name)} relative`}
+          >
             <div className="w-full h-full p-2 bg-black/50">
-              {data.titleEquipment?.title_equipment
-                .slice()
-                .reverse()
-                .map((title, index) => (
-                  <span className="font-bold text-[0.9rem] text-white mr-1" key={index}>
-                    {title.title_name}
+              <div className="flex">
+                {leftTitle && (
+                  <span className="font-bold text-[0.75rem] text-white mr-1">
+                    {leftTitle?.title_name}
                   </span>
-                ))}
-              <h2 className="font-bold text-[1.5rem] text-white">{data.basic?.character_name}</h2>
-              <div className="absolute bottom-2">
-                <p className="text-[0.9rem] text-white font-bold mb-4">
+                )}
+                {fixedTitle && (
+                  <span className="font-bold text-[0.75rem] text-white mr-1">
+                    {fixedTitle?.title_name}
+                  </span>
+                )}
+              </div>
+              <h2 className="font-bold text-[1.5rem] text-white">{basic?.character_name}</h2>
+              <p className="font-bold text-[0.75rem] text-white">[{basic?.cairde_name || '-'}]</p>
+
+              <div className="absolute bottom-2 flex flex-col gap-4">
+                <p className="text-[0.75rem] text-white font-bold">
                   <span className="text-label">레벨</span>
-                  {data.basic?.character_level}
+                  {basic?.character_level || 0}
                 </p>
-                <p className="text-[0.9rem] text-white font-bold mb-4">
+                <p className="text-[0.75rem] text-white font-bold">
                   <span className="text-label">캐릭터</span>
-                  {data.basic?.character_class_name}
+                  {basic?.character_class_name || '-'}
                 </p>
-                <p className="text-[0.9rem] text-white font-bold">
+                <p className="text-[0.75rem] text-white font-bold">
                   <span className="text-label">길드</span>
-                  {data.guild?.guild_name}
+                  {guild?.guild_name || '-'}
+                </p>
+                <p className="relative text-[0.75rem] text-white font-bold group">
+                  <span className="text-label">타이틀</span>
+                  {basic?.total_title_count || '-'}
+                  {basic?.title_stat && (
+                    <div className="ballon group-hover:inline-block">
+                      {basic?.title_stat.map((stat, index) => (
+                        <p key={index}>
+                          <span>{stat.stat_name}</span>
+                          <span>{stat.stat_value}</span>
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </p>
+                <p className="text-[0.75rem] text-white font-bold">
+                  <span className="text-label">마지막접속</span>
+                  {basic?.character_date_last_login
+                    ? timeAgo(convertTime(basic.character_date_last_login))
+                    : '-'}
                 </p>
               </div>
             </div>
           </section>
-          <Stat data={data} />
+          <Stat data={stat} />
         </div>
-        <div className="max-w-[970px] ">
-          <Item data={data} />
-          <Title data={data} />
+
+        <div className="max-w-[970px] w-full ">
+          <div className="flex gap-2 py-2">
+            <button type="button" onClick={() => setActiveTab('item')} className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'item' ? 'text-white bg-basicBlack' : ''}`}>
+              장비
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('avatar')}
+              className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'avatar' ? 'text-white bg-basicBlack' : ''}`}
+            >
+              아바타
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('skill')}
+              className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'skill' ? 'text-white bg-basicBlack' : ''}`}
+            >
+              스킬
+            </button>
+          </div>
+
+          {activeTab === 'item' && (
+            <Item data={itemEquipment?.filter((item) => item.item_equipment_page === 'Bag')} />
+          )}
+
+          {activeTab === 'avatar' && (
+            <Avatar data={itemEquipment?.filter((item) => item.item_equipment_page === 'Cash')} />
+          )}
+
+          {activeTab === 'skill' && (
+            <Skill data={basic?.skill_awakening} />
+          )}
         </div>
       </div>
     </div>

@@ -8,16 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        borderColor: '#3C4043',
+        mainColor: '#F0EEED',
+        mainBlack: '#242424',
+        borderColor: '#F5F5F5',
         basicBlack: '#333',
-        basicYellow: '#a99e84',
+        basicYellow: '#BFAC69',
         basicGrey: '#808080',
         basicBrown: '#50463c',
-        basicBlue: '#0170FA',
+        basicBlue: '#3A686C',
+        basicOrange: '#ECA478',
         darkBlue: '#050b0b',
         rankGold: '#FFB93C',
         rankSilver: '#DDE9F3',
-        rankBronze: '#CA9372'
+        rankBronze: '#CA9372',
+        itemYellow: '#C4B678',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

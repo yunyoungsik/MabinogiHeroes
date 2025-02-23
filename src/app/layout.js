@@ -11,27 +11,27 @@ const notoSans = Noto_Sans_KR({
 
 export const metadata = {
   generator: 'Next.js',
-  title: '마비노기 영웅전 검색 사이트 - MANGJEUN',
-  description: '마비노기 영웅전 검색 사이트',
-  keywords: ['마비노기영웅전, 마영전'],
+  title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
+  description: '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
+  keywords: ['마비노기영웅전, 마영전, 마비노기영웅전 검색, 마비노기영웅전 검색 사이트, 마영전 검색, 마영전 검색 사이트, 마비노기영웅전 랭킹, 마영전 랭킹'],
   authors: [{ name: 'Yun' }],
   creator: [{ name: 'Yun' }],
   publisher: [{ name: 'Yun' }],
   formatDetection: {
-    email: 'mangjeun@outlook.kr',
+    email: 'fcon@outlook.kr',
   },
   icons: {
     icon: 'favicon.svg',
   },
-  metadataBase: new URL('https://mangjeun.kro.kr'),
-  images:'https://www.mangjeun.kro.kr/image/meta/mangjeun.jpg',
+  metadataBase: new URL('https://mhon.vercel.app'),
+  images:'https://mhon.vercel.app/image/meta/meta.jpg',
   openGraph: {
-    title: '마비노기 영웅전 검색 사이트 - MANGJEUN',
+    title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
     description:
-      '마비노기 영웅전 검색 사이트',
+      '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
     url: 'https://mangjeun.kro.kr',
-    siteName: 'MangJeun',
-    images:'https://www.mangjeun.kro.kr/image/meta/mangjeun.jpg',
+    siteName: 'MHON.VERCEL.APP',
+    images:'https://mhon.vercel.app/image/meta/meta.jpg',
     locale: 'ko_KR',
     type: 'website',
     type: 'article',
@@ -61,10 +61,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '마비노기 영웅전 검색 사이트 - MANGJEUN',
-    description: '마비노기 영웅전 검색 사이트 - MANGJEUN',
+    title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
+    description: '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
     images: [
-      'https://www.mangjeun.kro.kr/image/meta/mangjeun.jpg',
+      'https://mhon.vercel.app/image/meta/meta.jpg',
     ],
   },
 };

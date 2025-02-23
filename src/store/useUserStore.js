@@ -1,0 +1,35 @@
+import { create } from 'zustand';
+import { axiosInstance } from '@/lib/axios';
+
+const CACHE_DURATION = 120 * 1000; // API 요청 제한 시간
+
+export const useUserStore = create((set, get) => ({
+  loading: false,
+  basic: [],
+  guild: [],
+  itemEquipment: [],
+  stat: [],
+  title: [],
+  titleEquipment: [],
+
+  setStat: (data) => set({ stat: data }),
+
+  fetchUser: async (name) => {
+    try {
+      set({ loading: true });
+      const res = await axiosInstance.get(`/user?name=${name}`);
+      set({
+        basic: res.data.basic,
+        guild: res.data.guild,
+        itemEquipment: res.data.itemEquipment.item_equipment,
+        stat: res.data.stat.stat,
+        title: res.data.title,
+        titleEquipment: res.data.titleEquipment.title_equipment,
+      });
+    } catch (error) {
+      console.error('fetchUser Error:', error);
+    } finally {
+      set({ loading: false });
+    }
+  },
+}));
