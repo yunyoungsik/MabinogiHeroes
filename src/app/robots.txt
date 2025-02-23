@@ -19,4 +19,4 @@ Allow: /
 User-agent: archive.org_bot
 Allow: /
 
-Sitemap: https://www.mangjeun.kro.kr/sitemap.xml
+Sitemap: https://mhon.vercel.app/sitemap.xml

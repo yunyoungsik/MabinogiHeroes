@@ -2,6 +2,7 @@ import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 const notoSans = Noto_Sans_KR({
   subsets: ['latin'],
@@ -73,6 +74,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={notoSans.className}>
+        <GoogleAnalytics gaId='G-PR6N8KMKLV' />
+        <GoogleTagManager gtmId='GTM-TGFCKBWT' />
           <div className="wrap">
             <Header />
             {children}
