@@ -18,7 +18,6 @@ export const GET = async (req) => {
   const urlParams = new URL(req.url).searchParams;
   const type = Number(urlParams.get('type')) || 0;
   const page = Number(urlParams.get('page')) || 1;
-  console.log('★★★★page', page)
 
   try {
     const ranking = await fetchData(

@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Skill = ({ data }) => {
-  console.log(data);
-
   if (!data) {
     return (
       <div className="flex items-center justify-center w-full min-h-main mt-[66px]">

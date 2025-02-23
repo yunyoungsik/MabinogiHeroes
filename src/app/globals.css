@@ -63,10 +63,15 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
+  font-weight: bold;
   word-break: keep-all;
 }
 
 .footer__nav li span {
+  max-height: 18px;
+}
+
+.footer__nav li svg {
   width: 18px;
   height: 18px;
   fill: #808080;
@@ -196,7 +201,6 @@
   background-position-x: center;
   background-repeat: no-repeat;
 }
-
 
 /* 캐릭터 */
 .bg-sou {

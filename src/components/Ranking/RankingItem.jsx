@@ -19,7 +19,7 @@ const RankingItem = ({ type, localPage }) => {
     if (!rankings[type]?.[chunkIndex] && chunkIndex * chunkSize < maxItems) {
       fetchRanking({ type, page: chunkIndex });
     }
-  }, [type, chunkIndex, fetchRanking, rankings]);
+  }, [type, chunkIndex]);
 
   if (loading) {
     return (

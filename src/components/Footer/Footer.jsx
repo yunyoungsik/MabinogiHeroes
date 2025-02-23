@@ -31,6 +31,7 @@ const Footer = () => {
               <li key={key}>
                 <Link href={el.href} target={el.target}>
                   <span dangerouslySetInnerHTML={{ __html: el.src }} />
+                  <span>{el.name}</span>
                 </Link>
               </li>
             ))}

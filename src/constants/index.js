@@ -24,6 +24,12 @@ export const footerNav = [
 
 export const sns = [
   {
+    name: 'FCON.KR',
+    href: 'https://fcon.kr',
+    src: ``,
+    target: '_blank',
+  },
+  {
     name: '디스코드',
     href: 'https://discord.gg/xu2M4MFJW9',
     src: `
