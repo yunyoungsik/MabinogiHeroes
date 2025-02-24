@@ -3,7 +3,7 @@ import React from 'react';
 const Skill = ({ data }) => {
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+      <div className="flex items-center justify-center w-full min-h-main">
         <span className="loader"></span>
       </div>
     );
@@ -15,7 +15,7 @@ const Skill = ({ data }) => {
         {data?.map((skill, index) => (
           <li
             key={index}
-            className="w-full h-full px-5 py-2 flex flex-col justify-center border border-solid border-basicGrey/60 rounded-[5px] bg-darkBlue"
+            className="w-full h-full px-5 py-2 flex flex-col justify-center border border-solid border-customGrey500/60 rounded-[5px] bg-customGrey900"
           >
             <p className="font-bold text-white">{skill.skill_name || '-'}</p>
             <p className="text-[0.75rem] text-white/50">{skill.item_name ||'-'}</p>

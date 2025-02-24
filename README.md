@@ -11,6 +11,8 @@ npm install swiper<br />
 npm install lucide-react<br />
 npm install axios<br />
 npm install zustand
+npm i @next/third-parties
+npm i recharts
 </details>
 
 ## 기능소개

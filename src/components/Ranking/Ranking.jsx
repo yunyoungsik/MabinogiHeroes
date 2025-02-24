@@ -1,4 +1,5 @@
 import React from 'react'
+// components
 import RankingItem from './RankingItem'
 
 const Ranking = () => {

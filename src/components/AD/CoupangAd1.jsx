@@ -10,6 +10,7 @@ const CoupangAd1 = () => {
       scrolling="no"
       referrerpolicy="unsafe-url"
       browsingtopics
+      className='ad__banner1'
     ></iframe>
   );
 };

@@ -1,5 +1,4 @@
-import { RefreshCw } from 'lucide-react';
-import React, { useState } from 'react';
+import React from 'react';
 
 const Item = ({ data }) => {
   const itemMapping = {
@@ -27,16 +26,16 @@ const Item = ({ data }) => {
     const foundItem = data.find((item) => item.item_equipment_slot_name === itemSlot);
     return (
       <li
-        className="w-full h-full px-5 py-2 border border-solid border-basicGrey/60 rounded-[5px] bg-darkBlue"
+        className="w-full h-full px-5 py-2 border border-solid border-customGrey500/60 rounded-[5px] bg-customGrey900"
         key={itemSlot}
       >
         <div>
-          <span className="text-[0.75rem] px-1 py-0.5 text-basicYellow border border-solid border-basicGrey/60 rounded-[5px]">
+          <span className="text-[0.75rem] px-1 py-0.5 text-customGrey500 border border-solid border-customGrey500/60 rounded-[5px]">
             {itemMapping[itemSlot]}
           </span>
         </div>
 
-        <div className="flex items-center gap-1 flex-wrap font-bold text-basicOrange mb-1">
+        <div className="flex items-center gap-1 flex-wrap font-bold text-customOrange300/80 mb-1">
           {foundItem?.item_option.enhancement_level && (
             <span>+{foundItem.item_option.enhancement_level}</span>
           )}
@@ -52,8 +51,8 @@ const Item = ({ data }) => {
         </div>
 
         {foundItem?.item_option.tuning_stat.length > 0 && (
-          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-basicGrey/30">
-            <li className="font-bold text-basicGrey">연마</li>
+          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-customGrey500/30">
+            <li className="font-bold text-customGrey500">연마</li>
             {foundItem?.item_option.tuning_stat.map((item, index) => (
               <li key={index} className="flex items-center gap-1">
                 <span>{item.stat_name}</span>
@@ -64,15 +63,15 @@ const Item = ({ data }) => {
         )}
 
         {foundItem?.item_option.ability_name && (
-          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-basicGrey/30">
-            <li className="font-bold text-basicGrey">어빌리티</li>
+          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-customGrey500/30">
+            <li className="font-bold text-customGrey500">어빌리티</li>
             <li>{foundItem?.item_option.ability_name}</li>
           </ul>
         )}
 
         {foundItem?.item_option.power_infusion_preset_1 && (
-          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-basicGrey/30 last:border-b-0">
-            <li className="font-bold text-basicGrey">정령합성</li>
+          <ul className="py-1 text-[0.75rem] text-white border-b border-solid border-customGrey500/30 last:border-b-0">
+            <li className="font-bold text-customGrey500">정령합성</li>
             <li className="flex items-center gap-1">
               <span>{foundItem?.item_option.power_infusion_preset_1?.stat_name || '-'}</span>
               <span>{foundItem?.item_option.power_infusion_preset_1?.stat_value || '-'}</span>
@@ -85,7 +84,7 @@ const Item = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+      <div className="flex items-center justify-center w-full min-h-main">
         <span className="loader"></span>
       </div>
     );

@@ -5,6 +5,7 @@ const CACHE_DURATION = 120 * 1000; // API 요청 제한 시간
 
 export const useUserStore = create((set, get) => ({
   loading: false,
+  error: '',
   basic: [],
   guild: [],
   itemEquipment: [],
@@ -27,6 +28,7 @@ export const useUserStore = create((set, get) => ({
         titleEquipment: res.data.titleEquipment.title_equipment,
       });
     } catch (error) {
+      set({ error: `캐릭터를 찾는 중 에러가 발생했습니다.: ${error?.message || error}` });
       console.error('fetchUser Error:', error);
     } finally {
       set({ loading: false });

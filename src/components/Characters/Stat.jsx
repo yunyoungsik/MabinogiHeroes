@@ -1,7 +1,7 @@
 const Stat = ({ data }) => {
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+      <div className="flex items-center justify-center w-full min-h-main">
         <span className="loader"></span>
       </div>
     );
@@ -21,7 +21,7 @@ const Stat = ({ data }) => {
         ].map(([start, end], index) => (
           <li
             key={index}
-            className={`border-solid border-basicGrey/20 ${index === 0 ? 'bg-white border-y' : 'border-b bg-basicGrey/10'}`}
+            className={`border-solid border-customGrey500/20 ${index === 0 ? 'bg-white border-y' : 'border-b bg-customGrey500/10'}`}
           >
             <ul>
               {data.slice(start, end).map((stat, idx) => (
@@ -29,8 +29,8 @@ const Stat = ({ data }) => {
                   className="h-[2rem] flex items-center justify-between px-5"
                   key={idx}
                 >
-                  <p className="text-basicGrey">{stat.stat_name || '-'}</p>
-                  <p className="font-bold text-basicBlack/60">{stat.stat_value || 0}</p>
+                  <p className="text-customGrey500">{stat.stat_name || '-'}</p>
+                  <p className="font-bold text-customGrey500">{stat.stat_value || 0}</p>
                 </li>
               ))}
             </ul>

@@ -1,0 +1,139 @@
+import React, { useMemo } from 'react';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+// utils
+import convertTime from '@/utils/convertTime';
+import { formatNumber } from '@/utils/formatNumber';
+import CustomToolTip from './CustomToolTip';
+
+const Chart = ({ error, item }) => {
+  // ✅ 데이터 변환: a 배열을 min/max로 나눔
+  const transformedData = useMemo(() => {
+    if (!item || item.length === 0) return [];
+    return item.map((entry) => ({
+      ...entry,
+      band: [entry.min_price, entry.max_price],
+    }));
+  }, [item]);
+
+  if (error) {
+    return (
+      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center">
+        <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
+        <p className="text-[1.125rem] text-customGrey500">해당하는 아이템의 검색 결과가 없습니다.</p>
+        <span className="text-[0.75rem] text-customGrey400">
+          아이템 명을 다시 한번 확인하시고 재시도 해주세요.
+        </span>
+        <span className="text-[0.75rem] text-customGrey400">
+          공백(띄어쓰기)까지 정확히 입력해 주세요.
+        </span>
+      </div>
+    );
+  }
+
+  if (!item || item.length === 0) {
+    return (
+      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center">
+        <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
+        <p className="text-[1.125rem] text-customGrey500">정확한 아이템명을 입력해 주세요.</p>
+        <span className="text-[0.75rem] text-customGrey400">
+          아이템명을 공백(띄어쓰기)까지 정확히 입력해 주세요.
+        </span>
+        <span className="text-[0.75rem] text-customGrey400">
+          아이템명이 올바른지 다시 한번 확인해 주세요.
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height="100%" className="min-h-[474px] flex-1">
+      <AreaChart data={transformedData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+        {/* 그리드 */}
+        <CartesianGrid stroke="#E5E8EB" />
+
+        {/* X축: 날짜 */}
+        <XAxis
+          dataKey="date_update"
+          axisLine={true}
+          tick={{ fontSize: 12, dy: -1 }}
+          tickFormatter={(value) => {
+            const koreaTime = convertTime(value);
+            const date = new Date(koreaTime);
+            return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+          }}
+        />
+
+        {/* Y축: 평균 가격 */}
+        <YAxis
+          domain={([min, max]) => [min * 0.9, max * 1.1]}
+          dataKey="average_price"
+          tickLine={false}
+          axisLine={true}
+          tick={{ fontSize: 12, dx: -1 }}
+          tickFormatter={(value) => {
+            return `${formatNumber(value)}`;
+          }}
+        />
+
+        {/* 툴팁: 평균 가격과 날짜 */}
+        <Tooltip content={<CustomToolTip />} />
+
+        {/* 평균가 라인 */}
+        <Area
+          type="linear"
+          dataKey="average_price"
+          // stroke="#03b26c"
+          strokeWidth={3}
+          stroke="#F44336"
+          fill="#F44336"
+          fillOpacity="0.1"
+          // dot={{ stroke: '#8884d8', strokeWidth: 2, r: 3 }}
+          dot={false}
+          name="평균가"
+        />
+
+        {/* 최고가 라인 */}
+        <Area
+          type="linear"
+          dataKey="max_price"
+          stroke="#F44336"
+          fill="transparent"
+          dot={false}
+          name="최고가"
+        />
+
+        {/* 최저가 라인 */}
+        <Area
+          type="linear"
+          dataKey="min_price"
+          stroke="#3182f6"
+          fill="transparent"
+          dot={false}
+          name="최저가"
+        />
+
+        {/* 볼리저 밴드 */}
+        <Area
+          type="monotone"
+          dataKey="band"
+          stroke="none"
+          fill="#ffc342"
+          fillOpacity={0.3}
+          connectNulls
+          dot={false}
+          activeDot={false}
+        />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+};
+
+export default Chart;

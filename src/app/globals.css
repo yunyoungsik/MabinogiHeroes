@@ -4,12 +4,14 @@
 
 .wrap {
   width: 100%;
+  min-width: 320px;
   height: 100%;
+  color: #191f28;
   background-color: #fff;
 }
 
 .min-h-main {
-  min-height: calc(100vh - 217px);
+  min-height: calc(100vh - 169px);
 }
 
 .text-label {
@@ -51,7 +53,7 @@
   display: block;
   width: 1px;
   height: 12px;
-  background-color: #808080;
+  background-color: #8B95A1;
 }
 
 .footer__nav li:last-child:after {
@@ -63,8 +65,11 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-weight: bold;
   word-break: keep-all;
+}
+
+.footer__nav.sns li a {
+  font-weight: bold;
 }
 
 .footer__nav li span {
@@ -74,12 +79,16 @@
 .footer__nav li svg {
   width: 18px;
   height: 18px;
-  fill: #808080;
+  fill: #8B95A1;
 }
 
 /* 광고 */
+.ad__banner1 {
+  width: 100%;
+}
+
 .ad__banner2 {
-  width: 300px;
+  width: 160px;
   height: 600px;
   position: absolute;
   top: 110px;
@@ -106,17 +115,17 @@
 
 .ad__banner2.fixed {
   position: fixed;
-  top: 65px;
+  top: 76px;
 }
 
 .ad__banner2.left.fixed {
-  left: calc(50% - 756px);
-  transform: translateX(-50%);
+  left: 45px;
+  /* transform: translateX(-50%); */
 }
 
 .ad__banner2.right.fixed {
-  right: calc(50% - 756px);
-  transform: translateX(+50%);
+  right: 45px
+  /* transform: translateX(+50%); */
 }
 
 /* swiper */
@@ -202,7 +211,7 @@
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #242424;
+  border: 5px solid #8b95a1;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -238,7 +247,7 @@
 
 .bg-laurel {
   background-image: url('/image/svg/laurel.svg');
-  background-size: 40%;
+  background-size: 30px;
   background-position-y: 60%;
   background-position-x: center;
   background-repeat: no-repeat;

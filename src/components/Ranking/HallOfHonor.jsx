@@ -1,4 +1,5 @@
 import React from 'react';
+// components
 import HallOfHonorItem from './HallOfHonorItem';
 
 const HallOfHonor = () => {

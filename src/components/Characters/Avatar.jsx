@@ -24,16 +24,16 @@ const Avatar = ({ data }) => {
     const foundItem = data.find((item) => item.item_equipment_slot_name === itemSlot);
     return (
       <li
-        className="w-full h-full px-5 py-2 border border-solid border-basicGrey/60 rounded-[5px] bg-darkBlue"
+        className="w-full h-full px-5 py-2 border border-solid border-customGrey500/50 rounded-[5px] bg-customGrey900"
         key={itemSlot}
       >
         <div>
-          <span className="text-[0.75rem] px-1 py-0.5 text-basicYellow border border-solid border-basicGrey/60 rounded-[5px]">
+          <span className="text-[0.75rem] px-1 py-0.5 text-customGrey500 border border-solid border-customGrey500/30 rounded-[5px]">
             {itemMapping[itemSlot]}
           </span>
         </div>
 
-        <div className="flex items-center gap-1 flex-wrap font-bold text-basicOrange mb-1">
+        <div className="flex items-center gap-1 flex-wrap font-bold text-customOrange300/80 mb-1">
           <p>{foundItem ? foundItem.item_name : defaultValue}</p>
         </div>
 
@@ -41,11 +41,11 @@ const Avatar = ({ data }) => {
           <ul className="py-1 flex flex-col gap-1 text-[0.75rem] text-white">
             {Object.entries(foundItem.item_option.cash_item_color).map(([key, color], index) => (
               <li key={index} className="flex items-center gap-1">
-                <span className='text-basicGrey'>{`색상파트${index + 1}`}</span>
+                <span className='text-customGrey500'>{`색상파트${index + 1}`}</span>
 
                 {/* 동적 배경색 적용 */}
                 <span
-                  className="w-4 h-4 rounded-full border border-basicGrey/30"
+                  className="w-4 h-4 rounded-full border border-customGrey500/30"
                   style={{ backgroundColor: `rgb(${color})` }}
                 ></span>
 
@@ -60,7 +60,7 @@ const Avatar = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+      <div className="flex items-center justify-center w-full min-h-main">
         <span className="loader"></span>
       </div>
     );

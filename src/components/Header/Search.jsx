@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import { SearchIcon } from 'lucide-react';
 
 const Search = () => {
@@ -17,7 +16,7 @@ const Search = () => {
         검색
       </label>
       <input
-        className="w-full h-full py-1 px-2 pr-6 text-white placeholder:text-basicGrey focus:outline-none bg-transparent"
+        className="w-full h-full py-1 px-2 pr-6 focus:outline-none bg-transparent"
         type="text"
         placeholder="캐릭터명을 입력하세요."
         value={name}
@@ -29,11 +28,11 @@ const Search = () => {
         }}
       />
       <button
-        className="absolute top-[50%] right-2 translate-y-[-50%] bg-tranparant text-basicGrey"
+        className="absolute top-[50%] right-2 translate-y-[-50%] bg-tranparant text-customGrey500"
         type="button"
         onClick={handleSearch}
       >
-        <SearchIcon className='w-5 h-5' />
+        <SearchIcon className="w-5 h-5" />
       </button>
     </div>
   );

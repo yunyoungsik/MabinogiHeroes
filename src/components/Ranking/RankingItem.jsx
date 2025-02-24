@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+// store
 import { useRankingStore } from '@/store/useRankingStore';
 
 const RankingItem = ({ type, localPage }) => {
@@ -23,7 +24,7 @@ const RankingItem = ({ type, localPage }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
+      <div className="flex items-center justify-center w-full min-h-main">
         <span className="loader"></span>
       </div>
     );
@@ -37,14 +38,14 @@ const RankingItem = ({ type, localPage }) => {
   const currentData = rankingList.slice(startIndex, startIndex + pageSize);
 
   return (
-    <section className="w-full h-full py-2 px-3 border border-solid border-basicGrey/30 rounded-sm bg-white">
+    <section className="w-full h-full py-2 px-3 border border-solid border-customGrey500/30 rounded-sm bg-white">
       <div>
         <h2 className="inline-block py-2 px-3 text-[0.75rem] font-bold">
           실시간랭킹 - {type === 0 ? '공격력' : '마법공격력'}
         </h2>
       </div>
 
-      <table className="w-full text-[0.75rem] leading-4">
+      <table className="w-full text-[0.875rem] leading-4">
         <colgroup>
           <col width={'10%'} />
           <col />
@@ -52,7 +53,7 @@ const RankingItem = ({ type, localPage }) => {
         </colgroup>
 
         <thead>
-          <tr className="h-[2rem] text-basicBlack/50">
+          <tr className="h-[2rem] text-customGrey500">
             <th>순위</th>
             <th className="text-left">닉네임</th>
             <th>스코어</th>
@@ -62,7 +63,7 @@ const RankingItem = ({ type, localPage }) => {
         <tbody>
           {currentData.length === 0 ? (
             <tr className="h-[3rem]">
-              <td colSpan={3} className="text-center text-basicGrey font-bold">
+              <td colSpan={3} className="text-center text-customGrey500 font-bold">
                 데이터를 불러오는 문제가 발생했습니다.
               </td>
             </tr>
@@ -70,7 +71,7 @@ const RankingItem = ({ type, localPage }) => {
             currentData.map((user) => (
               <tr
                 key={user.ranking}
-                className={`h-[3rem] hover:bg-borderColor border-b border-solid border-borderColor last:border-b-0 ${
+                className={`h-[3rem] hover:bg-customGrey100 border-b border-solid border-customGrey100 last:border-b-0 ${
                   user.ranking === 1
                     ? 'bg-rank1'
                     : user.ranking === 2

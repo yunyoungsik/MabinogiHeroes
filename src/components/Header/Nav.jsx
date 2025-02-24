@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { nav } from '@/constants';
 import { Menu, X } from 'lucide-react';
+import { nav } from '@/constants';
 
 const Nav = () => {
   const pathName = usePathname();
@@ -17,7 +17,7 @@ const Nav = () => {
   return (
     <>
       <nav className={`absolute top-[66px] right-[0] w-full h-[calc(100vh-66px)] bg-mainColor md:relative md:top-0 md:right-0 md:w-auto md:block md:h-auto ${isShow ? 'block' : 'hidden'}`}>
-        <ul className="w-full h-[66px] flex items-end justify-center flex-col gap-4 md:gap-0 md:flex-row md:items-center text-[1rem] text-mainBlack">
+        <ul className="w-full h-[66px] flex items-end justify-center flex-col gap-4 md:gap-0 md:flex-row md:items-center text-[1rem]">
           {nav.map((el, index) => (
             <li key={el.name} className="h-[1rem] flex items-center justify-end px-[24px] md:justify-center md:px-0">
               <Link

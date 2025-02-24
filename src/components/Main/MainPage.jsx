@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+// components
 import Search from '../Header/Search';
 import HallOfHonor from '../Ranking/HallOfHonor';
 import Ranking from '../Ranking/Ranking';
@@ -18,13 +19,12 @@ const MainPage = () => {
               <br />
               캐릭터 검색
             </h2>
-            <div className="max-w-[700px] w-full h-[60px] p-4 mt-4 bg-mainBlack rounded-[60px]">
+            <div className="max-w-[700px] w-full h-[60px] p-4 mt-4 text-white bg-customGrey900 rounded-[60px]">
               <Search />
             </div>
-            <div
-              className="max-w-[1080px] w-full h-[100px] mt-4 m-auto bg-basicBlack/50"
-            >
-              <CoupangAd1 />
+            {/* 광고 */}
+            <div className="max-w-[1080px] w-full h-[100px] mt-4 m-auto bg-customGrey900/30">
+              {/* <CoupangAd1 /> */}
             </div>
           </div>
         </div>
