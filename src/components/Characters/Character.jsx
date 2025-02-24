@@ -11,6 +11,9 @@ import convertTime from '@/utils/convertTime';
 import timeAgo from '@/utils/timeAgo';
 // store
 import { useUserStore } from '@/store/useUserStore';
+import CoupangAd1 from '../AD/CoupangAd1';
+import { useScrollHandler } from '@/utils/useScrollAD';
+import CoupangAd2 from '../AD/CoupangAd2';
 
 const Character = ({ name }) => {
   const { loading, basic, guild, itemEquipment, stat, title, titleEquipment, fetchUser } =
@@ -59,6 +62,9 @@ const Character = ({ name }) => {
   const leftTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '좌측');
   const fixedTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '고정');
 
+  // 광고
+  useScrollHandler('.ad__banner2', 100);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center w-full min-h-main mt-[66px]">
@@ -68,102 +74,118 @@ const Character = ({ name }) => {
   }
 
   return (
-    <div className="w-full h-full pt-[66px] bg-mainColor">
-      <div className="sm:block md:flex justify-between max-w-[1280px] h-full m-auto">
-        <div className="min-w-[300px]">
-          <section
-            className={`w-full h-[300px] ${bgCharacter(basic?.character_class_name)} relative`}
-          >
-            <div className="w-full h-full p-2 bg-black/50">
-              <div className="flex">
-                {leftTitle && (
-                  <span className="font-bold text-[0.75rem] text-white mr-1">
-                    {leftTitle?.title_name}
-                  </span>
-                )}
-                {fixedTitle && (
-                  <span className="font-bold text-[0.75rem] text-white mr-1">
-                    {fixedTitle?.title_name}
-                  </span>
-                )}
-              </div>
-              <h2 className="font-bold text-[1.5rem] text-white">{basic?.character_name}</h2>
-              <p className="font-bold text-[0.75rem] text-white">[{basic?.cairde_name || '-'}]</p>
-
-              <div className="absolute bottom-2 flex flex-col gap-4">
-                <p className="text-[0.75rem] text-white font-bold">
-                  <span className="text-label">레벨</span>
-                  {basic?.character_level || 0}
-                </p>
-                <p className="text-[0.75rem] text-white font-bold">
-                  <span className="text-label">캐릭터</span>
-                  {basic?.character_class_name || '-'}
-                </p>
-                <p className="text-[0.75rem] text-white font-bold">
-                  <span className="text-label">길드</span>
-                  {guild?.guild_name || '-'}
-                </p>
-                <p className="relative text-[0.75rem] text-white font-bold group">
-                  <span className="text-label">타이틀</span>
-                  {basic?.total_title_count || '-'}
-                  {basic?.title_stat && (
-                    <div className="ballon group-hover:inline-block">
-                      {basic?.title_stat.map((stat, index) => (
-                        <p key={index}>
-                          <span>{stat.stat_name}</span>
-                          <span>{stat.stat_value}</span>
-                        </p>
-                      ))}
-                    </div>
+    <>
+      <div className="w-full h-full pt-[66px] bg-mainColor">
+        <div className="sm:block md:flex justify-between max-w-[1280px] h-full m-auto">
+          <div className="min-w-[320px]">
+            <section
+              className={`w-full h-[300px] ${bgCharacter(basic?.character_class_name)} relative`}
+            >
+              <div className="w-full h-full p-2 bg-black/50">
+                <div className="flex">
+                  {leftTitle && (
+                    <span className="font-bold text-[0.75rem] text-white mr-1">
+                      {leftTitle?.title_name}
+                    </span>
                   )}
-                </p>
-                <p className="text-[0.75rem] text-white font-bold">
-                  <span className="text-label">마지막접속</span>
-                  {basic?.character_date_last_login
-                    ? timeAgo(convertTime(basic.character_date_last_login))
-                    : '-'}
-                </p>
-              </div>
-            </div>
-          </section>
-          <Stat data={stat} />
-        </div>
+                  {fixedTitle && (
+                    <span className="font-bold text-[0.75rem] text-white mr-1">
+                      {fixedTitle?.title_name}
+                    </span>
+                  )}
+                </div>
+                <h2 className="font-bold text-[1.5rem] text-white">{basic?.character_name}</h2>
+                <p className="font-bold text-[0.75rem] text-white">[{basic?.cairde_name || '-'}]</p>
 
-        <div className="max-w-[970px] w-full ">
-          <div className="flex gap-2 py-2">
-            <button type="button" onClick={() => setActiveTab('item')} className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'item' ? 'text-white bg-basicBlack' : ''}`}>
-              장비
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('avatar')}
-              className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'avatar' ? 'text-white bg-basicBlack' : ''}`}
-            >
-              아바타
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('skill')}
-              className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${activeTab === 'skill' ? 'text-white bg-basicBlack' : ''}`}
-            >
-              스킬
-            </button>
+                <div className="absolute bottom-2 flex flex-col gap-4">
+                  <p className="text-[0.75rem] text-white font-bold">
+                    <span className="text-label">레벨</span>
+                    {basic?.character_level || 0}
+                  </p>
+                  <p className="text-[0.75rem] text-white font-bold">
+                    <span className="text-label">캐릭터</span>
+                    {basic?.character_class_name || '-'}
+                  </p>
+                  <p className="text-[0.75rem] text-white font-bold">
+                    <span className="text-label">길드</span>
+                    {guild?.guild_name || '-'}
+                  </p>
+                  <p className="relative text-[0.75rem] text-white font-bold group">
+                    <span className="text-label">타이틀</span>
+                    {basic?.total_title_count || '-'}
+                    {basic?.title_stat && (
+                      <div className="ballon group-hover:inline-block">
+                        {basic?.title_stat.map((stat, index) => (
+                          <p key={index}>
+                            <span>{stat.stat_name}</span>
+                            <span>{stat.stat_value}</span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </p>
+                  <p className="text-[0.75rem] text-white font-bold">
+                    <span className="text-label">마지막접속</span>
+                    {basic?.character_date_last_login
+                      ? timeAgo(convertTime(basic.character_date_last_login))
+                      : '-'}
+                  </p>
+                </div>
+              </div>
+            </section>
+            <div className="max-w-[1080px] w-full h-[100px] mt-0 m-auto bg-basicBlack/50">
+              <CoupangAd1 />
+            </div>
+            <Stat data={stat} />
           </div>
 
-          {activeTab === 'item' && (
-            <Item data={itemEquipment?.filter((item) => item.item_equipment_page === 'Bag')} />
-          )}
+          <div className="max-w-[950px] w-full ">
+            <div className="flex pl-[20px] md:pl-0 gap-2 py-2">
+              <button
+                type="button"
+                onClick={() => setActiveTab('item')}
+                className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${
+                  activeTab === 'item' ? 'text-white bg-basicBlack' : ''
+                }`}
+              >
+                장비
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('avatar')}
+                className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${
+                  activeTab === 'avatar' ? 'text-white bg-basicBlack' : ''
+                }`}
+              >
+                아바타
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('skill')}
+                className={`py-1 px-4 border border-solid border-basicGrey rounded-2xl ${
+                  activeTab === 'skill' ? 'text-white bg-basicBlack' : ''
+                }`}
+              >
+                스킬
+              </button>
+            </div>
 
-          {activeTab === 'avatar' && (
-            <Avatar data={itemEquipment?.filter((item) => item.item_equipment_page === 'Cash')} />
-          )}
+            {activeTab === 'item' && (
+              <Item data={itemEquipment?.filter((item) => item.item_equipment_page === 'Bag')} />
+            )}
 
-          {activeTab === 'skill' && (
-            <Skill data={basic?.skill_awakening} />
-          )}
+            {activeTab === 'avatar' && (
+              <Avatar data={itemEquipment?.filter((item) => item.item_equipment_page === 'Cash')} />
+            )}
+
+            {activeTab === 'skill' && <Skill data={basic?.skill_awakening} />}
+          </div>
         </div>
       </div>
-    </div>
+
+      <CoupangAd2 position={'left'} />
+      <CoupangAd2 position={'right'} />
+    </>
   );
 };
 

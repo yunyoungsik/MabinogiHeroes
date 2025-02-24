@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function page() {
   return (
-    <main className='w-full min-h-main'>
+    <main className='relative w-full min-h-main'>
       <RankingPage />
     </main>
   )

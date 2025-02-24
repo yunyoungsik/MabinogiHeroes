@@ -77,6 +77,48 @@
   fill: #808080;
 }
 
+/* 광고 */
+.ad__banner2 {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 110px;
+  overflow: hidden;
+  /* display: block; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 5px;
+  /* background-color: rgba(0, 0, 0, 0.15); */
+  z-index: 99;
+  overflow: hidden;
+}
+
+.ad__banner2.left {
+  left: 45px;
+}
+
+.ad__banner2.right {
+  right: 45px;
+}
+
+.ad__banner2.fixed {
+  position: fixed;
+  top: 65px;
+}
+
+.ad__banner2.left.fixed {
+  left: calc(50% - 756px);
+  transform: translateX(-50%);
+}
+
+.ad__banner2.right.fixed {
+  right: calc(50% - 756px);
+  transform: translateX(+50%);
+}
+
 /* swiper */
 .swiper-pagination-bullet {
   border-radius: 2px !important;
@@ -408,6 +450,23 @@
 }
 
 /* 반응형 */
+@media (max-width: 1800px) {
+  .ad__banner2.left {
+    left: 0;
+  }
+
+  .ad__banner2.right {
+    right: 0;
+  }
+}
+
+@media (max-width: 1680px) {
+  .ad__banner2 {
+    display: none;
+  }
+}
+
+
 @media (max-width: 600px) {
   .footer__navBox {
     align-items: flex-start;

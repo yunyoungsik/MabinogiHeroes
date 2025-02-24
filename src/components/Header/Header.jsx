@@ -16,7 +16,7 @@ const Header = () => {
           <h1 className="font-black text-mainBlack uppercase">ON.KR</h1>
         </Link>
         {pathName !== '/' && (
-          <div className="py-1 px-2 bg-mainBlack rounded-3xl">
+          <div className="hidden md:block py-1 px-2 bg-mainBlack rounded-3xl">
             <Search />
           </div>
         )}
