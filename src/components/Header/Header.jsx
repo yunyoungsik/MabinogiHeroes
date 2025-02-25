@@ -12,22 +12,24 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 left-0 z-50 w-full px-2 md:px-6 flex flex-col bg-mainColor">
-        <div className="max-w-[1280px] w-full h-[66px] m-auto flex items-center justify-between">
-          <Link href="/">
-            <h1 className="font-black uppercase">ON.KR</h1>
+      <header className="sticky top-0 left-0 z-50 w-full md:px-6 bg-mainColor">
+        <div className="relative z-50 max-w-[1280px] w-full h-[66px] mx-auto flex items-center justify-between">
+          <Link href="/" aria-label="홈으로 이동">
+            <h1 className="font-black px-2 uppercase">ON.KR</h1>
           </Link>
+
           {pathName !== '/' && (
-            <div className="hidden md:block py-1 px-2 bg-customGrey300 rounded-3xl">
+            <div className="h-[30px] hidden md:block py-1 px-2 bg-customGrey300 rounded-3xl" role="search">
               <Search />
             </div>
           )}
+
           <Nav />
         </div>
 
         {pathName !== '/' && (
-          <div className="block md:hidden w-fullpx-2 pb-2 bg-mainColor">
-            <div className="bg-customGrey300 rounded-sm">
+          <div className="relative z-0 md:hidden w-full px-2 pb-2 bg-mainColor" role="search">
+            <div className="h-[40px] bg-customGrey300 rounded-sm">
               <Search />
             </div>
           </div>

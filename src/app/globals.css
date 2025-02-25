@@ -53,7 +53,7 @@
   display: block;
   width: 1px;
   height: 12px;
-  background-color: #8B95A1;
+  background-color: #8b95a1;
 }
 
 .footer__nav li:last-child:after {
@@ -79,12 +79,24 @@
 .footer__nav li svg {
   width: 18px;
   height: 18px;
-  fill: #8B95A1;
+  fill: #8b95a1;
 }
 
 /* 광고 */
-.ad__banner1 {
-  width: 100%;
+.ad__banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad__kakao_728_90 {
+  display: block;
+  max-height: 90px;
+}
+
+.ad__kakao_320_100 {
+  display: none;
+  max-height: 100px;
 }
 
 .ad__banner2 {
@@ -93,39 +105,35 @@
   position: absolute;
   top: 110px;
   overflow: hidden;
-  /* display: block; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  border-radius: 5px;
-  /* background-color: rgba(0, 0, 0, 0.15); */
+  /* border-radius: 5px; */
   z-index: 99;
   overflow: hidden;
 }
 
 .ad__banner2.left {
-  left: 45px;
+  left: calc(50% - 820px);
 }
 
 .ad__banner2.right {
-  right: 45px;
+  right: calc(50% - 820px);
 }
 
 .ad__banner2.fixed {
   position: fixed;
-  top: 76px;
+  top: 70px;
 }
 
 .ad__banner2.left.fixed {
-  left: 45px;
-  /* transform: translateX(-50%); */
+  left: calc(50% - 820px);
 }
 
 .ad__banner2.right.fixed {
-  right: 45px
-  /* transform: translateX(+50%); */
+  right: calc(50% - 820px);
 }
 
 /* swiper */
@@ -145,7 +153,7 @@
   display: none;
   position: absolute;
   min-width: 100px;
-  left: 50px;
+  left: 50%;
   bottom: 0;
   text-align: center;
   transform: translateY(calc(100% + 14px)) translateX(-50%);
@@ -254,175 +262,189 @@
 }
 
 /* 캐릭터 */
+.bg-neamhain {
+  background-image: url('/image/character/neamhain.webp');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.bg-sanyaa {
+  background-image: url('/image/character/sanyaa.webp');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
 .bg-sou {
-  background-image: url('/image/character/sou.png');
+  background-image: url('/image/character/sou.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-achel {
-  background-image: url('/image/character/achel.png');
+  background-image: url('/image/character/achel.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-czern {
-  background-image: url('/image/character/czern.png');
+  background-image: url('/image/character/czern.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-latiya {
-  background-image: url('/image/character/latiya.png');
+  background-image: url('/image/character/latiya.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-letty {
-  background-image: url('/image/character/letty.png');
+  background-image: url('/image/character/letty.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-lethor {
-  background-image: url('/image/character/lethor.png');
+  background-image: url('/image/character/lethor.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-danah {
-  background-image: url('/image/character/danah.png');
+  background-image: url('/image/character/danah.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-tessa {
-  background-image: url('/image/character/tessa.png');
+  background-image: url('/image/character/tessa.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-kael {
-  background-image: url('/image/character/kael.png');
+  background-image: url('/image/character/kael.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-lethor {
-  background-image: url('/image/character/lethor.png');
+  background-image: url('/image/character/lethor.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-bel {
-  background-image: url('/image/character/bel.png');
+  background-image: url('/image/character/bel.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-hurk {
-  background-image: url('/image/character/hurk.png');
+  background-image: url('/image/character/hurk.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 .bg-miul {
-  background-image: url('/image/character/miul.png');
+  background-image: url('/image/character/miul.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-grimden {
-  background-image: url('/image/character/grimden.png');
+  background-image: url('/image/character/grimden.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-miri {
-  background-image: url('/image/character/miri.png');
+  background-image: url('/image/character/miri.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-delia {
-  background-image: url('/image/character/delia.png');
+  background-image: url('/image/character/delia.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-hagie {
-  background-image: url('/image/character/hagie.png');
+  background-image: url('/image/character/hagie.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-arisha {
-  background-image: url('/image/character/arisha.png');
+  background-image: url('/image/character/arisha.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-lynn {
-  background-image: url('/image/character/lynn.png');
+  background-image: url('/image/character/lynn.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-vella {
-  background-image: url('/image/character/vella.png');
+  background-image: url('/image/character/vella.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-kay {
-  background-image: url('/image/character/kay.png');
+  background-image: url('/image/character/kay.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-kalok {
-  background-image: url('/image/character/kalok.png');
+  background-image: url('/image/character/kalok.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-evy {
-  background-image: url('/image/character/evy.png');
+  background-image: url('/image/character/evy.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-fiona {
-  background-image: url('/image/character/fiona.png');
+  background-image: url('/image/character/fiona.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
 }
 
 .bg-lethita {
-  background-image: url('/image/character/lethita.png');
+  background-image: url('/image/character/lethita.webp');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
@@ -475,6 +497,11 @@
   }
 }
 
+@media (max-width: 727px) {
+  .ad__kakao_728_90 {
+    display: none;
+  }
+}
 
 @media (max-width: 600px) {
   .footer__navBox {
@@ -485,5 +512,11 @@
 
   .bg-laurel {
     background: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .ad__kakao_320_100 {
+    display: block;
   }
 }

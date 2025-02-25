@@ -3,26 +3,26 @@
 
   <!-- 메인 페이지 -->
   <url>
-    <loc>https://mhon.vercel.app/</loc>
+    <loc>https://mhon.kr/</loc>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 서브 페이지 -->
   <url>
-    <loc>https://mhon.vercel.app/user/*</loc>
+    <loc>https://mhon.kr/user/*</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mhon.vercel.app/ranking</loc>
+    <loc>https://mhon.kr/ranking</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
    <url>
-    <loc>https://mhon.vercel.app/marketplace</loc>
+    <loc>https://mhon.kr/marketplace</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -4,10 +4,18 @@ import HallOfHonorItem from './HallOfHonorItem';
 
 const HallOfHonor = () => {
   return (
-    <div className="sm:w-full md:max-w-[1280px] flex flex-col md:flex-row items-center justify-between gap-2">
-      <HallOfHonorItem type={0} localPage={1} />
-      <HallOfHonorItem type={1} localPage={1} />
-    </div>
+    <section
+      className="sm:w-full md:max-w-[1280px] flex flex-col md:flex-row items-center justify-between gap-2"
+      aria-labelledby="'hall-of-honor-section"
+    >
+      <h2 id="hall-of-honor-section" className="sr-only">
+        명예의전당 - 공격력과 마법공격력
+      </h2>
+
+      {['공격력', '마법공격력'].map((label, index) => (
+        <HallOfHonorItem key={label} type={index} localPage={1} />
+      ))}
+    </section>
   );
 };
 

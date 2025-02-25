@@ -1,9 +1,10 @@
 // next.config.mjs
 const nextConfig = {
   images: {
-    domains: ['mangjeun.kro.kr/', 'localhost'],
+    domains: ['mhon.kr/', 'localhost'],
     loader: 'default',
   },
+  
 };
 
 export default nextConfig;

@@ -1,29 +1,31 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Link from 'next/link';
 // store
 import { useRankingStore } from '@/store/useRankingStore';
+import { getRankBgClass } from '@/utils/getRankBgclass';
 
 const HallOfHonorItem = ({ type, localPage }) => {
   const { loading, hallOfHonors, fetchHallOfHonors } = useRankingStore();
 
   useEffect(() => {
-    if (hallOfHonors.ad.length === 0 || hallOfHonors.ap.length === 0) {
-      fetchHallOfHonors({ type });
-    }
-  }, [type]);
+    fetchHallOfHonors({ type });
+  }, [type, fetchHallOfHonors]);
 
   const pageSize = 10;
   const rankingList = type === 0 ? hallOfHonors.ad : hallOfHonors.ap;
   const startIndex = (localPage - 1) * pageSize;
   const endIndex = localPage * pageSize;
-  const currentData = rankingList.slice(startIndex, endIndex);
+  const currentData = useMemo(
+    () => rankingList.slice(startIndex, endIndex),
+    [rankingList, startIndex, endIndex]
+  );
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main">
-        <span className="loader"></span>
+      <div className="flex items-center justify-center w-full min-h-main" role="status" aria-live="polite">
+        <span className="loader" aria-label="로딩 중..."></span>
       </div>
     );
   }
@@ -59,15 +61,9 @@ const HallOfHonorItem = ({ type, localPage }) => {
             currentData.map((user) => (
               <tr
                 key={user.character_name}
-                className={`h-[3rem] transition-colors hover:bg-customGrey100 border-b border-solid border-customGrey100 last:border-b-0 ${
-                  user.ranking === 1
-                    ? 'bg-rank1'
-                    : user.ranking === 2
-                    ? 'bg-rank2'
-                    : user.ranking === 3
-                    ? 'bg-rank3'
-                    : ''
-                }`}
+                className={`h-[3rem] transition-colors hover:bg-customGrey100 border-b border-solid border-customGrey100 last:border-b-0 ${getRankBgClass(
+                  user.ranking
+                )}`}
               >
                 <td className={`text-center ${user.ranking <= 3 ? 'bg-laurel' : ''}`}>
                   {user.ranking}

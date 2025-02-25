@@ -1,15 +1,25 @@
 const Stat = ({ data }) => {
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main">
-        <span className="loader"></span>
+      <div
+        className="flex items-center justify-center w-full min-h-main"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <span
+          className="animate-spin rounded-full h-8 w-8 border-t-2 border-customOrange300/80"
+          aria-label="로딩 중"
+        ></span>
       </div>
     );
   }
 
   return (
-    <section className="w-full pt-[20px] bg-white">
-      <h2 className="font-bold px-5 text-[1.2rem]">능력치</h2>
+    <section className="w-full pt-[20px] bg-white" aria-labelledby="stat-section-title">
+      <h2 id="stat-section-title" className="font-bold px-5 text-[1.2rem]">
+        능력치
+      </h2>
       <ul className="text-[0.75rem]">
         {[
           [0, 3],
@@ -21,19 +31,20 @@ const Stat = ({ data }) => {
         ].map(([start, end], index) => (
           <li
             key={index}
-            className={`border-solid border-customGrey500/20 ${index === 0 ? 'bg-white border-y' : 'border-b bg-customGrey500/10'}`}
+            className={`border-solid border-customGrey500/20 ${
+              index === 0 ? 'bg-white border-y' : 'border-b bg-customGrey500/10'
+            }`}
           >
-            <ul>
-              {data.slice(start, end).map((stat, idx) => (
-                <li
-                  className="h-[2rem] flex items-center justify-between px-5"
-                  key={idx}
-                >
-                  <p className="text-customGrey500">{stat.stat_name || '-'}</p>
-                  <p className="font-bold text-customGrey500">{stat.stat_value || 0}</p>
-                </li>
-              ))}
-            </ul>
+            {data.slice(start, end).map((stat) => (
+              <div
+                className="h-[2rem] flex items-center justify-between px-5"
+                key={stat.stat_name}
+                role="listitem"
+              >
+                <p className="text-customGrey500">{stat.stat_name || '-'}</p>
+                <p className="font-bold text-customGrey500">{stat.stat_value || 0}</p>
+              </div>
+            ))}
           </li>
         ))}
       </ul>

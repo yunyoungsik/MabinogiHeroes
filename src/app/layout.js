@@ -12,8 +12,8 @@ const notoSans = Noto_Sans_KR({
 
 export const metadata = {
   generator: 'Next.js',
-  title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
-  description: '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
+  title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
+  description: '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
   keywords: ['마비노기영웅전, 마영전, 마비노기영웅전 검색, 마비노기영웅전 검색 사이트, 마영전 검색, 마영전 검색 사이트, 마비노기영웅전 랭킹, 마영전 랭킹'],
   authors: [{ name: 'Yun' }],
   creator: [{ name: 'Yun' }],
@@ -24,15 +24,15 @@ export const metadata = {
   icons: {
     icon: 'favicon.svg',
   },
-  metadataBase: new URL('https://mhon.vercel.app'),
-  images:'https://mhon.vercel.app/image/meta/meta.jpg',
+  metadataBase: new URL('https://mhon.kr'),
+  images:'https://mhon.kr/image/meta/meta.jpg',
   openGraph: {
-    title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
+    title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
     description:
-      '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
+      '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
     url: 'https://mangjeun.kro.kr',
-    siteName: 'MHON.VERCEL.APP',
-    images:'https://mhon.vercel.app/image/meta/meta.jpg',
+    siteName: 'MHON.KR',
+    images:'https://mhon.kr/image/meta/meta.jpg',
     locale: 'ko_KR',
     type: 'website',
     type: 'article',
@@ -62,11 +62,14 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '마비노기 영웅전 검색 사이트 - MHON.VERCEL.APP',
-    description: '마비노기 영웅전 검색 사이트 MHON.VERCEL.APP, MHON.VERCEL.APP에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
+    title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
+    description: '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
     images: [
-      'https://mhon.vercel.app/image/meta/meta.jpg',
+      'https://mhon.kr/image/meta/meta.jpg',
     ],
+  },
+  other: {
+    'naver-site-verification': 'cb44eb47615eebe73f6002654b8a4f67de026df1',
   },
 };
 
@@ -74,8 +77,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={notoSans.className}>
-        <GoogleAnalytics gaId='G-PR6N8KMKLV' />
-        <GoogleTagManager gtmId='GTM-TGFCKBWT' />
+        <GoogleAnalytics gaId='G-D98PS2PM8B' />
+        <GoogleTagManager gtmId='GTM-N86SVFLC' />
           <div className="wrap">
             <Header />
             {children}

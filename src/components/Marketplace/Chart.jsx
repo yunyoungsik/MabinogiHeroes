@@ -13,7 +13,7 @@ import convertTime from '@/utils/convertTime';
 import { formatNumber } from '@/utils/formatNumber';
 import CustomToolTip from './CustomToolTip';
 
-const Chart = ({ error, item }) => {
+const Chart = ({ loading, error, item }) => {
   // ✅ 데이터 변환: a 배열을 min/max로 나눔
   const transformedData = useMemo(() => {
     if (!item || item.length === 0) return [];
@@ -23,11 +23,21 @@ const Chart = ({ error, item }) => {
     }));
   }, [item]);
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full min-h-[548px]" role="status" aria-live="polite">
+        <span className="loader" aria-label="로딩 중..."></span>
+      </div>
+    );
+  }
+
   if (error) {
     return (
-      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center">
+      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center" role="alert">
         <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
-        <p className="text-[1.125rem] text-customGrey500">해당하는 아이템의 검색 결과가 없습니다.</p>
+        <p className="text-[1.125rem] text-customGrey500">
+          해당하는 아이템의 검색 결과가 없습니다.
+        </p>
         <span className="text-[0.75rem] text-customGrey400">
           아이템 명을 다시 한번 확인하시고 재시도 해주세요.
         </span>
@@ -40,7 +50,7 @@ const Chart = ({ error, item }) => {
 
   if (!item || item.length === 0) {
     return (
-      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center">
+      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center" role="alert">
         <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
         <p className="text-[1.125rem] text-customGrey500">정확한 아이템명을 입력해 주세요.</p>
         <span className="text-[0.75rem] text-customGrey400">

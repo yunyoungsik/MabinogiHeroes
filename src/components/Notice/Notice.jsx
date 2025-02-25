@@ -16,11 +16,26 @@ const Notice = () => {
     }
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full min-h-main" role="status" aria-live="polite">
+        <span className="loader" aria-label="로딩 중..."></span>
+      </div>
+    );
+  }
+
   return (
-    <div className="sm:w-full md:max-w-[1280px] grid grid-cols-1 md:grid-cols-2 justify-between gap-2">
-      <NoticeItem loading={loading} notice={notice} patch={patch} />
-      <EventItem loading={loading} event={event} />
-    </div>
+    <section
+      className="sm:w-full md:max-w-[1280px] grid grid-cols-1 md:grid-cols-2 gap-2"
+      aria-labelledby="notice-section"
+    >
+      <h2 id="notice-section" className="sr-only">
+        공지사항 및 이벤트
+      </h2>
+
+      <NoticeItem notice={notice} patch={patch} />
+      <EventItem event={event} />
+    </section>
   );
 };
 

@@ -20,8 +20,13 @@ const Avatar = ({ data }) => {
     Badge: '배지',
     'Right Epaulet': '견장',
   };
-  const renderItem = (itemSlot, label, defaultValue = '-') => {
+
+  // 아바타 항목
+  const renderItem = (itemSlot) => {
     const foundItem = data.find((item) => item.item_equipment_slot_name === itemSlot);
+
+    if (!itemMapping[itemSlot]) return null;
+
     return (
       <li
         className="w-full h-full px-5 py-2 border border-solid border-customGrey500/50 rounded-[5px] bg-customGrey900"
@@ -33,66 +38,76 @@ const Avatar = ({ data }) => {
           </span>
         </div>
 
-        <div className="flex items-center gap-1 flex-wrap font-bold text-customOrange300/80 mb-1">
-          <p>{foundItem ? foundItem.item_name : defaultValue}</p>
-        </div>
-
-        {foundItem?.item_option.cash_item_color && (
-          <ul className="py-1 flex flex-col gap-1 text-[0.75rem] text-white">
-            {Object.entries(foundItem.item_option.cash_item_color).map(([key, color], index) => (
-              <li key={index} className="flex items-center gap-1">
-                <span className='text-customGrey500'>{`색상파트${index + 1}`}</span>
-
-                {/* 동적 배경색 적용 */}
-                <span
-                  className="w-4 h-4 rounded-full border border-customGrey500/30"
-                  style={{ backgroundColor: `rgb(${color})` }}
-                ></span>
-
-                <span>{color}</span>
-              </li>
-            ))}
-          </ul>
+        {foundItem && (
+          <div className="flex items-center gap-1 flex-wrap font-bold text-customOrange300/80 mb-1">
+            <p> {foundItem.item_name}</p>
+          </div>
         )}
+
+        {foundItem?.item_option?.cash_item_color &&
+          renderColors(foundItem.item_option.cash_item_color)}
       </li>
     );
   };
 
+  // 색상
+  const renderColors = (colors) => (
+    <ul className="py-1 flex flex-col gap-1 text-[0.75rem] text-white">
+      {Object.entries(colors).map(([key, color]) => (
+        <li key={key} className="flex items-center gap-1">
+          <span className="text-customGrey500">{`색상파트 ${key.split('_')[1]}`}</span>
+          <span
+            className="w-4 h-4 rounded-full border border-customGrey500/30"
+            style={{ backgroundColor: `rgb(${color})` }}
+            aria-label={`색상: ${color}`}
+          ></span>
+          <span>{color}</span>
+        </li>
+      ))}
+    </ul>
+  );
+
   if (!data) {
     return (
-      <div className="flex items-center justify-center w-full min-h-main">
-        <span className="loader"></span>
+      <div
+        className="flex items-center justify-center w-full min-h-main"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <span
+          className="animate-spin rounded-full h-8 w-8 border-t-2 border-customOrange300/80"
+          aria-label="로딩 중"
+        ></span>
       </div>
     );
   }
 
+  const itemSlots = [
+    'MakeUp',
+    'Hair',
+    'FacePainting',
+    'Lens',
+    'Badge',
+    'Right Epaulet',
+    'Body Shape',
+    'Inner Armor',
+    'BodyPainting',
+    'Avatar_Weapon',
+    'Avatar_Helm',
+    'Avatar_Tail',
+    'Avatar_Rear',
+    'Avatar_Tunic',
+    'Avatar_Gloves',
+    'Avatar_Pants',
+    'Avatar_Boots',
+  ];
+
   return (
-    <section className="w-full p-5 bg-white mb-2">
+    <section className="w-full p-5 mb-2 bg-white border border-solid border-customGrey500/30 rounded-sm">
       <h2 className="font-bold text-[1.2rem]">아바타</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {renderItem('MakeUp')}
-        {renderItem('Hair')}
-        {renderItem('FacePainting')}
-
-        {renderItem('Lens')}
-        {renderItem('Badge')}
-        {renderItem('Right Epaulet')}
-        
-        {renderItem('Body Shape')}
-        {renderItem('Inner Armor')}
-        {renderItem('BodyPainting')}
-
-
-
-
-        {renderItem('Avatar_Weapon')}
-        {renderItem('Avatar_Helm')}
-        {renderItem('Avatar_Tail')}
-        {renderItem('Avatar_Rear')}   
-        {renderItem('Avatar_Tunic')}
-        {renderItem('Avatar_Gloves')}
-        {renderItem('Avatar_Pants')}
-        {renderItem('Avatar_Boots')}
+        {itemSlots.map((slot) => renderItem(slot))}
       </ul>
     </section>
   );

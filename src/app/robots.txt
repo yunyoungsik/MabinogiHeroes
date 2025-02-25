@@ -19,4 +19,4 @@ Allow: /
 User-agent: archive.org_bot
 Allow: /
 
-Sitemap: https://mhon.vercel.app/sitemap.xml
+Sitemap: https://mhon.kr/sitemap.xml

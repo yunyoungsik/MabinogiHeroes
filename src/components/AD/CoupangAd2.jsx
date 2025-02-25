@@ -2,7 +2,7 @@ import React from 'react';
 
 const CoupangAd2 = ({ position }) => {
   return (
-    <div className={`ad__banner2 ${position} h-[600px] bg-customGrey900/30`}>
+    <div className={`ad__banner2 ${position} h-[600px]`}>
       {/* {position === 'left' ? (
           <iframe
             src="https://ads-partners.coupang.com/widgets.html?id=772740&template=carousel&trackingCode=AF0760997&subId=&width=300&height=600&tsource="

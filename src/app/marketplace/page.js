@@ -1,8 +1,8 @@
 import MarketplacePage from "@/components/Marketplace/MarketplacePage";
 
 export const metadata = {
-  title: '거래소 - 마비노기영웅전 캐릭터 검색 MHON.VERCEL.APP',
-  description: '마비노기영웅전 최근 1주 아이템 거래 기록, 골드 구매, 골드 판매 정보를 확인해보세요.',
+  title: '거래소 - 마비노기영웅전 캐릭터 검색 MHON.KR',
+  description: '마비노기 영웅전 거래소에서 아이템의 최신 시세와 거래 정보를 빠르게 확인하세요.',
 };
 
 export default function page() {
