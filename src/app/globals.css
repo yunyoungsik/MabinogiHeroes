@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 .wrap {
   width: 100%;
   min-width: 320px;
@@ -26,6 +30,12 @@
 .grid-main {
   display: grid;
   grid-template-columns: 50px minmax(90px, 1fr) 70px;
+}
+
+/* header */
+.header__search svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* footer */

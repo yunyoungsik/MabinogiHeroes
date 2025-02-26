@@ -30,7 +30,7 @@ export const GET = async (req) => {
 
     return NextResponse.json({ enchant }, { status: 200 });
   } catch (error) {
-    console.error('Server Error:', error);
-    return NextResponse.json({ message: 'Server Error', error }, { status: 500 });
+    console.error('Enchant Error:', error);
+    return NextResponse.json({ message: 'Server Error'}, { status: 500 });
   }
 };

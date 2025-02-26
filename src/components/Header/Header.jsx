@@ -19,7 +19,7 @@ const Header = () => {
           </Link>
 
           {pathName !== '/' && (
-            <div className="h-[30px] hidden md:block py-1 px-2 bg-customGrey300 rounded-3xl" role="search">
+            <div className="header__search hidden md:block h-[30px] py-1 px-2 text-sm bg-customGrey300 rounded-3xl" role="search">
               <Search />
             </div>
           )}
@@ -28,7 +28,7 @@ const Header = () => {
         </div>
 
         {pathName !== '/' && (
-          <div className="relative z-0 md:hidden w-full px-2 pb-2 bg-mainColor" role="search">
+          <div className="md:hidden relative z-0 w-full px-2 pb-2 bg-mainColor" role="search">
             <div className="h-[40px] bg-customGrey300 rounded-sm">
               <Search />
             </div>

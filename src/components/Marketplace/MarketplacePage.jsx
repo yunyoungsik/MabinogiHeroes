@@ -55,7 +55,7 @@ const MarketplacePage = () => {
 
           {/* 거래소 섹션 */}
           <section
-            className="w-full h-full p-1 flex-1 flex flex-col bg-white"
+            className="w-full h-full p-6 pb-3 flex-1 flex flex-col bg-white border border-solid border-customGrey500/30 rounded-sm"
             aria-labelledby="marketplace-title"
           >
             <div className="w-full flex items-center justify-between">
@@ -76,12 +76,12 @@ const MarketplacePage = () => {
                   value={itemName}
                   onChange={(e) => setItemName(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="min-w-[250px] h-[40px] pl-[26px] bg-customGrey200 rounded-md"
+                  className="min-w-[250px] h-[40px] pl-[12px] pr-[32px] bg-customGrey200 rounded-md"
                 />
                 <button
                   onClick={handleSearch}
                   disabled={loading}
-                  className="absolute top-1/2 left-2 -translate-y-1/2"
+                  className="absolute top-1/2 right-2 -translate-y-1/2"
                   aria-label="검색"
                 >
                   <Search className="stroke-customGrey500 size-4" />

@@ -7,6 +7,10 @@ export const nav = [
     name: '거래소',
     href: '/marketplace',
   },
+  {
+    name: '공지',
+    href: '/notice',
+  },
 ];
 
 export const footerNav = [

@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import AuthCheck from '@/components/Auth/AuthCheck';
 
 const notoSans = Noto_Sans_KR({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ export const metadata = {
     title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
     description:
       '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
-    url: 'https://mangjeun.kro.kr',
+    url: 'https://mhon.kr',
     siteName: 'MHON.KR',
     images:'https://mhon.kr/image/meta/meta.jpg',
     locale: 'ko_KR',
@@ -68,9 +69,6 @@ export const metadata = {
       'https://mhon.kr/image/meta/meta.jpg',
     ],
   },
-  other: {
-    'naver-site-verification': 'cb44eb47615eebe73f6002654b8a4f67de026df1',
-  },
 };
 
 export default function RootLayout({ children }) {
@@ -80,6 +78,7 @@ export default function RootLayout({ children }) {
         <GoogleAnalytics gaId='G-D98PS2PM8B' />
         <GoogleTagManager gtmId='GTM-N86SVFLC' />
           <div className="wrap">
+            <AuthCheck />
             <Header />
             {children}
             <Footer />

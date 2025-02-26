@@ -21,7 +21,7 @@ const CharacterInfo = ({ basic, guild, leftTitle, fixedTitle }) => {
 
           {fixedTitle?.title_name !== '(Unknown)' && (
             <span className="font-bold text-[0.75rem] text-white mr-1">
-              {fixedTitle.title_name}
+              {fixedTitle?.title_name}
             </span>
           )}
         </div>

@@ -10,9 +10,12 @@ npm install axios<br/>
 npm install swiper<br />
 npm install lucide-react<br />
 npm install axios<br />
-npm install zustand
-npm i @next/third-parties
-npm i recharts
+npm install zustand<br />
+npm i @next/third-parties<br />
+npm i recharts<br />
+npm i mongoose<br />
+npm i jsonwebtoken<br />
+npm i bcryptjs 
 </details>
 
 ## 기능소개

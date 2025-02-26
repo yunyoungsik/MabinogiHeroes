@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { useEnchantStore } from '@/store/useEnchant';
+import { useEnchantStore } from '@/store/useEnchantStore';
 
 const Item = ({ data }) => {
   const { enchant, fetchEnchant } = useEnchantStore();
