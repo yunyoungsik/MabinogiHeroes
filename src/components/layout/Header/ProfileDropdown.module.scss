@@ -1,0 +1,57 @@
+@import '../../../assets/styles/base/mixins';
+
+.profileDropdown {
+  @include flex(unset, unset, column);
+  gap: var(--space-5);
+  position: absolute;
+  top: 40px;
+  right: 0;
+  z-index: var(--z-header);
+  min-width: 300px;
+  padding: var(--space-4);
+  background-color: var(--white-900);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--space-2);
+  box-shadow: var(--box-shadow-sm);
+
+  .profile {
+    @include flex(unset, unset, column);
+    gap: var(--space-1);
+    width: 100%;
+  }
+
+  .name {
+    @include flex(center, space-between, row);
+    gap: var(--space-1);
+    width: 100%;
+  }
+
+  .editBox {
+    @include flex(flex-end, unset, column);
+    gap: var(--space-1);
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: var(--space-1) var(--space-2);
+      background-color: var(--grey-100);
+    }
+  }
+
+  .button {
+    @include flex(flex-end, flex-end, row);
+    gap: var(--space-1);
+  }
+
+  .email {
+    @include flex(center, space-between, row);
+    font-size: var(--font-size-sm);
+    color: var(--grey-500);
+  }
+
+  .username {
+    @include flex(center, unset, row);
+    @include ellipsis(1);
+    font-weight: var(--font-weight-700);
+  }
+}

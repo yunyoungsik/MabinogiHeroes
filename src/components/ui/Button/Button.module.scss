@@ -1,0 +1,34 @@
+@import '../../../assets/styles/base/mixins';
+
+.textButton {
+  height: 32px;
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--grey-600);
+  border-radius: 16px;
+  @include transition-colors;
+
+  &.active {
+    font-weight: var(--font-weight-700);
+    color: var(--grey-900);
+    background-color: var(--grey-100);
+  }
+}
+
+.lineButton {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  word-break: keep-all;
+  color: var(--grey-500);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--space-1);
+  @include transition-colors;
+
+  &:hover {
+    background-color: var(--grey-100);
+  }
+}
+
+.iconButton {
+  padding: 0 var(--space-2);
+}

@@ -5,7 +5,6 @@ export const GET = async (request, { params }) => {
   try {
     await connectToDB();
 
-    // const notice = await Notice.findById(params.id).populate('creator');
     const notice = await Notice.findById(params.id);
     if (!notice) return new Response('Notice ID Not Defined Server Error', { status: 404 });
 

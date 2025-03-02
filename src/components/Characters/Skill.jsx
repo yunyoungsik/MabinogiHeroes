@@ -18,7 +18,7 @@ const Skill = ({ data }) => {
   }
   return (
     <section
-      className="w-full p-5 mb-2 bg-white border border-solid border-customGrey500/30 rounded-sm"
+      className="w-full px-3 pt-5 md:p-5 mb-2 bg-white border border-solid border-customGrey500/30 rounded-sm"
       aria-labelledby="skill-section-title"
     >
       <h2 className="font-bold px-5 text-[1.2rem]">스킬</h2>

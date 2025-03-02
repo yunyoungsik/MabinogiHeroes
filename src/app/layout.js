@@ -1,9 +1,19 @@
-import { Noto_Sans_KR } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { Noto_Sans_KR } from 'next/font/google';
+import localFont from 'next/font/local';
+// compoenents
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
 import AuthCheck from '@/components/Auth/AuthCheck';
+import './globals.css';
+import '@/assets/styles/main.scss'
+
+const pretendard = localFont({
+  src: '../assets/fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+});
 
 const notoSans = Noto_Sans_KR({
   subsets: ['latin'],
@@ -13,9 +23,12 @@ const notoSans = Noto_Sans_KR({
 
 export const metadata = {
   generator: 'Next.js',
-  title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
-  description: '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
-  keywords: ['마비노기영웅전, 마영전, 마비노기영웅전 검색, 마비노기영웅전 검색 사이트, 마영전 검색, 마영전 검색 사이트, 마비노기영웅전 랭킹, 마영전 랭킹'],
+  title: 'MHON.KR - 마비노기영웅전 캐릭터 검색 및 랭킹, 거래소 정보',
+  description:
+    '마마비노기 영웅전 캐릭터 검색, 실시간 랭킹, 거래소 시세를 한눈에 확인하세요. 최신 정보로 빠르게 원하는 데이터를 찾아보세요.',
+  keywords: [
+    '마비노기영웅전, 마영전, 마비노기영웅전 검색, 마비노기영웅전 검색 사이트, 마영전 검색, 마영전 검색 사이트, 마비노기영웅전 랭킹, 마영전 랭킹, 마비노기영웅전 거래소, 마영전 거래소',
+  ],
   authors: [{ name: 'Yun' }],
   creator: [{ name: 'Yun' }],
   publisher: [{ name: 'Yun' }],
@@ -26,14 +39,14 @@ export const metadata = {
     icon: 'favicon.svg',
   },
   metadataBase: new URL('https://mhon.kr'),
-  images:'https://mhon.kr/image/meta/meta.jpg',
+  images: 'https://mhon.kr/image/meta/meta.jpg',
   openGraph: {
-    title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
+    title: 'MHON.KR - 마비노기영웅전 캐릭터 검색 및 랭킹, 거래소 정보',
     description:
-      '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
+      '마마비노기 영웅전 캐릭터 검색, 실시간 랭킹, 거래소 시세를 한눈에 확인하세요. 최신 정보로 빠르게 원하는 데이터를 찾아보세요.',
     url: 'https://mhon.kr',
     siteName: 'MHON.KR',
-    images:'https://mhon.kr/image/meta/meta.jpg',
+    images: 'https://mhon.kr/image/meta/meta.jpg',
     locale: 'ko_KR',
     type: 'website',
     type: 'article',
@@ -63,26 +76,25 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '마비노기 영웅전 검색 사이트 MHON.KR - 캐릭터 검색, 랭킹, 거래소',
-    description: '마비노기 영웅전 검색 사이트 MHON.KR, MHON.KR에서 캐릭터를 검색하고 다양한 정보와 랭킹을 한눈에 확인하세요.',
-    images: [
-      'https://mhon.kr/image/meta/meta.jpg',
-    ],
+    title: 'MHON.KR - 마비노기영웅전 캐릭터 검색 및 랭킹, 거래소 정보',
+  description:
+    '마마비노기 영웅전 캐릭터 검색, 실시간 랭킹, 거래소 시세를 한눈에 확인하세요. 최신 정보로 빠르게 원하는 데이터를 찾아보세요.',
+    images: ['https://mhon.kr/image/meta/meta.jpg'],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={notoSans.className}>
-        <GoogleAnalytics gaId='G-D98PS2PM8B' />
-        <GoogleTagManager gtmId='GTM-N86SVFLC' />
-          <div className="wrap">
-            <AuthCheck />
-            <Header />
-            {children}
-            <Footer />
-          </div>
+      <body className={` ${pretendard.className}`}>
+        <GoogleAnalytics gaId="G-D98PS2PM8B" />
+        <GoogleTagManager gtmId="GTM-N86SVFLC" />
+        <div className="wrap">
+          <AuthCheck />
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

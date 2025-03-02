@@ -5,7 +5,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <div className="max-w-[800px] w-full h-full mx-auto bg-white">
       <form onSubmit={handleSubmit} className='w-full h-full flex flex-col text-lg'>
-        <label htmlFor="post__title" className='p-6 border- border-b border-customGrey500/30'>
+        <label htmlFor="post__title" className='p-3 md:p-6 border- border-b border-customGrey500/30'>
           <span className="sr-only">제목</span>
           <input
             id="post__title"
@@ -19,7 +19,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           />
         </label>
 
-        <label htmlFor="post__desc" className="p-6 border- border-b border-customGrey500/30">
+        <label htmlFor="post__desc" className="p-3 md:p-6 border- border-b border-customGrey500/30">
           <span className="sr-only">글을 작성해주세요.</span>
           <textarea
             id="post__desc"
@@ -32,12 +32,12 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           />
         </label>
 
-        <div className="p-6 flex items-center justify-end">
-          <div className="flex items-center gap-2 text-sm text-customGrey500">
-            <Link href="/notice" className="px-2 py-1 transition-colors border border-solid border-customGrey500/30 rounded-sm hover:border-customGrey500 hover:bg-customGrey100">
+        <div className="p-3 md:p-6 flex items-center justify-end">
+          <div className="flex items-center gap-2">
+            <Link href="/notice" className="py-2 px-4 text-sm text-customGrey500 transition-colors border border-solid border-customGrey500/30 rounded-sm hover:border-customGrey500 hover:bg-customGrey100">
               취소
             </Link>
-            <button type="submit" disabled={submitting} className="px-2 py-1 transition-colors border border-solid border-customGrey500/30 rounded-sm hover:border-customGrey500 hover:bg-customGrey100">
+            <button type="submit" disabled={submitting} className="py-2 px-4 text-sm text-customGrey500 transition-colors border border-solid border-customGrey500/30 rounded-sm hover:border-customGrey500 hover:bg-customGrey100">
               {submitting ? `${type}중` : type}
             </button>
           </div>

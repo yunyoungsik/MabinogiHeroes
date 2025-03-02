@@ -1,4 +1,4 @@
-import AuthPage from "@/components/Auth/AuthPage";
+import AuthPage from "@/components/Auth/Auth";
 
 export const metadata = {
   title: '로그인/회원가입 - 마비노기영웅전 캐릭터 검색 MHON.KR',
@@ -7,8 +7,6 @@ export const metadata = {
 
 export default async function page() {
   return (
-    <main className='relative w-full min-h-main bg-mainColor'>
-      <AuthPage />
-    </main>
+   <AuthPage />
   )
 }

@@ -2,13 +2,14 @@ import { create } from 'zustand';
 import { axiosInstance } from '@/lib/axios';
 
 export const useRankingStore = create((set, get) => ({
-  loading: false,
+  liveLoading: false,
+  hallLoading: false,
   rankings: { ad: [], ap: [] },
   hallOfHonors: {ad: [], ap: []},
 
   fetchRanking: async ({ type, page }) => {
     try {
-      set({ loading: true });
+      set({ liveLoading: true });
       const res = await axiosInstance.get(`/ranking?type=${type}&page=${page}`);
       set((state) => ({
         rankings: {
@@ -19,13 +20,13 @@ export const useRankingStore = create((set, get) => ({
     } catch (error) {
       console.error('fetchUser Error:', error);
     } finally {
-      set({ loading: false });
+      set({ liveLoading: false });
     }
   },
 
   fetchHallOfHonors: async ({ type }) => {
     try {
-      set({ loading: true });
+      set({ hallLoading: true });
       const res = await axiosInstance.get(`/hall-of-honor?type=${type}`);
       set((state) => ({
         hallOfHonors: {
@@ -36,7 +37,7 @@ export const useRankingStore = create((set, get) => ({
     } catch (error) {
       console.error('fetchUser Error:', error);
     } finally {
-      set({ loading: false });
+      set({ hallLoading: false });
     }
   },
 }));

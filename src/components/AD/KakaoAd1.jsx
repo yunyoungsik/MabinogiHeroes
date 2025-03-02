@@ -15,7 +15,7 @@ const KakaoAd1 = ({ customClass }) => {
     }
   }, []);
   return (
-    <aside className={`ad__banner ${customClass}`} aria-label="광고 배너">
+    <aside className="ad__banner" aria-label="광고 배너">
       <div className="ad__kakao">
         <div className="ad__kakao_728_90">
           <ins

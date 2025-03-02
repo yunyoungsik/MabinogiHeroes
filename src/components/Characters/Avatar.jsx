@@ -104,7 +104,7 @@ const Avatar = ({ data }) => {
   ];
 
   return (
-    <section className="w-full p-5 mb-2 bg-white border border-solid border-customGrey500/30 rounded-sm">
+    <section className="w-full px-3 pt-5 md:p-5 mb-2 bg-white border border-solid border-customGrey500/30 rounded-sm">
       <h2 className="font-bold text-[1.2rem]">아바타</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {itemSlots.map((slot) => renderItem(slot))}

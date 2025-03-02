@@ -12,17 +12,17 @@ const PostNoticePagenation = ({ page, count, postView }) => {
   };
 
   return (
-    <div className="list__pagenation">
+    <nav className="py-3 md:py-4 flex items-center justify-center">
       <ul>
         {page > 1 && <li onClick={() => changePage(page - 1)}>&lt;</li>}
         {Array.from({ length: totalPage }, (_, i) => i + 1).map((pageNum) => (
-          <li key={pageNum} className={pageNum === page ? 'active' : ''} onClick={() => changePage(pageNum)}>
+          <li key={pageNum} className={`py-1 px-2 transition-colors border border-solid border-customGrey500/30 rounded-sm cursor-pointer ${pageNum === page ? ' text-white bg-customGrey900' : ''}`} onClick={() => changePage(pageNum)}>
             {pageNum}
           </li>
         ))}
-        {page < totalPage && <li onClick={() => changePage(page + 1)}>&gt;</li>}
+        {page < totalPage && <li onClick={() => changePage(page + 1)} className='py-1 px-2 border border-solid border-customGrey500/30 rounded-sm cursor-pointer'>&gt;</li>}
       </ul>
-    </div>
+    </nav>
   );
 };
 

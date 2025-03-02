@@ -46,7 +46,7 @@ export const usePostStore = create((set) => ({
   patchPost: async ({ postId, title, desc }) => {
     try {
       set({ loading: true });
-      const res = await axiosInstance.patch(`/notice/${postId}`, { title, desc });
+      const res = await axiosInstance.patch(`/post/${postId}`, { title, desc });
       return res;
     } catch (error) {
       console.error('patchPost Error:', error);
@@ -58,7 +58,7 @@ export const usePostStore = create((set) => ({
   deletePost: async (postId) => {
     try {
       set({ loading: true });
-      await axiosInstance.delete(`/notice/${postId}`);
+      await axiosInstance.delete(`/post/${postId}`);
     } catch (error) {
       console.error('deletePost Error:', error);
     } finally {

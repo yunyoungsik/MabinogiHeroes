@@ -8,7 +8,7 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-  <fieldset className="p-4 mb-2 flex flex-row items-center gap-4 bg-white border border-solid border-customGrey500/30 rounded-sm text-sm" aria-label="탭 내비게이션">
+  <fieldset className="p-3 md:p-5 my-2 md:mt-0 md:mb-2 flex flex-row items-center gap-4 bg-white border border-solid border-customGrey500/30 rounded-sm text-sm" aria-label="탭 내비게이션">
       <legend className="sr-only">장비, 아바타, 스킬 선택</legend>
       {tabs.map((tab) => (
         <button
@@ -17,7 +17,7 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
           onClick={() => setActiveTab(tab.id)}
           aria-pressed={activeTab === tab.id}
           className={`py-1 px-4 border border-solid border-customGrey500 rounded-2xl transition-colors ${
-            activeTab === tab.id ? 'text-white bg-customGrey900' : ''
+            activeTab === tab.id ? 'text-white bg-customGrey900' : 'hover:bg-customGrey100'
           }`}
         >
           {tab.label}

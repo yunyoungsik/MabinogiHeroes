@@ -10,7 +10,7 @@ import KakaoAd1 from '../AD/KakaoAd1';
 import KakaoAd2 from '../AD/KakaoAd2';
 import KakaoAd3 from '../AD/KakaoAd3';
 // utils
-import { useScrollHandler } from '@/utils/useScrollAd';
+import { useScrollHandler } from '@/hooks/useScrollAd';
 // store
 import { useUserStore } from '@/store/useUserStore';
 import CharacterInfo from './CharacterInfo';

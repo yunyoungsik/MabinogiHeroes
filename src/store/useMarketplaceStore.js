@@ -11,7 +11,7 @@ export const useMarketplaceStore = create((set, get) => ({
     const { cache } = get();
 
     try {
-      set({ loading: true, error: '' });
+      set({ loading: true, item: [], error: '' });
 
       // 캐시 확인 후 없으면 API 요청
       if (!cache[itemName]) {

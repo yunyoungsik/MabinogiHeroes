@@ -17,7 +17,7 @@ const KakaoAd3 = ({ position }) => {
 
   return (
     <>
-      <div className={`ad__banner2 ${position}`} aria-label="광고 배너">
+      <aside className={`ad__banner2 ${position}`} aria-label="광고 배너">
         <ins
           ref={adRef}
           className="kakao_ad_area"
@@ -26,7 +26,7 @@ const KakaoAd3 = ({ position }) => {
           data-ad-width="160"
           data-ad-height="600"
         ></ins>
-      </div>
+      </aside>
     </>
   );
 };

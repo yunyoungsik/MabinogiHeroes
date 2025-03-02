@@ -37,7 +37,7 @@ const Stat = ({ data }) => {
           >
             {data.slice(start, end).map((stat) => (
               <div
-                className="h-[2rem] flex items-center justify-between px-5"
+                className="h-[2rem] flex items-center justify-between px-3 md:px-5"
                 key={stat.stat_name}
                 role="listitem"
               >

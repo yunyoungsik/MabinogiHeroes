@@ -2,17 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
 
-.wrap {
-  width: 100%;
-  min-width: 320px;
-  height: 100%;
-  color: #191f28;
-  background-color: #fff;
-}
 
 .min-h-main {
   min-height: calc(100vh - 169px);
@@ -38,27 +28,16 @@
   height: 16px;
 }
 
-/* footer */
-.footer__navBox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 8px;
-}
-
-.footer__nav li {
+/* line */
+.list-line > li {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 
-.footer__nav li::after {
+.list-line > li::after {
   content: '';
   display: block;
   width: 1px;
@@ -66,96 +45,8 @@
   background-color: #8b95a1;
 }
 
-.footer__nav li:last-child:after {
+.list-line > li:last-child:after {
   display: none;
-}
-
-.footer__nav li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  word-break: keep-all;
-}
-
-.footer__nav.sns li a {
-  font-weight: bold;
-}
-
-.footer__nav li span {
-  max-height: 18px;
-}
-
-.footer__nav li svg {
-  width: 18px;
-  height: 18px;
-  fill: #8b95a1;
-}
-
-/* 광고 */
-.ad__banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ad__kakao_728_90 {
-  display: block;
-  max-height: 90px;
-}
-
-.ad__kakao_320_100 {
-  display: none;
-  max-height: 100px;
-}
-
-.ad__banner2 {
-  width: 160px;
-  height: 600px;
-  position: absolute;
-  top: 110px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column;
-  align-items: center;
-  /* border-radius: 5px; */
-  z-index: 99;
-  overflow: hidden;
-}
-
-.ad__banner2.left {
-  left: calc(50% - 820px);
-}
-
-.ad__banner2.right {
-  right: calc(50% - 820px);
-}
-
-.ad__banner2.fixed {
-  position: fixed;
-  top: 70px;
-}
-
-.ad__banner2.left.fixed {
-  left: calc(50% - 820px);
-}
-
-.ad__banner2.right.fixed {
-  right: calc(50% - 820px);
-}
-
-/* swiper */
-.swiper-pagination-bullet {
-  border-radius: 2px !important;
-  transition: all 0.3s ease-in-out;
-  transform-origin: right center;
-}
-.swiper-pagination-bullet-active {
-  border-radius: 2px !important;
-  background-color: #fff !important;
-  width: 30px !important;
 }
 
 /* 팝업 */
@@ -226,25 +117,7 @@
 }
 
 /* 로딩 */
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #8b95a1;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 /* 랭킹 */
 .bg-rank1 {
@@ -514,12 +387,6 @@
 }
 
 @media (max-width: 600px) {
-  .footer__navBox {
-    align-items: flex-start;
-    gap: 0.25rem;
-    flex-direction: column;
-  }
-
   .bg-laurel {
     background: none;
   }

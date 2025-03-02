@@ -9,7 +9,7 @@ import KakaoAd1 from '../AD/KakaoAd1';
 import KakaoAd2 from '../AD/KakaoAd2';
 import KakaoAd3 from '../AD/KakaoAd3';
 // utils
-import { useScrollHandler } from '@/utils/useScrollAd';
+import { useScrollHandler } from '@/hooks/useScrollAd';
 import timeAgo from '@/utils/timeAgo';
 // store
 import { usePostStore } from '@/store/usePostStore';
@@ -26,7 +26,7 @@ const PostNoticeList = ({ data, handleUserClick }) => {
           <col width="10%" />
         </colgroup>
         <thead className="text-sm border-y border-solid border-customGrey500">
-          <tr>
+          <tr className='break-keep'>
             <th className="py-2 font-normal">번호</th>
             <th className="py-2 font-normal">제목</th>
             <th className="py-2 font-normal">작성일</th>
@@ -38,7 +38,7 @@ const PostNoticeList = ({ data, handleUserClick }) => {
           {data?.map((post) => (
             <tr
               key={post._id}
-              className="text-xs text-center border-b border-solid border-b-gray-500/30"
+              className="text-xs text-center transition-colors border-b border-solid border-b-gray-500/30 hover:bg-customGrey100"
             >
               <td className="number">{post.noticeNum}</td>
               <td className="py-3 text-sm text-left">
@@ -125,11 +125,11 @@ const PostNotice = ({ page }) => {
             customClass={'max-w-[1280px] w-full h-[100px] mt-2 m-auto bg-customGrey900/30'}
           />
 
-          <div className="w-full h-full p-6 pb-3 border border-solid border-customGrey500/30 rounded-sm bg-white">
+          <div className="w-full h-full p-3 md:p-6 md:pb-3 border border-solid border-customGrey500/30 rounded-sm bg-white">
             <div className="w-full mb-5 flex items-center justify-between">
-              <h2 className="inline-block py-2 px-3 text-[0.75rem] font-bold">공지사항</h2>
+              <h2 className="inline-block py-2 px-3 text-[0.75rem] font-bold break-keep">공지사항</h2>
               <div className="flex items-center gap-2">
-                <form htmlFor="notice__search" className="relative">
+                <form htmlFor="notice__search" className="relative max-w-[250px] flex-1">
                   <label htmlFor="notice__search" className="sr-only">
                     공지사항 검색
                   </label>
@@ -141,7 +141,7 @@ const PostNotice = ({ page }) => {
                     value={searchText}
                     onChange={handleSearchChange}
                     required
-                    className="min-w-[250px] h-[40px] pl-[12px] pr-[32px] bg-customGrey200 rounded-md"
+                    className="w-full h-[40px] pl-[12px] pr-[32px] bg-customGrey200 rounded-md"
                   />
                   <button
                     type="submit"
@@ -154,7 +154,7 @@ const PostNotice = ({ page }) => {
                 {authUser?.role === 'admin' && (
                   <Link
                     href="/notice-write"
-                    className="py-2 px-4 text-sm font-bold text-white transition-colors bg-customGrey900 hover:bg-customGrey800 rounded"
+                    className="py-2 px-4 text-sm font-bold text-white transition-colors bg-customGrey900 hover:bg-customGrey800 rounded-sm"
                   >
                     <span>글쓰기</span>
                   </Link>

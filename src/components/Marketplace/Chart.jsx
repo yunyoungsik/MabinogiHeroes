@@ -11,7 +11,10 @@ import {
 // utils
 import convertTime from '@/utils/convertTime';
 import { formatNumber } from '@/utils/formatNumber';
+// components
 import CustomToolTip from './CustomToolTip';
+import Loading from '@/components/ui/Loading';
+import styles from './Marketplace.module.scss';
 
 const Chart = ({ loading, error, item }) => {
   // ✅ 데이터 변환: a 배열을 min/max로 나눔
@@ -24,48 +27,42 @@ const Chart = ({ loading, error, item }) => {
   }, [item]);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center w-full min-h-[548px]" role="status" aria-live="polite">
-        <span className="loader" aria-label="로딩 중..."></span>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
     return (
-      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center" role="alert">
-        <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
-        <p className="text-[1.125rem] text-customGrey500">
-          해당하는 아이템의 검색 결과가 없습니다.
-        </p>
-        <span className="text-[0.75rem] text-customGrey400">
-          아이템 명을 다시 한번 확인하시고 재시도 해주세요.
-        </span>
-        <span className="text-[0.75rem] text-customGrey400">
-          공백(띄어쓰기)까지 정확히 입력해 주세요.
-        </span>
+      <div className={styles.error} role="alert">
+        <h2>MHON.KR</h2>
+        <p>해당하는 아이템의 검색 결과가 없습니다.</p>
+        <span>아이템 명을 다시 한번 확인하시고 재시도 해주세요.</span>
+        <span>공백(띄어쓰기)까지 정확히 입력해 주세요.</span>
       </div>
     );
   }
 
   if (!item || item.length === 0) {
     return (
-      <div className="min-h-[474px] flex-1 flex flex-col items-center justify-center text-center" role="alert">
-        <h2 className="text-[2rem] font-bold text-customGrey300">MHON.KR</h2>
-        <p className="text-[1.125rem] text-customGrey500">정확한 아이템명을 입력해 주세요.</p>
-        <span className="text-[0.75rem] text-customGrey400">
-          아이템명을 공백(띄어쓰기)까지 정확히 입력해 주세요.
-        </span>
-        <span className="text-[0.75rem] text-customGrey400">
-          아이템명이 올바른지 다시 한번 확인해 주세요.
-        </span>
+      <div className={styles.error} role="alert">
+        <h2>MHON.KR</h2>
+        <p>정확한 아이템명을 입력해 주세요.</p>
+        <span>아이템명을 공백(띄어쓰기)까지 정확히 입력해 주세요.</span>
+        <span>아이템명이 올바른지 다시 한번 확인해 주세요.</span>
       </div>
     );
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%" className="min-h-[474px] flex-1">
+    <ResponsiveContainer width="100%" height="100%" className={styles.chart}>
       <AreaChart data={transformedData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+        {/* 그라데이션 */}
+        <defs>
+          <linearGradient id="averagePriceGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#a234c7" stopOpacity={0.8} />
+            <stop offset="100%" stopColor="#edccf8" stopOpacity={0.2} />
+          </linearGradient>
+        </defs>
+
         {/* 그리드 */}
         <CartesianGrid stroke="#E5E8EB" />
 
@@ -74,6 +71,7 @@ const Chart = ({ loading, error, item }) => {
           dataKey="date_update"
           axisLine={true}
           tick={{ fontSize: 12, dy: -1 }}
+          ticks={item.filter((_, index) => index % 12 === 0).map((item) => item.date_update)}
           tickFormatter={(value) => {
             const koreaTime = convertTime(value);
             const date = new Date(koreaTime);
@@ -100,11 +98,10 @@ const Chart = ({ loading, error, item }) => {
         <Area
           type="linear"
           dataKey="average_price"
-          // stroke="#03b26c"
+          stroke="#a234c7"
           strokeWidth={3}
-          stroke="#F44336"
-          fill="#F44336"
-          fillOpacity="0.1"
+          fill="url(#averagePriceGradient)"
+          fillOpacity="0.3"
           // dot={{ stroke: '#8884d8', strokeWidth: 2, r: 3 }}
           dot={false}
           name="평균가"
@@ -114,7 +111,8 @@ const Chart = ({ loading, error, item }) => {
         <Area
           type="linear"
           dataKey="max_price"
-          stroke="#F44336"
+          stroke="#f04452"
+          strokeWidth={2}
           fill="transparent"
           dot={false}
           name="최고가"
@@ -125,13 +123,14 @@ const Chart = ({ loading, error, item }) => {
           type="linear"
           dataKey="min_price"
           stroke="#3182f6"
+          strokeWidth={2}
           fill="transparent"
           dot={false}
           name="최저가"
         />
 
         {/* 볼리저 밴드 */}
-        <Area
+        {/* <Area
           type="monotone"
           dataKey="band"
           stroke="none"
@@ -140,7 +139,7 @@ const Chart = ({ loading, error, item }) => {
           connectNulls
           dot={false}
           activeDot={false}
-        />
+        /> */}
       </AreaChart>
     </ResponsiveContainer>
   );

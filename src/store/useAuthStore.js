@@ -50,11 +50,12 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  update: async (changeData) => {
+  modifyAccount : async (modifyData) => {
     try {
       set({ loading: true });
-      const res = await axiosInstance.put('/auth', changeData);
+      const res = await axiosInstance.patch('/auth', modifyData);
       set({ authUser: res.data.user });
+      return res.data;
     } catch (error) {
       console.error('update Error:', error);
     } finally {
@@ -62,13 +63,15 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  delete: async (userId) => {
+  deleteAccount: async (userId) => {
     try {
       set({ loading: true });
-      const res = await axiosInstance.delete(`/auth?userId=${userId}`); // 쿼리 파라미터로 전달
+      const res = await axiosInstance.delete('/auth', {
+        data: { userId },
+      });
       if (res.status === 200) set({ authUser: null });
     } catch (error) {
-      console.error('delete Error:', error);
+      console.error('deleteAccount Error:', error);
     } finally {
       set({ loading: false });
     }

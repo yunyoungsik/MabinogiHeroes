@@ -1,0 +1,60 @@
+@import '../../../assets/styles/base/mixins';
+
+.ranking {
+  @include flex(flex-start, unset, column);
+  gap: var(--space-10);
+  flex-grow: 0;
+  width: 200px;
+  line-height: var(--line-height-none);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .title {
+    @include flex(center, unset, row);
+    gap: var(--space-1);
+    padding: var(--space-2) 0;
+
+    h3 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-700);
+    }
+
+    span {
+      font-size: var(--font-size-sm);
+      color: var(--grey-600);
+    }
+  }
+
+  .nav {
+    @include flex(flex-start, unset, column);
+  }
+
+  .loadingBox {
+    width: 100%;
+    height: 160px;
+  }
+
+  .list {
+    width: 100%;
+
+    li {
+      @include flex(center, unset, row);
+      padding: var(--space-1) 0;
+      min-height: 32px;
+
+      strong {
+        color: var(--purple-500);
+        font-weight: var(--font-weight-700);
+        margin-right: var(--space-2);
+      }
+
+      a {
+        @include transition-colors;
+
+        &:hover {
+          font-weight: var(--font-weight-700);
+        }
+      }
+    }
+  }
+}
