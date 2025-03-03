@@ -1,5 +1,4 @@
 import Post from '@/components/Post/Post';
-import PostNotice from '@/components/Post/PostNotice';
 
 export const metadata = {
   title: '공지사항 - 최신 업데이트 및 소식 - MHON.KR',

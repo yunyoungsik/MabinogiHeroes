@@ -14,8 +14,8 @@
     gap: var(--space-10);
 
     @include media(sm) {
-      flex-direction: column
-    };
+      flex-direction: column;
+    }
   }
 
   .content {
@@ -26,6 +26,8 @@
   }
 
   .aside {
+    @include flex(flex-start, unset, column);
+    gap: var(--space-10);
     width: 200px;
     flex-grow: 0;
 

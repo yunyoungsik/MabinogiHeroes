@@ -3,57 +3,57 @@
 import React, { useState } from 'react';
 import { PenLine } from 'lucide-react';
 import styles from './ProfileDropdown.module.scss';
-import TextButton from '@/components/ui/Button/TextButton';
 import LineButton from '@/components/ui/Button/LineButton';
 import IconButton from '@/components/ui/Button/IconButton';
 
-const ProfileDropdown = ({
-  authUser,
-  editName,
-  setEditName,
-  handleLogout,
-  handleDelete,
-  handleModify,
-}) => {
-  const [toggleName, setToggleName] = useState(false);
+const ProfileDropdown = ({ authUser, handleLogout, handleDelete, handleModify }) => {
+  const { username = 'Unknown', email } = authUser || {};
+  const [editName, setEditName] = useState('');
+  const isEditing = editName !== '';
+
+  // 수정 모드 활성화
+  const handleEditClick = () => setEditName(username);
 
   return (
     <div className={styles.profileDropdown}>
-      <div className={styles.profile}>
-        <div className={styles.name}>
-          {!toggleName ? (
-            <>
-              <h2 className={styles.username}>{authUser?.username || 'Unknown'}</h2>
-              <IconButton handler={() => setToggleName(!toggleName)}>
+      {isEditing ? (
+        // ✅ 편집 모드 UI
+        <div className={styles.editBox}>
+          <input
+            value={editName}
+            placeholder="닉네임(2~10글자)"
+            minLength={2}
+            maxLength={10}
+            onChange={(e) => setEditName(e.target.value)}
+          />
+          <div className={styles.buttonGroup}>
+            <LineButton handler={() => setEditName('')}>취소</LineButton>
+            <LineButton handler={() => handleModify(editName)}>변경</LineButton>
+          </div>
+        </div>
+      ) : (
+        // ✅ 기본 모드 UI
+        <>
+          <div className={styles.profile}>
+            <div className={styles.name}>
+              <h2 className={styles.username}>{username}</h2>
+              <IconButton handler={handleEditClick} className={styles.edit}>
                 <PenLine size={16} stroke="#8b95a1" />
               </IconButton>
-            </>
-          ) : (
-            <div className={styles.editBox}>
-              <input
-                value={editName}
-                placeholder="닉네임(2~10글자)"
-                minLength={2}
-                maxLength={10}
-                onChange={(e) => setEditName(e.target.value)}
-              />
-
-              <div className={styles.button}>
-                <LineButton text="취소" handler={() => setToggleName(false)} />
-                <LineButton text="변경" handler={handleModify} />
-              </div>
             </div>
-          )}
-        </div>
-        <div className={styles.email}>
-          <p>{authUser?.email}</p>
-          <TextButton active={false} text="회원탈퇴" handler={handleDelete} />
-        </div>
-      </div>
+            <div className={styles.email}>
+              <p>{email}</p>
+              <button className={styles.delete} onClick={handleDelete}>
+                회원탈퇴
+              </button>
+            </div>
+          </div>
 
-      <div className={styles.button}>
-        <LineButton text="로그아웃" handler={handleLogout} />
-      </div>
+          <div className={styles.button}>
+            <LineButton handler={handleLogout}>로그아웃</LineButton>
+          </div>
+        </>
+      )}
     </div>
   );
 };

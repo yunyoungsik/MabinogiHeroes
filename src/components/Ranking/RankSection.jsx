@@ -5,7 +5,7 @@ import { Settings2 } from 'lucide-react';
 import RankDropdown from './Dropdown/RankDropdonw';
 import styles from './Rank.module.scss';
 import HallOfHonor from './HallOfHonor/HallOfHonor';
-import RankPagenation from './RankPagenation';
+import RankPagenation from './Pagenation/RankPagenation';
 import LiveRank from './Live/LiveRank';
 
 const RankSection = () => {

@@ -141,7 +141,7 @@ $breakpoint-xl: 1440px;
 @mixin transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 
 // 그리드
@@ -168,5 +168,19 @@ $breakpoint-xl: 1440px;
 
   &:last-child::after {
     display: none;
+  }
+}
+
+// 리스트 사이 점
+@mixin list-dot($size: var(--font-size-sm), $padding: var(--space-1), $color: var(--grey-600)) {
+  display: inline-flex;
+  align-items: center;
+
+  &:not(:last-child)::after {
+    content: '·';
+    display: inline-block;
+    padding: 0 $padding;
+    font-size: $size;
+    color: $color;
   }
 }

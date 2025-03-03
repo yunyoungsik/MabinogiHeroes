@@ -1,8 +1,8 @@
 'use client';
 
 import MarketplaceSection from './MarketplaceSection';
-import styles from './Marketplace.module.scss';
 import KakaoAdSet from '../AD/KakaoAdSet';
+import styles from './Marketplace.module.scss';
 
 const Marketplace = () => {
   return (

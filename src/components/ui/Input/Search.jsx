@@ -18,7 +18,7 @@ const Search = () => {
 
   return (
     <form onSubmit={handleSearch} className={styles.search}>
-      <label htmlFor="search" className="sr-only">
+      <label htmlFor="search">
         캐릭터명 검색
       </label>
       <input
@@ -30,11 +30,10 @@ const Search = () => {
         onChange={(e) => setName(e.target.value)}
       />
       <button
-        className="absolute top-[50%] right-2 translate-y-[-50%] bg-transparent text-customGrey500"
         type="submit"
         aria-label="검색"
       >
-        <SearchIcon className="w-5 h-5" />
+        <SearchIcon size={16} stroke="#8b95a1" />
       </button>
     </form>
   );

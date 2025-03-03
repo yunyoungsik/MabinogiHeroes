@@ -45,11 +45,12 @@
     @include transition-colors;
     padding: var(--space-2);
     text-align: center;
+    font-weight: var(--font-weight-500);
     color: var(--grey-600);
 
     &:hover,
     &.active {
-      font-weight: 700;
+      font-weight: var(--font-weight-700);
       color: var(--purple-500);
     }
   }

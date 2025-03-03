@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import styles from './Rank.module.scss';
+import styles from './RankPagenation.module.scss';
 
 const RankPagenation = ({ localPage, setLocalPage, maxPage }) => {
   // 페이지 변경 핸들러

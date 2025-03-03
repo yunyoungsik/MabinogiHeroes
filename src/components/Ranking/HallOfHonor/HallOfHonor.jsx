@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 // store
 import { useRankingStore } from '@/store/useRankingStore';
 // components
-import RankLayout from '../RankLayout';
+import RankLayout from '../RankLayout/RankLayout';
 import Loading from '@/components/ui/Loading';
 
 const HallOfHonor = ({type, localPage}) => {

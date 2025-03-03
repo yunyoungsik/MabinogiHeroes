@@ -1,24 +1,25 @@
-import Link from 'next/link';
-import styles from '../Post.module.scss';
+import styles from './Category.module.scss';
 
-const Category = () => {
+const categories = [
+  { id: 'mhNotice', label: '공지사항' },
+  { id: 'notice', label: '본섭공지' },
+  { id: 'patchnote', label: '패치노트' },
+  { id: 'event', label: '이벤트' },
+];
+
+const Category = ({ cate, setCate }) => {
   return (
     <nav className={styles.nav}>
-      <ul>
-        <li>
-          <button>공지사항</button>
+    <ul>
+      {categories.map(({ id, label }) => (
+        <li key={id}>
+          <button onClick={() => setCate(id)} className={`${styles.button} ${cate === id ? styles.active : ''}`}>
+            {label}
+          </button>
         </li>
-        <li>
-          <button>본섭공지</button>
-        </li>
-        <li>
-          <button>패치노트</button>
-        </li>
-        <li>
-          <button>이벤트</button>
-        </li>
-      </ul>
-    </nav>
+      ))}
+    </ul>
+  </nav>
   );
 };
 

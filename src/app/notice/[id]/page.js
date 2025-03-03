@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import PostView from '@/components/Post/PostView';
 import { connectToDB } from '@/lib/database';
 import Notice from '@/models/Notice';
+import PostView from '@/components/Post/View/PostView';
 
 export async function generateMetadata({ params }) {
   if (!params?.id || !mongoose.isValidObjectId(params.id)) {
@@ -41,9 +41,5 @@ export async function generateMetadata({ params }) {
 export default function page({ params }) {
   const postId = params.id;
 
-  return (
-    <main className="relative w-full min-h-main bg-mainColor">
-      <PostView postId={postId} />
-    </main>
-  );
+  return <PostView postId={postId} />;
 }

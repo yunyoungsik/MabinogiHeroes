@@ -166,8 +166,11 @@
   --footer-height: 145px;
   --m-footer-height: 123px;
 
+  /* 폰트 */
+  --font-pretendard: font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
   /* 폰트 셋팅 */
-  font-family: var(--font-size-base), sans-serif;
+  font-family: var(--font-pretendard), sans-serif;
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   font-weight: var(--font-weight-400);

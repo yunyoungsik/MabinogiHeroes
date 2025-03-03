@@ -67,11 +67,12 @@
     margin-top: var(--space-4);
     font-size: var(--font-size-sm);
     color: var(--white-900);
-    background-color: var(--grey-900);
+    background-color: var(--purple-500);
     border: none;
+    border-radius: var(--space-1);
 
     &:hover {
-      background-color: var(--purple-800);
+      background-color: var(--purple-600);
     }
 
     &:disabled {

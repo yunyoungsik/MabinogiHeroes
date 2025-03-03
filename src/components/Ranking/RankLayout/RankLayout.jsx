@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './Rank.module.scss';
+import styles from './RankLayout.module.scss';
 
 const RankLayout = ({ rankType, type, data }) => {
   return (
@@ -51,7 +51,7 @@ const RankLayout = ({ rankType, type, data }) => {
 
               {/* 닉네임 */}
               <td className={styles.name}>
-                <Link href={`/user/${user.character_name}`} className="hover:underline">
+                <Link href={`/user/${user.character_name}`}>
                   {user.character_name}
                 </Link>
               </td>

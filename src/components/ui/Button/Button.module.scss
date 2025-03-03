@@ -2,7 +2,7 @@
 
 .textButton {
   height: 32px;
-  padding: 0 var(--space-2);
+  padding: 0 var(--space-3);
   font-size: var(--font-size-sm);
   color: var(--grey-600);
   border-radius: 16px;
@@ -15,20 +15,43 @@
   }
 }
 
+.linkLineButton,
 .lineButton {
-  padding: var(--space-1) var(--space-2);
+  @include transition-colors;
+  padding: var(--space-1) var(--space-3);
   font-size: var(--font-size-sm);
   word-break: keep-all;
   color: var(--grey-500);
   border: 1px solid var(--grey-200);
   border-radius: var(--space-1);
-  @include transition-colors;
 
   &:hover {
+    color: var(--grey-500);
     background-color: var(--grey-100);
   }
 }
 
+.linkColorButton,
+.colorButton {
+  @include transition-colors;
+  font-size: var(--font-size-sm);
+  border: none;
+  border-radius: var(--space-1);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: var(--hover-bg-color) !important;
+    color: var(--hover-color) !important;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+
 .iconButton {
-  padding: 0 var(--space-2);
+  padding: 0 var(--space-3);
 }

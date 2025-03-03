@@ -1,9 +1,27 @@
-.wrap {
-  width: 100%;
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d6db #fff;
+}
+
+body,
+button,
+input,
+select,
+table,
+textarea {
+  font-family: var(--font-pretendard);
+}
+
+body {
   font-weight: 400;
   color: #191f28;
+}
+
+.wrap {
+  width: 100%;
   background-color: #fff;
 }
+
 
 // 로딩
 .loading {

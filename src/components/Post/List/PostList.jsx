@@ -7,9 +7,8 @@ import timeAgo from '@/utils/timeAgo';
 import Loading from '@/components/ui/Loading';
 import { useAuthStore } from '@/store/useAuthStore';
 import { usePostStore } from '@/store/usePostStore';
-import PostNoticePagenation from '../PostNoticePagenation';
-import styles from './PostList.module.scss';
 import PostPagenation from '../Pagenation/Pagenation';
+import styles from './PostList.module.scss';
 
 const PostNoticeList = ({ data, handleUserClick }) => {
   return (
@@ -17,16 +16,13 @@ const PostNoticeList = ({ data, handleUserClick }) => {
       <ul>
         {data?.map((post) => (
           <li key={post._id}>
-            {/* <td className="number">{post.noticeNum}</td> */}
             <Link href={`/notice/${post._id}`}>
-              <h2>
-                <span>{post.title}</span>
-              </h2>
+              <h2>{post.title}</h2>
 
               <div className={styles.info}>
-                <p >{timeAgo(post.createdAt)}</p>
+                <p>{timeAgo(post.createdAt)}</p>
                 <span>·</span>
-                <p >조회수 {post.view}</p>
+                <p>조회수 {post.view}</p>
               </div>
             </Link>
           </li>
@@ -38,7 +34,6 @@ const PostNoticeList = ({ data, handleUserClick }) => {
 
 const PostList = ({ page }) => {
   // 검색
-  const [cate, setCate] = useState(1);
   const [searchText, setSearchText] = useState('');
   const [searchTimout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
@@ -113,7 +108,7 @@ const PostList = ({ page }) => {
       ) : (
         <PostNoticeList data={allPosts} handleUserClick={handleUserClick} />
       )}
-      
+
       <PostPagenation page={page} count={count} postView={postView} />
     </section>
   );

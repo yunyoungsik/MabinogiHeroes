@@ -3,17 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // components
-import Form from './Form';
+import Form from '../Form/Form';
 // store
 import { useAuthStore } from '@/store/useAuthStore';
 import { usePostStore } from '@/store/usePostStore';
+import styles from './PostWrite.module.scss';
 
 const PostWrite = () => {
   const router = useRouter();
   const [post, setPost] = useState({ title: '', desc: '' });
   const [submitting, setIsSubmitting] = useState(false);
   const { writePost } = usePostStore();
-  const { authUser } =useAuthStore();
+  const { authUser } = useAuthStore();
 
   useEffect(() => {
     if (authUser?.role !== 'admin') {
@@ -22,7 +23,7 @@ const PostWrite = () => {
         router.push('/');
       }
     }
-  }, [authUser, router])
+  }, [authUser, router]);
 
   const createPost = async (e) => {
     e.preventDefault();
@@ -46,13 +47,15 @@ const PostWrite = () => {
   };
 
   return (
-    <Form
-      type="작성"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={createPost}
-    />
+    <main className={styles.main}>
+      <Form
+        type="작성"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={createPost}
+      />
+    </main>
   );
 };
 

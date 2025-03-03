@@ -1,13 +1,21 @@
 import styles from './Button.module.scss';
 
-const LineButton = ({ text, handler }) => {
+const LineButton = ({
+  children,
+  buttonType = 'button',
+  disabled = false,
+  handler,
+  padding = 'var(--space-1) var(--space-3)',
+}) => {
   return (
     <button
-      type="button"
+      type={buttonType}
       className={styles.lineButton}
+      style={{ padding }}
       onClick={handler}
+      disabled={disabled}
     >
-      <span>{text}</span>
+      <span>{children}</span>
     </button>
   );
 };

@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Form from './Form';
+import Form from '../Form/Form';
 import { useRouter } from 'next/navigation';
 import { usePostStore } from '@/store/usePostStore';
+import styles from './PostUpdate.module.scss';
 
 const PostNoticeUpdate = ({ postId }) => {
   const router = useRouter();
@@ -45,13 +46,15 @@ const PostNoticeUpdate = ({ postId }) => {
   };
 
   return (
-    <Form
-      type="수정"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePost}
-    />
+    <main className={styles.main}>
+      <Form
+        type="수정"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePost}
+      />
+    </main>
   );
 };
 

@@ -1,6 +1,5 @@
-import { TrendingDown, TrendingUp } from 'lucide-react';
-import styles from './Marketplace.module.scss';
 import { formatDate } from '@/utils/formatDate';
+import styles from './Chart.module.scss';
 
 const ChartHeader = ({ item }) => {
   if (!item || item.length < 2) return <h2 className={styles.logo}>MHON.KR</h2>;

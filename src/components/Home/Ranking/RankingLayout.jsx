@@ -5,7 +5,7 @@ import styles from './Ranking.module.scss';
 
 const RankingLayout = ({ loading, label, standard, type, setType, data }) => {
   return (
-    <section key={label}>
+    <section key={label} className={styles.ranking}>
       <div className={styles.title}>
         <h3>{label}</h3>
         <span>{standard}</span>

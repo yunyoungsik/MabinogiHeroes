@@ -1,5 +1,4 @@
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import { Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 // compoenents
 import Header from '@/components/layout/Header/Header';
@@ -11,14 +10,8 @@ import '@/assets/styles/main.scss'
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
   display: 'swap',
-  weight: '45 920',
+  weight: '100 900',
   variable: '--font-pretendard',
-});
-
-const notoSans = Noto_Sans_KR({
-  subsets: ['latin'],
-  variable: '--font-noto',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
 });
 
 export const metadata = {
@@ -86,7 +79,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={` ${pretendard.className}`}>
+      <body className={` ${pretendard.variable}`}>
         <GoogleAnalytics gaId="G-D98PS2PM8B" />
         <GoogleTagManager gtmId="GTM-N86SVFLC" />
         <div className="wrap">

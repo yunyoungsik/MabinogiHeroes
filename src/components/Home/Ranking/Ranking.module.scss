@@ -2,11 +2,8 @@
 
 .ranking {
   @include flex(flex-start, unset, column);
-  gap: var(--space-10);
   width: 100%;
   line-height: var(--line-height-none);
-  overflow-y: auto;
-  overflow-x: hidden;
 
   .title {
     @include flex(center, unset, row);
@@ -48,6 +45,8 @@
       }
 
       a {
+        @include ellipsis(1);
+        width: 145px;
         transition: all .3s ease-in-out;
 
         &:hover {

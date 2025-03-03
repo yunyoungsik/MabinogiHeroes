@@ -34,7 +34,6 @@ const PostPagenation = ({ page, count, postView }) => {
         {page < totalPage && (
           <li
             onClick={() => changePage(page + 1)}
-            className="py-1 px-2 border border-solid border-customGrey500/30 rounded-sm cursor-pointer"
           >
             <span>&gt;</span>
           </li>

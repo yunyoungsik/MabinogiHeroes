@@ -14,7 +14,7 @@ import { formatNumber } from '@/utils/formatNumber';
 // components
 import CustomToolTip from './CustomToolTip';
 import Loading from '@/components/ui/Loading';
-import styles from './Marketplace.module.scss';
+import styles from './Chart.module.scss';
 
 const Chart = ({ loading, error, item }) => {
   // ✅ 데이터 변환: a 배열을 min/max로 나눔
@@ -24,6 +24,14 @@ const Chart = ({ loading, error, item }) => {
       ...entry,
       band: [entry.min_price, entry.max_price],
     }));
+  }, [item]);
+
+   // ✅ Y축 범위 계산
+   const yAxisDomain = useMemo(() => {
+    if (!item || item.length === 0) return [0, 0];
+    const minPrice = Math.min(...item.map((entry) => entry.min_price));
+    const maxPrice = Math.max(...item.map((entry) => entry.max_price));
+    return [minPrice * 0.9, maxPrice * 1.1]; // -10%, +10% 적용
   }, [item]);
 
   if (loading) {
@@ -81,7 +89,8 @@ const Chart = ({ loading, error, item }) => {
 
         {/* Y축: 평균 가격 */}
         <YAxis
-          domain={([min, max]) => [min * 0.9, max * 1.1]}
+          // domain={([min, max]) => [min * 0.9, max * 1.1]}
+          domain={yAxisDomain}
           dataKey="average_price"
           tickLine={false}
           axisLine={true}

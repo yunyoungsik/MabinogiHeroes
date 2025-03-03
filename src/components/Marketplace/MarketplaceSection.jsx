@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Search } from 'lucide-react';
 // components
-import Chart from './Chart';
-import ChartHeader from './ChartHeader';
+import Chart from './Chart/Chart';
+import ChartHeader from './Chart/ChartHeader';
 import KakaoAd1 from '../AD/KakaoAd1';
 // store
 import { useMarketplaceStore } from '@/store/useMarketplaceStore';
