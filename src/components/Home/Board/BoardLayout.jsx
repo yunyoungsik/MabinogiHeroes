@@ -59,6 +59,8 @@ const BoardLayout = ({ loading, data }) => {
                   <p>공지</p>
                   <span>·</span>
                   <p>{timeAgo(item.createdAt)}</p>
+                  <span>·</span>
+                  <p>조회수 {item.view}</p>
                 </div>
               </Link>
             )}

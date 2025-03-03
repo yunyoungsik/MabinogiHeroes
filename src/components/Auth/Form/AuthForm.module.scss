@@ -39,6 +39,7 @@
       border: 1px solid var(--grey-300);
       border-radius: var(--space-1);
 
+      &:hover,
       &:focus {
         outline: none;
         border-color: var(--purple-500);

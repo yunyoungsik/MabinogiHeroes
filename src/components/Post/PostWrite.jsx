@@ -15,7 +15,14 @@ const PostWrite = () => {
   const { writePost } = usePostStore();
   const { authUser } =useAuthStore();
 
-  if(authUser?.role !== 'admin') return router.push('/');
+  useEffect(() => {
+    if (authUser?.role !== 'admin') {
+      if (typeof window !== 'undefined') {
+        // 브라우저 환경에서만 라우터를 사용할 수 있습니다.
+        router.push('/');
+      }
+    }
+  }, [authUser, router])
 
   const createPost = async (e) => {
     e.preventDefault();

@@ -29,7 +29,7 @@ export async function POST(req, res) {
     }
 
     // 닉네임 유효성 검사
-    if (!isValidName(name)) {
+    if (!isValidName(username)) {
       return NextResponse.json(
         { success: false, message: '닉네임은 2~10자의 영문, 숫자, 한글, 밑줄만 허용됩니다.' },
         { status: 400 }
@@ -37,7 +37,7 @@ export async function POST(req, res) {
     }
 
     // 닉네임 중복 확인
-    const existingUser = await User.findOne({ username: name });
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
       return NextResponse.json(
         { success: false, message: '이미 사용 중인 닉네임입니다.' },

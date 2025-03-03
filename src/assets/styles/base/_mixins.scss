@@ -30,10 +30,6 @@ $breakpoint-xl: 1440px;
   }
 }
 
-@mixin min-h-100vh {
-  min-height: calc(100vh - (60px + 105px));
-}
-
 // 컨테이너
 @mixin container {
   max-width: var(--container-width);

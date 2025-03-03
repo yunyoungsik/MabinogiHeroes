@@ -17,7 +17,7 @@ const Board = () => {
     if (notice.length === 0 || patch.length === 0) {
       fetchNotice();
     }
-  }, []);
+  }, [fetchNotice, notice.length, patch.length]);
 
   const combinedNoticePatch = [
     ...notice.map((item) => ({ ...item, type: item.type || 'notice' })),
@@ -31,7 +31,7 @@ const Board = () => {
     if (allPosts.length === 0) {
       fetchPosts(1);
     }
-  }, []);
+  }, [allPosts.length, fetchPosts]);
 
   const sliceNotice = allPosts?.slice(0, 5);
 

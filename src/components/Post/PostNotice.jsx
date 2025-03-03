@@ -69,7 +69,7 @@ const PostNotice = ({ page }) => {
 
   useEffect(() => {
     fetchPosts(page);
-  }, [page]);
+  }, [page, fetchPosts]);
 
   const filterNotice = (searchtext) => {
     const regex = new RegExp(searchtext, 'i');

@@ -87,6 +87,7 @@ const MarketplaceSection = () => {
               <input
                 id="item-search"
                 type="text"
+                autoComplete='off'
                 placeholder="아이템명을 입력하세요."
                 value={itemName}
                 onChange={(e) => setItemName(e.target.value)}

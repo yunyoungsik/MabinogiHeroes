@@ -20,7 +20,7 @@ const LiveRank = ({ type, localPage }) => {
     if (!rankings[type]?.[chunkIndex] && chunkIndex * chunkSize < maxItems) {
       fetchRanking({ type, page: chunkIndex });
     }
-  }, [type, chunkIndex]);
+  }, [type, chunkIndex, fetchRanking, maxItems, rankings]);
 
   // 해당 type의 데이터 가져오기
   const rankingList = type === 0 ? rankings.ad : rankings.ap;

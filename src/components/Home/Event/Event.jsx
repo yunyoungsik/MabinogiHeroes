@@ -18,7 +18,7 @@ const Event = () => {
     if (event?.length === 0) {
       fetchNotice();
     }
-  }, []);
+  }, [fetchNotice, event?.length]);
 
   if (loading || event?.length === 0) {
     return (

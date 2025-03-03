@@ -3,8 +3,7 @@
 .ranking {
   @include flex(flex-start, unset, column);
   gap: var(--space-10);
-  flex-grow: 0;
-  width: 200px;
+  width: 100%;
   line-height: var(--line-height-none);
   overflow-y: auto;
   overflow-x: hidden;
@@ -49,7 +48,7 @@
       }
 
       a {
-        @include transition-colors;
+        transition: all .3s ease-in-out;
 
         &:hover {
           font-weight: var(--font-weight-700);
