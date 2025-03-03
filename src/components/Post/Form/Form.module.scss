@@ -37,19 +37,20 @@
 
     textarea {
       width: 100%;
-      min-height: 460px;
+      min-height: 400px;
       padding: var(--space-6) var(--space-4);
       background-color: var(--grey-100);
       resize: none;
       scrollbar-width: thin;
 
       @include media(sm) {
-        padding: var(--psace-3) var(--space-2);
+        padding: var(--psace-3) var(--space-2
+        );
       }
     }
 
     .button {
-      @include flex(center, unset, row);
+      @include flex(center, flex-end, row);
       padding: var(--space-6) 0;
 
       @include media(sm) {

@@ -3,7 +3,7 @@ import styles from './Category.module.scss';
 const categories = [
   { id: 'mhNotice', label: '공지사항' },
   { id: 'notice', label: '본섭공지' },
-  { id: 'patchnote', label: '패치노트' },
+  { id: 'patch', label: '패치노트' },
   { id: 'event', label: '이벤트' },
 ];
 

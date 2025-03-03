@@ -48,7 +48,7 @@
 
   .buttons {
     .buttonGroup {
-      @include flex(center, unset, row);
+      @include flex(center, flex-end, row);
       gap: var(--space-2);
       padding: var(--space-10) 0;
     }
