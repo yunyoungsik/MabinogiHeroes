@@ -1,4 +1,5 @@
 import Character from '@/components/Characters/Character';
+import Character2 from '@/components/Characters/asdas/Character';
 
 export async function generateMetadata({ params }) {
   const name = params.name;
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }) {
 export default function page({ params }) {
   const { name } = params;
   return (
-    <Character name={name} />
+    // <Character name={name} />
+    <Character2 name={name} />
   );
 }

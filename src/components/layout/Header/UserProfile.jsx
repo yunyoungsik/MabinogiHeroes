@@ -68,7 +68,6 @@ const UserProfile = () => {
     if (hasConfirmed) {
       try {
         const res = await modifyAccount({ userId: authUser?.id, username: editName });
-        console.log(res)
         alert(`닉네임이 "${res.user.username}"(으)로 변경되었습니다.`);
         setEditName('');
         setToggleDropdown(false);

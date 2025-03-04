@@ -8,9 +8,10 @@ const ChartHeader = ({ item }) => {
   const firstPrice = item[0].average_price;
   const lastPrice = item[item.length - 1].average_price;
 
-  // 변화율 계산
-  const changePercentage = Math.round(((lastPrice - firstPrice) / firstPrice) * 100 * 100) / 100;
-  const isPositive = changePercentage >= 0;
+  // 변화량 및 변화율 계산
+  const changeAmount = lastPrice - firstPrice;
+  const changePercentage = Math.round((changeAmount / firstPrice) * 100 * 100) / 100;
+  const isPositive = changeAmount >= 0;
 
   return (
     <div className={styles.chartHeader}>
@@ -28,11 +29,9 @@ const ChartHeader = ({ item }) => {
       <div className={styles.changePercentage}>
         <p className={styles.date}>{formatDate(item[0].date_update)}보다</p>
         <p className={styles.change} style={{ color: isPositive ? 'red' : '#3182f6' }}>
-          {' '}
           <span>
             {isPositive ? '+' : '-'}
-            {(firstPrice - lastPrice).toLocaleString()}
-            골드
+            {Math.abs(changeAmount).toLocaleString()} 골드
           </span>
         </p>
         <p>

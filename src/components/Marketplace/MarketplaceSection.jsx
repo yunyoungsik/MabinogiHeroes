@@ -70,8 +70,6 @@ const MarketplaceSection = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  console.log(item)
-
   return (
     <section className={styles.marketplace}>
       <div className={styles.container}>
