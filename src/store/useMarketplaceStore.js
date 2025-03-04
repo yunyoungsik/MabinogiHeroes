@@ -5,6 +5,7 @@ export const useMarketplaceStore = create((set, get) => ({
   loading: false,
   error: '',
   item: [],
+  marketEnchant: [],
   cache: {}, // 캐싱 객체 추가
 
   fetchMarketplace: async ({ itemName }) => {
@@ -30,6 +31,18 @@ export const useMarketplaceStore = create((set, get) => ({
     } catch (error) {
       set({ error: `아이템을 찾는 중 에러가 발생했습니다.: ${error?.message || error}` });
       console.error('fetchMarketplace Error:', error);
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchEnchat: async () => {
+    try {
+      set({ loading: true });
+      const res = await axiosInstance.get(`/marketplace?itemName=인챈트 스크롤`);
+      set({ marketEnchant: res.data.item.item });
+    } catch (error) {
+      console.error('fetchEnchat Error:', error);
     } finally {
       set({ loading: false });
     }

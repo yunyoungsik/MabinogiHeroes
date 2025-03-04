@@ -8,6 +8,10 @@ export const nav = [
     href: '/marketplace',
   },
   {
+    name: '인챈트',
+    href: '/enchant',
+  },
+  {
     name: '공지',
     href: '/notice',
   },

@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import Loading from '@/components/ui/Loading';
 import styles from './RankLayout.module.scss';
 
-const RankLayout = ({ rankType, type, data }) => {
+const RankLayout = ({ loading, rankType, type, data }) => {
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <table className={styles.rankLayout}>
       <caption>

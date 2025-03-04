@@ -11,8 +11,6 @@ export async function generateMetadata({ params }) {
 export default function page({ params }) {
   const { name } = params;
   return (
-    <main className="relative w-full min-h-main bg-mainColor">
-      <Character name={name} />
-    </main>
+    <Character name={name} />
   );
 }

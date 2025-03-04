@@ -88,6 +88,7 @@
         border-radius: var(--space-1);
         box-shadow: var(--box-shadow-md);
         overflow-y: auto;
+        scrollbar-width: thin;
       
         strong {
           font-size: var(--font-size-sm);

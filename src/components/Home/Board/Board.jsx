@@ -3,10 +3,13 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+// components
 import BoardLayout from './BoardLayout';
+// store
 import { useNoticeStore } from '@/store/useNoticeStore';
-import styles from './Board.module.scss';
 import { usePostStore } from '@/store/usePostStore';
+// styles
+import styles from './Board.module.scss';
 
 const Board = () => {
   const { loading: noticeLoading, notice, patch, fetchNotice } = useNoticeStore();

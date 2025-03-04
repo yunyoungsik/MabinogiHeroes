@@ -1,22 +1,61 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { SearchIcon } from 'lucide-react';
+// utils
 import timeAgo from '@/utils/timeAgo';
 import convertTime from '@/utils/convertTime';
-import styles from './CateList.module.scss';
+// components
 import Loading from '@/components/ui/Loading';
+// store
 import { useNoticeStore } from '@/store/useNoticeStore';
+// styles
+import styles from '../List/PostList.module.scss';
+
+const PostCateList = ({ data, cate }) => {
+  return (
+    <div className={styles.list}>
+      <ul>
+        {data?.map((post) => (
+          <li key={post.url}>
+            <a href={post.url} target="_blank" rel="noopener noreferrer">
+              <h2>{post.title}</h2>
+
+              <div className={styles.info}>
+                {cate === 'event' ? (
+                  <p>
+                    {post.date_event_start && (
+                      <span>{convertTime(post.date_event_start).split(' ')[0]}</span>
+                    )}
+                    {post.date_event_start && post.date_event_end && <span>~</span>}
+                    {post.date_event_end && (
+                      <span>{convertTime(post.date_event_end).split(' ')[0]}</span>
+                    )}
+                  </p>
+                ) : (
+                  <p>{timeAgo(convertTime(post.date))}</p>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const CateList = ({ cate }) => {
+  const [searchText, setSearchText] = useState('');
+  const [searchedResults, setSearchedResults] = useState([]);
   const { loading, notice, patch, event, fetchNotice } = useNoticeStore();
 
-  // 마영전 공지
   useEffect(() => {
-    if (notice.length === 0 || patch.length === 0 || event.length === 0) {
+    if (!notice.length || !patch.length || !event.length) {
       fetchNotice();
     }
-  }, [fetchNotice, notice.length, patch.length, event.length]);
+  }, [fetchNotice, notice, patch, event]);
 
+  // cate에 따른 데이터 선택
   const data = useMemo(() => {
     switch (cate) {
       case 'notice':
@@ -30,44 +69,41 @@ const CateList = ({ cate }) => {
     }
   }, [cate, notice, patch, event]);
 
-  console.log(patch);
+  // 검색 기능 구현
+  useEffect(() => {
+    if (searchText) {
+      const searchResult = data.filter((item) =>
+        new RegExp(searchText, 'i').test(item.title)
+      );
+      setSearchedResults(searchResult);
+    } else {
+      setSearchedResults(data);
+    }
+  }, [searchText, data]);
 
-  if (loading || notice.length === 0 || patch.length === 0 || event.length === 0) {
-    return <Loading />;
-  }
+  if (loading) return <Loading />;
 
   return (
-    <div className={styles.list}>
-      <ul>
-        {data?.map((post) => (
-          <li key={post.url}>
-            <a href={post.url} target="_blank" rel="noopener noreferrer">
-              <h2>{post.title}</h2>
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <label htmlFor="notice__search">공지사항 검색</label>
+          <input
+            type="text"
+            placeholder="검색"
+            name="notice__search"
+            id="notice__search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button type="submit" aria-label="검색">
+            <SearchIcon size={16} stroke="#8b95a1" />
+          </button>
+        </form>
+      </div>
 
-              <div className={styles.info}>
-                {cate === 'event' ? (
-                  <>
-                    <p>
-                      {post.date_event_start && (
-                        <span>{convertTime(post.date_event_start).split(' ')[0]}</span>
-                      )}
-
-                      {post.date_event_start && post.date_event_end && <span>~</span>}
-
-                      {post.date_event_end && (
-                        <span>{convertTime(post.date_event_end).split(' ')[0]}</span>
-                      )}
-                    </p>
-                  </>
-                ) : (
-                  <p>{timeAgo(convertTime(post.date))}</p>
-                )}
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <PostCateList data={searchedResults} cate={cate} />
+    </section>
   );
 };
 

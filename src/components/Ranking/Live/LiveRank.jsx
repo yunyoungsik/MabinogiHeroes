@@ -3,8 +3,6 @@ import React, { useEffect, useMemo } from 'react';
 import { useRankingStore } from '@/store/useRankingStore';
 // components
 import RankLayout from '../RankLayout/RankLayout';
-import Loading from '@/components/ui/Loading';
-
 const LiveRank = ({ type, localPage }) => {
   const { loading, rankings, fetchRanking } = useRankingStore();
 
@@ -31,11 +29,7 @@ const LiveRank = ({ type, localPage }) => {
     return rankingList.slice(startIndex, startIndex + pageSize);
   }, [rankingList, localPage, pageSize]);
 
-  if (loading || currentData.length === 0) {
-    <Loading />;
-  }
-
-  return <RankLayout data={currentData} />;
+  return <RankLayout loading={loading} data={currentData} />;
 };
 
 export default LiveRank;

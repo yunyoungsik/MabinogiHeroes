@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import styles from './RankDropdown.module.scss';
+import styles from './EnchantDropdown.module.scss';
 
-const RankDropdown = ({ rankType, setRankType, setLocalPage, options }) => {
+const EnchantDropdown = ({ cate, setCate, options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -22,8 +22,7 @@ const RankDropdown = ({ rankType, setRankType, setLocalPage, options }) => {
   }, []);
 
   const handleSelect = (index) => {
-    setRankType(index);
-    setLocalPage(1); // 페이지 초기화
+    setCate(options[index]);
     setIsOpen(false);
   };
 
@@ -36,7 +35,7 @@ const RankDropdown = ({ rankType, setRankType, setLocalPage, options }) => {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <span>{options[rankType]}</span>
+        <span>{cate}</span>
         <ChevronDown />
       </button>
 
@@ -47,8 +46,7 @@ const RankDropdown = ({ rankType, setRankType, setLocalPage, options }) => {
               <button
                 type="button"
                 onClick={() => handleSelect(index)}
-                className={rankType === index ? styles.active : ''}
-                // aria-selected={rankType === index}
+                className={cate === label ? styles.active : ''}
               >
                 {label}
               </button>
@@ -60,4 +58,4 @@ const RankDropdown = ({ rankType, setRankType, setLocalPage, options }) => {
   );
 };
 
-export default RankDropdown;
+export default EnchantDropdown;

@@ -184,3 +184,31 @@ $breakpoint-xl: 1440px;
     color: $color;
   }
 }
+
+@mixin ballon() {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  left: 50%;
+  top: -53px;
+  text-align: center;
+  transform: translateX(-50%);
+  background: #484848;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 5.5px;
+  z-index: 999;
+  white-space: nowrap;
+
+  &:after {
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: '';
+    position: absolute;
+    top: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

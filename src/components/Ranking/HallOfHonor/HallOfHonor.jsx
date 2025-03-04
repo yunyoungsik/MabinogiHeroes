@@ -3,8 +3,6 @@ import React, { useEffect, useMemo } from 'react';
 import { useRankingStore } from '@/store/useRankingStore';
 // components
 import RankLayout from '../RankLayout/RankLayout';
-import Loading from '@/components/ui/Loading';
-
 const HallOfHonor = ({type, localPage}) => {
   const { loading, hallOfHonors, fetchHallOfHonors } = useRankingStore();
 
@@ -21,11 +19,7 @@ const HallOfHonor = ({type, localPage}) => {
     [rankingList, startIndex, endIndex]
   );
 
-  if (loading || currentData.length === 0) {
-    <Loading />;
-  }
-
-  return <RankLayout data={currentData} />;
+  return <RankLayout loading={loading} data={currentData} />;
 };
 
 export default HallOfHonor;

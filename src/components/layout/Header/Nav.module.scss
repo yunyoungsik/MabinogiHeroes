@@ -7,7 +7,7 @@
   width: 100%;
   height: auto;
 
-  @include media(sm) {
+  @include media(md) {
     position: absolute;
     top: 60px;
     right: 0;
@@ -28,7 +28,7 @@
   .list {
     @include flex(center, unset, row);
 
-    @include media(sm) {
+    @include media(md) {
       @include flex(center, center, column);
       gap: var(--space-1);
       width: 100%;
@@ -60,7 +60,7 @@
   display: none;
   padding: var(--space-2);
 
-  @include media(sm) {
+  @include media(md) {
     display: block;
   }
 

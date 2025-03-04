@@ -52,7 +52,7 @@ const PostList = ({ page }) => {
       setTimeout(() => {
         const searchResult = filterNotice(e.target.value);
         setSearchedResults(searchResult);
-      }, 500)
+      }, 300)
     );
   };
 

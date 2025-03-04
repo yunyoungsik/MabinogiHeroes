@@ -39,7 +39,7 @@ const MarketplaceSection = () => {
     }
 
     const filtered = itemData.reduce((acc, category) => {
-      const matchedItems = category.item.filter((i) => i.name.includes(itemName));
+      const matchedItems = category.items.filter((i) => i.name.includes(itemName));
 
       if (matchedItems.length) {
         acc.push({ cate: category.cate, items: matchedItems });
@@ -69,6 +69,8 @@ const MarketplaceSection = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  console.log(item)
 
   return (
     <section className={styles.marketplace}>
