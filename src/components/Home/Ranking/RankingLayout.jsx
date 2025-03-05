@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import TextButton from '@/components/ui/Button/TextButton';
-import Loading from '@/components/ui/Loading';
 import styles from './Ranking.module.scss';
+import Loading from '@/components/ui/Loading';
 
 const RankingLayout = ({ loading, label, standard, type, setType, data }) => {
   return (
@@ -22,19 +22,20 @@ const RankingLayout = ({ loading, label, standard, type, setType, data }) => {
           ))}
         </div>
       </nav>
-
-      {!data || data.length === 0 || loading ? (
-        <div className={styles.loadingBox}>{true && <Loading />}</div>
-      ) : (
-        <ul className={styles.list}>
-          {data?.map((item) => (
+      <ul className={styles.list}>
+        {loading || data.length === 0 ? (
+          <li>
+            <Loading />
+          </li>
+        ) : (
+          data?.map((item) => (
             <li key={item.ranking}>
               <strong>{item.ranking}</strong>
               <Link href={`/user/${item.character_name}`}>{item.character_name}</Link>
             </li>
-          ))}
-        </ul>
-      )}
+          ))
+        )}
+      </ul>
     </section>
   );
 };

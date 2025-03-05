@@ -20,9 +20,9 @@ const BoardLayout = ({ loading, data }) => {
     }
   };
 
-  if (loading || !data) {
+  if (loading || !data || data.length === 0) {
     return (
-      <div style={{ width: '320px', height: '287.5px' }}>
+      <div className={styles.boardLayout}>
         <Loading />
       </div>
     );

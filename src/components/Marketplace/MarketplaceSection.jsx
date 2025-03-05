@@ -11,6 +11,7 @@ import { useMarketplaceStore } from '@/store/useMarketplaceStore';
 // json
 import itemData from '@/data/item.json';
 import styles from './Marketplace.module.scss';
+import Loading from '../ui/Loading';
 
 const MarketplaceSection = () => {
   const searchRef = useRef(null);
@@ -70,6 +71,12 @@ const MarketplaceSection = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  if(loading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <section className={styles.marketplace}>
       <div className={styles.container}>
@@ -118,7 +125,7 @@ const MarketplaceSection = () => {
           </div>
 
           {/* 차트 컴포넌트 */}
-          <Chart loading={loading} error={error} item={item} />
+          <Chart error={error} item={item} />
         </div>
       </div>
     </section>

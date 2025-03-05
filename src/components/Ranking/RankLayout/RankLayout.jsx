@@ -6,6 +6,7 @@ const RankLayout = ({ loading, rankType, type, data }) => {
   if (loading) {
     return <Loading />;
   }
+  
   return (
     <table className={styles.rankLayout}>
       <caption>
@@ -16,7 +17,7 @@ const RankLayout = ({ loading, rankType, type, data }) => {
       <colgroup>
         <col width="15%" />
         <col />
-        <col width="20%" />
+        <col width="15%" />
       </colgroup>
 
       {/* 테이블 헤더 */}

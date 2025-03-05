@@ -5,6 +5,7 @@ import { Settings2 } from 'lucide-react';
 // components
 import EnchantLayout from './Layout/EnchantLayout';
 import EnchantDropdown from './Dropdown/EnchantDropdown';
+import Loading from '@/components/ui/Loading';
 // store
 import { useMarketplaceStore } from '@/store/useMarketplaceStore';
 // data
@@ -44,11 +45,27 @@ const EnchantSection = () => {
   const filteredEnchantList = enchantList.filter((item) => {
     const rankCheck = rank === '전체' || item.rank === rank;
     const presetCheck = preset === '전체' || item.preset === preset;
-    const slotCheck = slot === '전체' || (item.slot?.includes(slot));
-  
+    const slotCheck = slot === '전체' || item.slot?.includes(slot);
+
     return rankCheck && presetCheck && slotCheck;
   });
-  
+
+  if (loading) {
+    return (
+      <section
+        className={styles.section}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Loading />
+      </section>
+    );
+  }
 
   return (
     <section className={styles.section}>
@@ -62,12 +79,32 @@ const EnchantSection = () => {
           <span>필터</span>
         </div>
         <div className={styles.filterList}>
-          <EnchantDropdown cate={rank} setCate={setRank} options={['전체', '4', '5', '6', '7', '8', '9', 'A']} />
+          <EnchantDropdown
+            cate={rank}
+            setCate={setRank}
+            options={['전체', '4', '5', '6', '7', '8', '9', 'A']}
+          />
           <EnchantDropdown cate={preset} setCate={setPreset} options={['전체', '접두', '접미']} />
           <EnchantDropdown
             cate={slot}
             setCate={setSlot}
-            options={['전체', '주무기', '가슴', '머리', '다리', '손', '발', '보조장비', '반지(R)', '반지(L)', '허리띠', '귀걸이', '브로치', '목걸이', '아티팩트']}
+            options={[
+              '전체',
+              '주무기',
+              '가슴',
+              '머리',
+              '다리',
+              '손',
+              '발',
+              '보조장비',
+              '반지(R)',
+              '반지(L)',
+              '허리띠',
+              '귀걸이',
+              '브로치',
+              '목걸이',
+              '아티팩트',
+            ]}
           />
         </div>
       </div>

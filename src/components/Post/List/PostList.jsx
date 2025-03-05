@@ -75,7 +75,11 @@ const PostList = ({ page }) => {
   };
 
   if (loading) {
-    return <Loading />;
+    return (
+      <section className={styles.section}>
+        <Loading />
+      </section>
+    );
   }
 
   return (

@@ -9,11 +9,24 @@
     @include sr-only;
   }
 
+  .hideMobile {
+    @include media(xs) {
+      display: none;
+    }
+  }
+
+  .hideTablet {
+    @include media(sm) {
+      display: none;
+    }
+  }
+
   th {
     height: 40px;
     padding: var(--space-1);
     color: var(--grey-500);
     font-weight: var(--font-weight-600);
+    word-break: keep-all;
 
     &:nth-child(2) {
       text-align: left;
@@ -100,7 +113,9 @@
     @include ellipsis(1);
     font-weight: var(--font-weight-600);
     height: 50px;
-    // position: relative;
+    position: relative;
+    overflow: visible;
+    cursor: default;
 
     &:hover {
       .enchantStat {
@@ -108,12 +123,25 @@
       }
     }
 
+    .nameItem {
+      @include flex(center, unset, row);
+      gap: calc(var(--space-1) / 2);
+    }
+
     .enchantStat {
       display: none;
       position: absolute;
-      top: 100;
-      z-index: 999;
+      top: 100%;
+      left: 0;
+      transform: translateX(-25%);
+      z-index: var(--z-tooltip);
+      padding: var(--space-2);
+      font-size: var(--font-size-xs);
+      white-space: nowrap;
+      color: var(--grey-700);
       background-color: var(--white-900);
+      border-radius: var(--space-2);
+      box-shadow: var(--box-shadow-md);
     }
   }
 
@@ -121,9 +149,6 @@
     font-weight: var(--font-weight-600);
     text-align: center;
     color: var(--grey-600);
-  }
-
-  .option {
   }
 
   .error {

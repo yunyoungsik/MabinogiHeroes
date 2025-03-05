@@ -26,7 +26,7 @@ const Hero = () => {
         navigation={true}
         loop={mainSlider.length > 1 ? true : true}
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         className={`mySwiper ${styles.slider}`}

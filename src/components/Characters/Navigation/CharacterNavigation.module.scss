@@ -1,5 +1,10 @@
 @import '../../../assets/styles/base/mixins';
 
+.aside {
+  @include flex(unset, unset, column);
+  gap: var(--space-10);
+}
+
 .nav {
   width: 250px;
   scrollbar-width: thin;

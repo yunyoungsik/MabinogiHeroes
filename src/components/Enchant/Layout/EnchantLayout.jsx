@@ -1,27 +1,9 @@
 'use client';
 
-import Loading from '@/components/ui/Loading';
 import styles from './EnchantLayout.module.scss';
+import { Info } from 'lucide-react';
 
-const EnchantLayout = ({ loading, data, enchantList }) => {
-  if (loading || !data) {
-    return <Loading />;
-  }
-
-  const renderEnchatStat = (item) => {
-    const currentEnchant = enchant[enchantName];
-    if (!currentEnchant) return null;
-
-    return (
-      <ul className="ballon group-hover:inline-block py-1 text-[0.75rem] text-white border-b border-solid border-customGrey500/30">
-        <li>인챈트등급 {currentEnchant.enchant_grade}</li>
-        {currentEnchant.enchant_stat.map((stat, index) => (
-          <li key={index}>{stat}</li>
-        ))}
-      </ul>
-    );
-  };
-
+const EnchantLayout = ({ data, enchantList }) => {
   return (
     <table className={styles.rankLayout}>
       <caption>인챈트 스크롤 거래소 거래 내역 및 시세</caption>
@@ -30,10 +12,10 @@ const EnchantLayout = ({ loading, data, enchantList }) => {
         <col width="10%" />
         <col width="10%" />
         <col width="10%" />
-        <col />
+        <col className={styles.hideTablet} />
         <col width="10%" />
-        <col width="10%" />
-        <col width="10%" />
+        <col width="10%" className={styles.hideMobile} />
+        <col width="10%" className={styles.hideMobile} />
       </colgroup>
 
       {/* 테이블 헤더 */}
@@ -42,10 +24,16 @@ const EnchantLayout = ({ loading, data, enchantList }) => {
           <th scope="col">랭크</th>
           <th scope="col">인챈트</th>
           <th scope="col">접두/접미</th>
-          <th scope="col">부위</th>
+          <th scope="col" className={styles.hideTablet}>
+            부위
+          </th>
           <th scope="col">평균가</th>
-          <th scope="col">최고가</th>
-          <th scope="col">최저가</th>
+          <th scope="col" className={styles.hideMobile}>
+            최고가
+          </th>
+          <th scope="col" className={styles.hideMobile}>
+            최저가
+          </th>
         </tr>
       </thead>
 
@@ -67,9 +55,11 @@ const EnchantLayout = ({ loading, data, enchantList }) => {
 
               {/* 인챈트 */}
               <td className={styles.name}>
-                {item.name}
+                <div className={styles.nameItem}>
+                  {item.name}
+                  <Info size={12} stroke='#8b95a1' />
+                </div>
                 <div className={styles.enchantStat}>
-                  <span>{item.name}</span>
                   <ul>
                     {item.stat.map((stat, index) => (
                       <li key={index}>{stat}</li>
@@ -82,16 +72,20 @@ const EnchantLayout = ({ loading, data, enchantList }) => {
               <td className={styles.option}>{item.preset}</td>
 
               {/* 부위 */}
-              <td className={styles.option}>{item.slot.join(', ')}</td>
+              <td className={`${styles.option} ${styles.hideTablet}`}>{item.slot.join(', ')}</td>
 
               {/* 평균가 */}
               <td className={styles.score}>{matchedData?.average_price.toLocaleString() || '-'}</td>
 
               {/* 최고가 */}
-              <td className={styles.score}>{matchedData?.max_price.toLocaleString() || '-'}</td>
+              <td className={`${styles.score} ${styles.hideMobile}`}>
+                {matchedData?.max_price.toLocaleString() || '-'}
+              </td>
 
               {/* 최저가 */}
-              <td className={styles.score}>{matchedData?.min_price.toLocaleString() || '-'}</td>
+              <td className={`${styles.score} ${styles.hideMobile}`}>
+                {matchedData?.min_price.toLocaleString() || '-'}
+              </td>
             </tr>
           );
         })}

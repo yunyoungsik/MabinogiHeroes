@@ -49,7 +49,7 @@ const ProfileDropdown = ({ authUser, handleLogout, handleDelete, handleModify })
             </div>
           </div>
 
-          <div className={styles.button}>
+          <div className={styles.buttonGroup}>
             <LineButton handler={handleLogout}>로그아웃</LineButton>
           </div>
         </>

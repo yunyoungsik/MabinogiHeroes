@@ -13,7 +13,6 @@ import convertTime from '@/utils/convertTime';
 import { formatNumber } from '@/utils/formatNumber';
 // components
 import CustomToolTip from './CustomToolTip';
-import Loading from '@/components/ui/Loading';
 import styles from './Chart.module.scss';
 
 const Chart = ({ loading, error, item }) => {
@@ -33,10 +32,6 @@ const Chart = ({ loading, error, item }) => {
     const maxPrice = Math.max(...item.map((entry) => entry.max_price));
     return [minPrice * 0.9, maxPrice * 1.1]; // -10%, +10% 적용
   }, [item]);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   if (error) {
     return (

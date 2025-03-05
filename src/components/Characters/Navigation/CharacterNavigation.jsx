@@ -1,6 +1,6 @@
 import React from 'react';
 import UserInfo from '../Info/UserInfo';
-import styles from './Navigation.module.scss'
+import styles from './CharacterNavigation.module.scss';
 
 const categories = [
   { id: 'stat', label: '능력치' },

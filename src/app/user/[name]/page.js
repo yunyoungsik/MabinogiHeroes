@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
 export default function page({ params }) {
   const { name } = params;
   return (
-    // <Character name={name} />
-    <Character2 name={name} />
+    <Character name={name} />
+    // <Character2 name={name} />
   );
 }

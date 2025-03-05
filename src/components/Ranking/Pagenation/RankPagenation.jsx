@@ -1,8 +1,11 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './RankPagenation.module.scss';
+import { useRankingStore } from '@/store/useRankingStore';
 
 const RankPagenation = ({ localPage, setLocalPage, maxPage }) => {
+  const {loading} = useRankingStore();
+
   // 페이지 변경 핸들러
   const handlePageChange = (page) => {
     if (page >= 1 && page <= maxPage) {
@@ -28,6 +31,8 @@ const RankPagenation = ({ localPage, setLocalPage, maxPage }) => {
   };
 
   const pageNumbers = getPageNumbers();
+
+  if(loading) return null
 
   return (
     <nav className={styles.pagenation}>

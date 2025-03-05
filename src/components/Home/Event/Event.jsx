@@ -22,14 +22,8 @@ const Event = () => {
 
   if (loading || event?.length === 0) {
     return (
-      <section className={styles.event}>
-        <h3>이벤트</h3>
-        <span>·</span>
-        <div className={styles.evetLoading}>
-        <ButtonLoading />
-        </div>
-      </section>
-    );
+      <section className={styles.event} />
+    )
   }
 
   return (
@@ -42,7 +36,7 @@ const Event = () => {
         slidesPerView={1}
         loop={event.length > 1 ? true : false}
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         className={`mySwiper ${styles.slider}`}

@@ -53,8 +53,6 @@
   .name {
     @include ellipsis(1);
     font-weight: var(--font-weight-600);
-    max-width: 950px;
-    width: 100%;
   }
 
   .score {

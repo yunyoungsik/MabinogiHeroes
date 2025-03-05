@@ -1,53 +1,104 @@
 import { useUserStore } from '@/store/useUserStore';
+import { Info } from 'lucide-react';
 import styles from './UserInfo.module.scss';
+import convertTime from '@/utils/convertTime';
+import timeAgo from '@/utils/timeAgo';
 
 // 캐릭터 백그라운드 이미지
-const CLASS_BACKGROUND_MAP = {
-  네반: 'bg-neamhain',
-  사냐: 'bg-sanyaa',
-  소우: 'bg-sou',
-  아켈: 'bg-achel',
-  체른: 'bg-czern',
-  라티야: 'bg-latiya',
-  레티: 'bg-letty',
-  단아: 'bg-danah',
-  테사: 'bg-tessa',
-  카엘: 'bg-kael',
-  레서: 'bg-lethor',
-  벨: 'bg-bel',
-  미울: 'bg-miul',
-  그림덴: 'bg-grimden',
-  미리: 'bg-miri',
-  델리아: 'bg-delia',
-  헤기: 'bg-hagie',
-  아리샤: 'bg-arisha',
-  린: 'bg-lynn',
-  허크: 'bg-hurk',
-  벨라: 'bg-vella',
-  카이: 'bg-kay',
-  카록: 'bg-kalok',
-  이비: 'bg-evy',
-  피오나: 'bg-fiona',
-  리시타: 'bg-lethita',
+const CLASS_ENGLISH_MAP = {
+  네반: 'neamhain',
+  사냐: 'sanyaa',
+  소우: 'sou',
+  아켈: 'achel',
+  체른: 'czern',
+  라티야: 'latiya',
+  레티: 'letty',
+  단아: 'danah',
+  테사: 'tessa',
+  카엘: 'kael',
+  레서: 'lethor',
+  벨: 'bel',
+  미울: 'miul',
+  그림덴: 'grimden',
+  미리: 'miri',
+  델리아: 'delia',
+  헤기: 'hagie',
+  아리샤: 'arisha',
+  린: 'lynn',
+  허크: 'hurk',
+  벨라: 'vella',
+  카이: 'kay',
+  카록: 'kalok',
+  이비: 'evy',
+  피오나: 'fiona',
+  리시타: 'lethita',
 };
 
 const UserInfo = () => {
-  const { basic, guild, titleEquipment, fetchUser } = useUserStore();
-  // 캐릭터 배경 이미지 반환
-  // const getCharacterBackground = (className) => CLASS_BACKGROUND_MAP[className] || '';
+  const { basic, guild } = useUserStore();
 
-  // 타이틀 추출
-  // const leftTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '좌측');
-  // const fixedTitle = titleEquipment?.find((item) => item.title_equipment_type_name === '고정');
+  const getCharacterName = (className) => CLASS_ENGLISH_MAP[className] || '';
+
+  const isOnline =
+    basic?.character_date_last_login &&
+    basic?.character_date_last_logout &&
+    new Date(basic.character_date_last_login) > new Date(basic.character_date_last_logout);
 
   return (
     <div className={styles.userInfo}>
-      <div className={styles.textBox}>
-        <div>
-          <span>Lv.</span>
-          <span>타이틀</span>
+      <div
+        className={styles.container}
+        style={{
+          backgroundImage: `url(/image/character/${getCharacterName(
+            basic?.character_class_name
+          )}.webp)`,
+        }}
+      >
+        <div className={styles.inner}>
+          <div className={styles.textBox}>
+            <div className={styles.top}>
+              <div className={styles.topInner}>
+                <div className={styles.level}>
+                  {/* 레벨 */}
+                  <span>Lv.{basic?.character_level}</span>
+                  {/* 직업 */}
+                  <span>{basic?.character_class_name}</span>
+                </div>
+                {/* 접속상태 */}
+                <div className={`${styles.login} ${isOnline ? styles.online : styles.offline}`}>
+                  {isOnline
+                    ? '접속중'
+                    : `${timeAgo(convertTime(basic?.character_date_last_logout))}`}
+                </div>
+              </div>
+              {/* 캐릭터명 */}
+              <h2 className={styles.name}>{basic?.character_name}</h2>
+            </div>
+
+            <div className={styles.bottom}>
+              <ul>
+                <li>
+                  <span>길드</span> <span>{guild?.guild_name}</span>
+                </li>
+                <li className={styles.title}>
+                  <span>보유타이틀</span> <span>{basic?.total_title_count}개</span>
+                  <Info size={14} stroke="#8b95a1" />
+                  <div className={styles.ballon}>
+                    {basic?.title_stat?.map((stat, index) => (
+                      <p key={index}>
+                        <span>{stat.stat_name}</span>
+                        <span>{stat.stat_value}</span>
+                      </p>
+                    ))}
+                  </div>
+                </li>
+                <li>
+                  <span>카르제</span> <span>{basic?.cairde_name}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <h2>이름</h2>
       </div>
     </div>
   );

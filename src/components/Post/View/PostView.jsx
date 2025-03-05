@@ -46,7 +46,11 @@ const PostView = ({ postId }) => {
   };
 
   if (loading || !data || data.length === 0) {
-    return <Loading />;
+    return (
+      <main className={styles.main} style={{display: 'flex' , alignItems: 'center', justifyContent: 'center'}}>
+        <Loading />
+      </main>
+    );
   }
 
   return (
@@ -98,8 +102,8 @@ const PostView = ({ postId }) => {
                   padding="var(--space-2) var(--space-4)"
                   color="var(--grey-500)"
                   backgroundColor="var(--grey-200)"
-                  hoverColor='var(--grey-500)'
-                  hoverBgColor='var(--grey-300)'
+                  hoverColor="var(--grey-500)"
+                  hoverBgColor="var(--grey-300)"
                 >
                   목록으로
                 </LinkColorButton>

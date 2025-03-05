@@ -25,11 +25,6 @@
     @include flex(flex-start, unset, column);
   }
 
-  .loadingBox {
-    width: 100%;
-    height: 160px;
-  }
-
   .list {
     width: 100%;
 
@@ -47,7 +42,7 @@
       a {
         @include ellipsis(1);
         width: 145px;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
           font-weight: var(--font-weight-700);

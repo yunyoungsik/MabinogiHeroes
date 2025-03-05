@@ -7,12 +7,12 @@ import AuthCheck from '@/components/Auth/AuthCheck';
 import './globals.css';
 import '@/assets/styles/main.scss'
 
-const pretendard = localFont({
-  src: '../assets/fonts/PretendardVariable.woff2',
-  display: 'swap',
-  weight: '100 900',
-  variable: '--font-pretendard',
-});
+// const pretendard = localFont({
+//   src: 'assets/fonts/PretendardVariable.woff2',
+//   display: 'swap',
+//   weight: '100 900',
+//   variable: '--font-pretendard',
+// });
 
 export const metadata = {
   generator: 'Next.js',
@@ -22,9 +22,9 @@ export const metadata = {
   keywords: [
     '마비노기영웅전, 마영전, 마비노기영웅전 검색, 마비노기영웅전 검색 사이트, 마영전 검색, 마영전 검색 사이트, 마비노기영웅전 랭킹, 마영전 랭킹, 마비노기영웅전 거래소, 마영전 거래소',
   ],
-  authors: [{ name: 'Yun' }],
-  creator: [{ name: 'Yun' }],
-  publisher: [{ name: 'Yun' }],
+  authors: [{ name: 'ON.KR' }],
+  creator: [{ name: 'ON.KR' }],
+  publisher: [{ name: 'ON.KR' }],
   formatDetection: {
     email: 'fcon@outlook.kr',
   },
@@ -79,7 +79,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={` ${pretendard.variable}`}>
+      {/* <body className={` ${pretendard.variable}`}> */}
+      <body>
         <GoogleAnalytics gaId="G-D98PS2PM8B" />
         <GoogleTagManager gtmId="GTM-N86SVFLC" />
         <div className="wrap">

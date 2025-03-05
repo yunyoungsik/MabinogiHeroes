@@ -1,14 +1,12 @@
-import slider1 from '@/assets/images/slider/slider1.webp'
-
 export const mainSlider = [
   {
     link: 'https://mhon.kr',
-    src: slider1,
+    src: '/image/slider/slider1.webp',
     alt: 'MHON.KR 홍보배너',
   },
   {
     link: 'https://mhon.kr',
-    src: slider1,
+    src: '/image/slider/slider1.webp',
     alt: 'MHON.KR 홍보배너',
   },
 ];

@@ -185,30 +185,20 @@ $breakpoint-xl: 1440px;
   }
 }
 
-@mixin ballon() {
+@mixin ballon($top: 50%, $left: 50%, $translateY: -50%, $translateX: -50%,) {
   display: none;
   position: absolute;
-  min-width: 100px;
-  left: 50%;
-  top: -53px;
-  text-align: center;
-  transform: translateX(-50%);
-  background: #484848;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 5.5px;
-  z-index: 999;
+  left: $left;
+  top: $top;
+  z-index: var(--z-tooltip);
+  transform: translate($translateX, $translateY);
   white-space: nowrap;
+}
 
-  &:after {
-    border-top: 10px solid #484848;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 0px solid transparent;
-    content: '';
-    position: absolute;
-    top: 43px;
-    left: 50%;
-    transform: translateX(-50%);
+@mixin ballon-container {
+  position: relative;
+
+  &:hover .ballon {
+    display: block;
   }
 }

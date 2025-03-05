@@ -48,9 +48,4 @@
       }
     }
   }
-
-  .evetLoading {
-    @include flex(center, center, unset);
-    width: 100%;
-  }
 }

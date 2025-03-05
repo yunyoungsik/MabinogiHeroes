@@ -72,16 +72,19 @@ const CateList = ({ cate }) => {
   // 검색 기능 구현
   useEffect(() => {
     if (searchText) {
-      const searchResult = data.filter((item) =>
-        new RegExp(searchText, 'i').test(item.title)
-      );
+      const searchResult = data.filter((item) => new RegExp(searchText, 'i').test(item.title));
       setSearchedResults(searchResult);
     } else {
       setSearchedResults(data);
     }
   }, [searchText, data]);
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <section className={styles.section}>
+        <Loading />
+      </section>
+    );
 
   return (
     <section className={styles.section}>

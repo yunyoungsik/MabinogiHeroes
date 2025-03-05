@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 // components
 import Stat from './Stat';
-import Item from '../Item/Item';
-import Avatar from '../Avatar/Avatar';
-import Skill from '../Skill/Skill';
+import Item from './Item';
+import Avatar from './Avatar';
+import Skill from './Skill';
 import KakaoAd1 from '../../AD/KakaoAd1';
 import KakaoAd2 from '../../AD/KakaoAd2';
 import KakaoAd3 from '../../AD/KakaoAd3';
